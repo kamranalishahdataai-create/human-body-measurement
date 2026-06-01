@@ -1,0 +1,9 @@
+deeplab_model
+models
+.venv
+__pycache__
+*.pyc
+*.pyo
+test.obj
+*.egg-info
+.DS_Store

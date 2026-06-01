@@ -1,0 +1,5858 @@
+{
+  "summary": {
+    "subjects": 36,
+    "comparisons": 1116,
+    "raw_mae_cm": 1.827,
+    "raw_accuracy_pct": 95.23,
+    "calibrated_mae_cm": 1.248,
+    "calibrated_accuracy_pct": 96.34,
+    "within_1cm_raw": 38.4,
+    "within_2cm_raw": 64.3,
+    "within_3cm_raw": 81.1,
+    "within_1cm_calibrated": 54.7,
+    "within_2cm_calibrated": 81.6,
+    "within_3cm_calibrated": 92.6
+  },
+  "calibration_factors": {
+    "模型身高": {
+      "en_key": "height",
+      "mean_ratio": 1.0002994578250963,
+      "std_ratio": 0.001736112893858716,
+      "n": 36
+    },
+    "领围": {
+      "en_key": "neck circumference",
+      "mean_ratio": 0.9901708985540664,
+      "std_ratio": 0.03818493322730243,
+      "n": 36
+    },
+    "颈宽": {
+      "en_key": "neck width",
+      "mean_ratio": 0.9687341165033041,
+      "std_ratio": 0.051691263766808306,
+      "n": 36
+    },
+    "胸围": {
+      "en_key": "chest circumference",
+      "mean_ratio": 0.9682543048200412,
+      "std_ratio": 0.016157543249746765,
+      "n": 36
+    },
+    "中腰围": {
+      "en_key": "waist circumference",
+      "mean_ratio": 0.9529015182076258,
+      "std_ratio": 0.023190910999466477,
+      "n": 36
+    },
+    "肚围": {
+      "en_key": "pants waist circumference",
+      "mean_ratio": 0.9958039545558309,
+      "std_ratio": 0.030156830162454344,
+      "n": 36
+    },
+    "肩宽": {
+      "en_key": "back shoulder breadth",
+      "mean_ratio": 0.9654540365429608,
+      "std_ratio": 0.028110770612585656,
+      "n": 36
+    },
+    "前肩宽": {
+      "en_key": "front shoulder breadth",
+      "mean_ratio": 1.0462075719948836,
+      "std_ratio": 0.028224803290819757,
+      "n": 36
+    },
+    "前胸宽": {
+      "en_key": "front chest breadth",
+      "mean_ratio": 1.0915736022019233,
+      "std_ratio": 0.03941809124793811,
+      "n": 36
+    },
+    "后背宽": {
+      "en_key": "back chest breadth",
+      "mean_ratio": 0.9666381989294638,
+      "std_ratio": 0.028847315857340815,
+      "n": 36
+    },
+    "左袖长": {
+      "en_key": "left sleeve length",
+      "mean_ratio": 1.0319103325231418,
+      "std_ratio": 0.01283993448146062,
+      "n": 36
+    },
+    "袖丈": {
+      "en_key": "sleeve length",
+      "mean_ratio": 0.974500561509081,
+      "std_ratio": 0.01667823174331641,
+      "n": 36
+    },
+    "左上臂围": {
+      "en_key": "bicep left circumference",
+      "mean_ratio": 1.0150335833320785,
+      "std_ratio": 0.04536709354686561,
+      "n": 36
+    },
+    "右上臂围": {
+      "en_key": "bicep right circumference",
+      "mean_ratio": 1.0187414620651092,
+      "std_ratio": 0.04473418550661297,
+      "n": 36
+    },
+    "手腕围": {
+      "en_key": "wrist left circumference",
+      "mean_ratio": 0.9693227102635724,
+      "std_ratio": 0.0545794289439785,
+      "n": 36
+    },
+    "前腰节长": {
+      "en_key": "front waist length",
+      "mean_ratio": 0.9190505104183868,
+      "std_ratio": 0.015785295843128034,
+      "n": 36
+    },
+    "后中腰节长": {
+      "en_key": "back waist length",
+      "mean_ratio": 0.9488647802381522,
+      "std_ratio": 0.01886072119367284,
+      "n": 36
+    },
+    "后腰节长": {
+      "en_key": "back mid waist length",
+      "mean_ratio": 1.0102323586040036,
+      "std_ratio": 0.019338334342062082,
+      "n": 36
+    },
+    "后衣长(到臀下)": {
+      "en_key": "back clothing length",
+      "mean_ratio": 0.9882995377421566,
+      "std_ratio": 0.010368307698955602,
+      "n": 36
+    },
+    "后腰高": {
+      "en_key": "back waist height",
+      "mean_ratio": 1.1993674653136575,
+      "std_ratio": 0.38351075927013334,
+      "n": 36
+    },
+    "通裆": {
+      "en_key": "open crotch",
+      "mean_ratio": 1.0181834975704367,
+      "std_ratio": 0.07771842961907253,
+      "n": 36
+    },
+    "裤腰围": {
+      "en_key": "mid waist circumference",
+      "mean_ratio": 0.9970605197752267,
+      "std_ratio": 0.022480158212028187,
+      "n": 36
+    },
+    "下臀围": {
+      "en_key": "hip circumference",
+      "mean_ratio": 0.9879013716955504,
+      "std_ratio": 0.01660017929796584,
+      "n": 36
+    },
+    "左大腿围": {
+      "en_key": "thigh left circumference",
+      "mean_ratio": 0.998977495261965,
+      "std_ratio": 0.03917585092694667,
+      "n": 36
+    },
+    "右大腿围": {
+      "en_key": "thigh right circumference",
+      "mean_ratio": 0.994569358290359,
+      "std_ratio": 0.0393099732437263,
+      "n": 36
+    },
+    "膝围": {
+      "en_key": "knee circumference",
+      "mean_ratio": 1.0177053804573848,
+      "std_ratio": 0.0287511314601915,
+      "n": 36
+    },
+    "左小腿围": {
+      "en_key": "calf left circumference",
+      "mean_ratio": 1.0218489444907037,
+      "std_ratio": 0.03414802576361813,
+      "n": 36
+    },
+    "右小腿围": {
+      "en_key": "calf right circumference",
+      "mean_ratio": 1.0412484079956603,
+      "std_ratio": 0.03864122232655624,
+      "n": 36
+    },
+    "N点～臀下": {
+      "en_key": "leg height",
+      "mean_ratio": 1.0411790410400021,
+      "std_ratio": 0.04124727336564146,
+      "n": 36
+    },
+    "O点～臀下": {
+      "en_key": "O to under hip",
+      "mean_ratio": 0.9942297594057964,
+      "std_ratio": 0.01873823102634476,
+      "n": 36
+    },
+    "左裤长": {
+      "en_key": "pant height",
+      "mean_ratio": 1.0165125695102322,
+      "std_ratio": 0.025764558180586945,
+      "n": 36
+    }
+  },
+  "per_subject": {
+    "0001 姬津祥": {
+      "模型身高": {
+        "ground_truth": 167.8,
+        "predicted": 167.85,
+        "error_cm": 0.05
+      },
+      "领围": {
+        "ground_truth": 38.3,
+        "predicted": 37.41,
+        "error_cm": 0.89
+      },
+      "颈宽": {
+        "ground_truth": 11.9,
+        "predicted": 12.18,
+        "error_cm": 0.28
+      },
+      "胸围": {
+        "ground_truth": 90.2,
+        "predicted": 92.75,
+        "error_cm": 2.55
+      },
+      "中腰围": {
+        "ground_truth": 79.1,
+        "predicted": 82.25,
+        "error_cm": 3.15
+      },
+      "肚围": {
+        "ground_truth": 81.4,
+        "predicted": 81.09,
+        "error_cm": 0.31
+      },
+      "肩宽": {
+        "ground_truth": 41.2,
+        "predicted": 44.14,
+        "error_cm": 2.94
+      },
+      "前肩宽": {
+        "ground_truth": 38.7,
+        "predicted": 38.15,
+        "error_cm": 0.55
+      },
+      "前胸宽": {
+        "ground_truth": 35.6,
+        "predicted": 32.77,
+        "error_cm": 2.83
+      },
+      "后背宽": {
+        "ground_truth": 36.7,
+        "predicted": 38.04,
+        "error_cm": 1.34
+      },
+      "左袖长": {
+        "ground_truth": 60.2,
+        "predicted": 58.79,
+        "error_cm": 1.41
+      },
+      "袖丈": {
+        "ground_truth": 57.8,
+        "predicted": 59.29,
+        "error_cm": 1.49
+      },
+      "左上臂围": {
+        "ground_truth": 29.8,
+        "predicted": 28.29,
+        "error_cm": 1.51
+      },
+      "右上臂围": {
+        "ground_truth": 29.6,
+        "predicted": 28.7,
+        "error_cm": 0.9
+      },
+      "手腕围": {
+        "ground_truth": 15.0,
+        "predicted": 16.81,
+        "error_cm": 1.81
+      },
+      "前腰节长": {
+        "ground_truth": 41.6,
+        "predicted": 45.05,
+        "error_cm": 3.45
+      },
+      "后中腰节长": {
+        "ground_truth": 39.3,
+        "predicted": 41.33,
+        "error_cm": 2.03
+      },
+      "后腰节长": {
+        "ground_truth": 42.0,
+        "predicted": 41.39,
+        "error_cm": 0.61
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 69.6,
+        "predicted": 70.3,
+        "error_cm": 0.7
+      },
+      "后腰高": {
+        "ground_truth": 7.8,
+        "predicted": 5.53,
+        "error_cm": 2.27
+      },
+      "通裆": {
+        "ground_truth": 60.0,
+        "predicted": 63.23,
+        "error_cm": 3.23
+      },
+      "裤腰围": {
+        "ground_truth": 80.6,
+        "predicted": 80.15,
+        "error_cm": 0.45
+      },
+      "下臀围": {
+        "ground_truth": 88.1,
+        "predicted": 91.29,
+        "error_cm": 3.19
+      },
+      "左大腿围": {
+        "ground_truth": 51.3,
+        "predicted": 53.66,
+        "error_cm": 2.36
+      },
+      "右大腿围": {
+        "ground_truth": 51.8,
+        "predicted": 53.9,
+        "error_cm": 2.1
+      },
+      "膝围": {
+        "ground_truth": 35.4,
+        "predicted": 35.87,
+        "error_cm": 0.47
+      },
+      "左小腿围": {
+        "ground_truth": 35.3,
+        "predicted": 34.88,
+        "error_cm": 0.42
+      },
+      "右小腿围": {
+        "ground_truth": 35.1,
+        "predicted": 34.57,
+        "error_cm": 0.53
+      },
+      "N点～臀下": {
+        "ground_truth": 74.4,
+        "predicted": 74.37,
+        "error_cm": 0.03
+      },
+      "O点～臀下": {
+        "ground_truth": 70.7,
+        "predicted": 71.5,
+        "error_cm": 0.8
+      },
+      "左裤长": {
+        "ground_truth": 97.0,
+        "predicted": 96.46,
+        "error_cm": 0.54
+      }
+    },
+    "0002 罗剑锋": {
+      "模型身高": {
+        "ground_truth": 169.8,
+        "predicted": 169.79,
+        "error_cm": 0.01
+      },
+      "领围": {
+        "ground_truth": 37.3,
+        "predicted": 38.74,
+        "error_cm": 1.44
+      },
+      "颈宽": {
+        "ground_truth": 11.0,
+        "predicted": 12.56,
+        "error_cm": 1.56
+      },
+      "胸围": {
+        "ground_truth": 91.9,
+        "predicted": 96.33,
+        "error_cm": 4.43
+      },
+      "中腰围": {
+        "ground_truth": 82.4,
+        "predicted": 88.63,
+        "error_cm": 6.23
+      },
+      "肚围": {
+        "ground_truth": 88.6,
+        "predicted": 87.75,
+        "error_cm": 0.85
+      },
+      "肩宽": {
+        "ground_truth": 43.4,
+        "predicted": 45.99,
+        "error_cm": 2.59
+      },
+      "前肩宽": {
+        "ground_truth": 40.9,
+        "predicted": 40.94,
+        "error_cm": 0.04
+      },
+      "前胸宽": {
+        "ground_truth": 38.8,
+        "predicted": 35.26,
+        "error_cm": 3.54
+      },
+      "后背宽": {
+        "ground_truth": 35.1,
+        "predicted": 37.0,
+        "error_cm": 1.9
+      },
+      "左袖长": {
+        "ground_truth": 60.6,
+        "predicted": 59.35,
+        "error_cm": 1.25
+      },
+      "袖丈": {
+        "ground_truth": 58.4,
+        "predicted": 59.73,
+        "error_cm": 1.33
+      },
+      "左上臂围": {
+        "ground_truth": 30.7,
+        "predicted": 30.25,
+        "error_cm": 0.45
+      },
+      "右上臂围": {
+        "ground_truth": 31.1,
+        "predicted": 30.27,
+        "error_cm": 0.83
+      },
+      "手腕围": {
+        "ground_truth": 17.5,
+        "predicted": 16.93,
+        "error_cm": 0.57
+      },
+      "前腰节长": {
+        "ground_truth": 44.7,
+        "predicted": 48.55,
+        "error_cm": 3.85
+      },
+      "后中腰节长": {
+        "ground_truth": 43.1,
+        "predicted": 43.21,
+        "error_cm": 0.11
+      },
+      "后腰节长": {
+        "ground_truth": 44.7,
+        "predicted": 43.16,
+        "error_cm": 1.54
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 74.3,
+        "predicted": 73.59,
+        "error_cm": 0.71
+      },
+      "后腰高": {
+        "ground_truth": 9.4,
+        "predicted": 5.81,
+        "error_cm": 3.59
+      },
+      "通裆": {
+        "ground_truth": 64.9,
+        "predicted": 67.24,
+        "error_cm": 2.34
+      },
+      "裤腰围": {
+        "ground_truth": 86.6,
+        "predicted": 85.5,
+        "error_cm": 1.1
+      },
+      "下臀围": {
+        "ground_truth": 95.2,
+        "predicted": 95.76,
+        "error_cm": 0.56
+      },
+      "左大腿围": {
+        "ground_truth": 56.8,
+        "predicted": 56.6,
+        "error_cm": 0.2
+      },
+      "右大腿围": {
+        "ground_truth": 57.5,
+        "predicted": 56.83,
+        "error_cm": 0.67
+      },
+      "膝围": {
+        "ground_truth": 39.1,
+        "predicted": 37.44,
+        "error_cm": 1.66
+      },
+      "左小腿围": {
+        "ground_truth": 38.7,
+        "predicted": 36.93,
+        "error_cm": 1.77
+      },
+      "右小腿围": {
+        "ground_truth": 39.3,
+        "predicted": 35.69,
+        "error_cm": 3.61
+      },
+      "N点～臀下": {
+        "ground_truth": 79.9,
+        "predicted": 73.39,
+        "error_cm": 6.51
+      },
+      "O点～臀下": {
+        "ground_truth": 77.7,
+        "predicted": 75.22,
+        "error_cm": 2.48
+      },
+      "左裤长": {
+        "ground_truth": 94.5,
+        "predicted": 95.22,
+        "error_cm": 0.72
+      }
+    },
+    "0003 张称荣": {
+      "模型身高": {
+        "ground_truth": 175.0,
+        "predicted": 174.83,
+        "error_cm": 0.17
+      },
+      "领围": {
+        "ground_truth": 39.3,
+        "predicted": 39.85,
+        "error_cm": 0.55
+      },
+      "颈宽": {
+        "ground_truth": 12.2,
+        "predicted": 12.83,
+        "error_cm": 0.63
+      },
+      "胸围": {
+        "ground_truth": 96.4,
+        "predicted": 99.25,
+        "error_cm": 2.85
+      },
+      "中腰围": {
+        "ground_truth": 87.2,
+        "predicted": 90.65,
+        "error_cm": 3.45
+      },
+      "肚围": {
+        "ground_truth": 90.2,
+        "predicted": 89.85,
+        "error_cm": 0.35
+      },
+      "肩宽": {
+        "ground_truth": 45.5,
+        "predicted": 46.65,
+        "error_cm": 1.15
+      },
+      "前肩宽": {
+        "ground_truth": 42.8,
+        "predicted": 40.73,
+        "error_cm": 2.07
+      },
+      "前胸宽": {
+        "ground_truth": 40.6,
+        "predicted": 36.15,
+        "error_cm": 4.45
+      },
+      "后背宽": {
+        "ground_truth": 37.3,
+        "predicted": 38.88,
+        "error_cm": 1.58
+      },
+      "左袖长": {
+        "ground_truth": 62.8,
+        "predicted": 61.18,
+        "error_cm": 1.62
+      },
+      "袖丈": {
+        "ground_truth": 59.3,
+        "predicted": 61.66,
+        "error_cm": 2.36
+      },
+      "左上臂围": {
+        "ground_truth": 30.3,
+        "predicted": 31.07,
+        "error_cm": 0.77
+      },
+      "右上臂围": {
+        "ground_truth": 31.7,
+        "predicted": 31.32,
+        "error_cm": 0.38
+      },
+      "手腕围": {
+        "ground_truth": 17.2,
+        "predicted": 17.4,
+        "error_cm": 0.2
+      },
+      "前腰节长": {
+        "ground_truth": 45.7,
+        "predicted": 49.32,
+        "error_cm": 3.62
+      },
+      "后中腰节长": {
+        "ground_truth": 41.8,
+        "predicted": 44.5,
+        "error_cm": 2.7
+      },
+      "后腰节长": {
+        "ground_truth": 44.6,
+        "predicted": 44.4,
+        "error_cm": 0.2
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.9,
+        "predicted": 75.23,
+        "error_cm": 1.33
+      },
+      "后腰高": {
+        "ground_truth": 7.9,
+        "predicted": 5.78,
+        "error_cm": 2.12
+      },
+      "通裆": {
+        "ground_truth": 68.5,
+        "predicted": 68.66,
+        "error_cm": 0.16
+      },
+      "裤腰围": {
+        "ground_truth": 89.1,
+        "predicted": 87.25,
+        "error_cm": 1.85
+      },
+      "下臀围": {
+        "ground_truth": 97.8,
+        "predicted": 98.36,
+        "error_cm": 0.56
+      },
+      "左大腿围": {
+        "ground_truth": 55.2,
+        "predicted": 57.31,
+        "error_cm": 2.11
+      },
+      "右大腿围": {
+        "ground_truth": 55.2,
+        "predicted": 58.14,
+        "error_cm": 2.94
+      },
+      "膝围": {
+        "ground_truth": 38.1,
+        "predicted": 38.1,
+        "error_cm": 0.0
+      },
+      "左小腿围": {
+        "ground_truth": 36.8,
+        "predicted": 37.15,
+        "error_cm": 0.35
+      },
+      "右小腿围": {
+        "ground_truth": 37.1,
+        "predicted": 36.37,
+        "error_cm": 0.73
+      },
+      "N点～臀下": {
+        "ground_truth": 81.8,
+        "predicted": 76.23,
+        "error_cm": 5.57
+      },
+      "O点～臀下": {
+        "ground_truth": 77.6,
+        "predicted": 76.51,
+        "error_cm": 1.09
+      },
+      "左裤长": {
+        "ground_truth": 99.3,
+        "predicted": 99.74,
+        "error_cm": 0.44
+      }
+    },
+    "0004 刘佳明": {
+      "模型身高": {
+        "ground_truth": 166.9,
+        "predicted": 166.67,
+        "error_cm": 0.23
+      },
+      "领围": {
+        "ground_truth": 38.2,
+        "predicted": 38.54,
+        "error_cm": 0.34
+      },
+      "颈宽": {
+        "ground_truth": 12.2,
+        "predicted": 12.59,
+        "error_cm": 0.39
+      },
+      "胸围": {
+        "ground_truth": 91.7,
+        "predicted": 94.06,
+        "error_cm": 2.36
+      },
+      "中腰围": {
+        "ground_truth": 80.5,
+        "predicted": 83.98,
+        "error_cm": 3.48
+      },
+      "肚围": {
+        "ground_truth": 82.4,
+        "predicted": 82.85,
+        "error_cm": 0.45
+      },
+      "肩宽": {
+        "ground_truth": 43.6,
+        "predicted": 44.8,
+        "error_cm": 1.2
+      },
+      "前肩宽": {
+        "ground_truth": 39.3,
+        "predicted": 38.64,
+        "error_cm": 0.66
+      },
+      "前胸宽": {
+        "ground_truth": 36.5,
+        "predicted": 33.05,
+        "error_cm": 3.45
+      },
+      "后背宽": {
+        "ground_truth": 37.6,
+        "predicted": 38.3,
+        "error_cm": 0.7
+      },
+      "左袖长": {
+        "ground_truth": 58.9,
+        "predicted": 57.59,
+        "error_cm": 1.31
+      },
+      "袖丈": {
+        "ground_truth": 56.2,
+        "predicted": 58.18,
+        "error_cm": 1.98
+      },
+      "左上臂围": {
+        "ground_truth": 29.7,
+        "predicted": 29.58,
+        "error_cm": 0.12
+      },
+      "右上臂围": {
+        "ground_truth": 30.1,
+        "predicted": 29.68,
+        "error_cm": 0.42
+      },
+      "手腕围": {
+        "ground_truth": 16.2,
+        "predicted": 16.66,
+        "error_cm": 0.46
+      },
+      "前腰节长": {
+        "ground_truth": 43.1,
+        "predicted": 46.29,
+        "error_cm": 3.19
+      },
+      "后中腰节长": {
+        "ground_truth": 38.6,
+        "predicted": 41.85,
+        "error_cm": 3.25
+      },
+      "后腰节长": {
+        "ground_truth": 42.0,
+        "predicted": 41.25,
+        "error_cm": 0.75
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 69.1,
+        "predicted": 69.71,
+        "error_cm": 0.61
+      },
+      "后腰高": {
+        "ground_truth": 7.6,
+        "predicted": 5.46,
+        "error_cm": 2.14
+      },
+      "通裆": {
+        "ground_truth": 63.8,
+        "predicted": 63.71,
+        "error_cm": 0.09
+      },
+      "裤腰围": {
+        "ground_truth": 80.6,
+        "predicted": 81.44,
+        "error_cm": 0.84
+      },
+      "下臀围": {
+        "ground_truth": 93.1,
+        "predicted": 92.9,
+        "error_cm": 0.2
+      },
+      "左大腿围": {
+        "ground_truth": 55.8,
+        "predicted": 55.63,
+        "error_cm": 0.17
+      },
+      "右大腿围": {
+        "ground_truth": 53.8,
+        "predicted": 55.56,
+        "error_cm": 1.76
+      },
+      "膝围": {
+        "ground_truth": 35.7,
+        "predicted": 36.15,
+        "error_cm": 0.45
+      },
+      "左小腿围": {
+        "ground_truth": 38.2,
+        "predicted": 35.83,
+        "error_cm": 2.37
+      },
+      "右小腿围": {
+        "ground_truth": 37.6,
+        "predicted": 35.21,
+        "error_cm": 2.39
+      },
+      "N点～臀下": {
+        "ground_truth": 76.0,
+        "predicted": 73.29,
+        "error_cm": 2.71
+      },
+      "O点～臀下": {
+        "ground_truth": 70.8,
+        "predicted": 71.33,
+        "error_cm": 0.53
+      },
+      "左裤长": {
+        "ground_truth": 95.6,
+        "predicted": 94.15,
+        "error_cm": 1.45
+      }
+    },
+    "0005 蓝梓康": {
+      "模型身高": {
+        "ground_truth": 171.5,
+        "predicted": 171.29,
+        "error_cm": 0.21
+      },
+      "领围": {
+        "ground_truth": 39.8,
+        "predicted": 36.5,
+        "error_cm": 3.3
+      },
+      "颈宽": {
+        "ground_truth": 13.9,
+        "predicted": 12.07,
+        "error_cm": 1.83
+      },
+      "胸围": {
+        "ground_truth": 81.8,
+        "predicted": 85.98,
+        "error_cm": 4.18
+      },
+      "中腰围": {
+        "ground_truth": 67.1,
+        "predicted": 72.21,
+        "error_cm": 5.11
+      },
+      "肚围": {
+        "ground_truth": 68.2,
+        "predicted": 72.47,
+        "error_cm": 4.27
+      },
+      "肩宽": {
+        "ground_truth": 41.6,
+        "predicted": 43.7,
+        "error_cm": 2.1
+      },
+      "前肩宽": {
+        "ground_truth": 40.7,
+        "predicted": 40.47,
+        "error_cm": 0.23
+      },
+      "前胸宽": {
+        "ground_truth": 35.2,
+        "predicted": 34.96,
+        "error_cm": 0.24
+      },
+      "后背宽": {
+        "ground_truth": 30.9,
+        "predicted": 33.33,
+        "error_cm": 2.43
+      },
+      "左袖长": {
+        "ground_truth": 60.2,
+        "predicted": 60.04,
+        "error_cm": 0.16
+      },
+      "袖丈": {
+        "ground_truth": 58.4,
+        "predicted": 60.54,
+        "error_cm": 2.14
+      },
+      "左上臂围": {
+        "ground_truth": 25.9,
+        "predicted": 25.93,
+        "error_cm": 0.03
+      },
+      "右上臂围": {
+        "ground_truth": 26.5,
+        "predicted": 26.12,
+        "error_cm": 0.38
+      },
+      "手腕围": {
+        "ground_truth": 15.1,
+        "predicted": 16.52,
+        "error_cm": 1.42
+      },
+      "前腰节长": {
+        "ground_truth": 41.7,
+        "predicted": 46.58,
+        "error_cm": 4.88
+      },
+      "后中腰节长": {
+        "ground_truth": 40.9,
+        "predicted": 42.38,
+        "error_cm": 1.48
+      },
+      "后腰节长": {
+        "ground_truth": 42.1,
+        "predicted": 41.68,
+        "error_cm": 0.42
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 71.6,
+        "predicted": 71.62,
+        "error_cm": 0.02
+      },
+      "后腰高": {
+        "ground_truth": 6.4,
+        "predicted": 5.59,
+        "error_cm": 0.81
+      },
+      "通裆": {
+        "ground_truth": 65.1,
+        "predicted": 62.82,
+        "error_cm": 2.28
+      },
+      "裤腰围": {
+        "ground_truth": 67.8,
+        "predicted": 70.38,
+        "error_cm": 2.58
+      },
+      "下臀围": {
+        "ground_truth": 85.4,
+        "predicted": 87.37,
+        "error_cm": 1.97
+      },
+      "左大腿围": {
+        "ground_truth": 49.9,
+        "predicted": 50.98,
+        "error_cm": 1.08
+      },
+      "右大腿围": {
+        "ground_truth": 50.8,
+        "predicted": 51.23,
+        "error_cm": 0.43
+      },
+      "膝围": {
+        "ground_truth": 34.7,
+        "predicted": 34.6,
+        "error_cm": 0.1
+      },
+      "左小腿围": {
+        "ground_truth": 33.5,
+        "predicted": 33.64,
+        "error_cm": 0.14
+      },
+      "右小腿围": {
+        "ground_truth": 32.8,
+        "predicted": 32.81,
+        "error_cm": 0.01
+      },
+      "N点～臀下": {
+        "ground_truth": 75.0,
+        "predicted": 75.27,
+        "error_cm": 0.27
+      },
+      "O点～臀下": {
+        "ground_truth": 73.9,
+        "predicted": 73.16,
+        "error_cm": 0.74
+      },
+      "左裤长": {
+        "ground_truth": 99.5,
+        "predicted": 97.59,
+        "error_cm": 1.91
+      }
+    },
+    "0006 梁展畅": {
+      "模型身高": {
+        "ground_truth": 170.3,
+        "predicted": 170.41,
+        "error_cm": 0.11
+      },
+      "领围": {
+        "ground_truth": 35.8,
+        "predicted": 39.44,
+        "error_cm": 3.64
+      },
+      "颈宽": {
+        "ground_truth": 11.4,
+        "predicted": 12.8,
+        "error_cm": 1.4
+      },
+      "胸围": {
+        "ground_truth": 95.8,
+        "predicted": 98.71,
+        "error_cm": 2.91
+      },
+      "中腰围": {
+        "ground_truth": 82.5,
+        "predicted": 89.12,
+        "error_cm": 6.62
+      },
+      "肚围": {
+        "ground_truth": 85.1,
+        "predicted": 87.61,
+        "error_cm": 2.51
+      },
+      "肩宽": {
+        "ground_truth": 43.5,
+        "predicted": 45.56,
+        "error_cm": 2.06
+      },
+      "前肩宽": {
+        "ground_truth": 40.9,
+        "predicted": 39.15,
+        "error_cm": 1.75
+      },
+      "前胸宽": {
+        "ground_truth": 39.1,
+        "predicted": 34.5,
+        "error_cm": 4.6
+      },
+      "后背宽": {
+        "ground_truth": 36.5,
+        "predicted": 38.71,
+        "error_cm": 2.21
+      },
+      "左袖长": {
+        "ground_truth": 61.3,
+        "predicted": 58.87,
+        "error_cm": 2.43
+      },
+      "袖丈": {
+        "ground_truth": 58.6,
+        "predicted": 59.67,
+        "error_cm": 1.07
+      },
+      "左上臂围": {
+        "ground_truth": 30.2,
+        "predicted": 30.42,
+        "error_cm": 0.22
+      },
+      "右上臂围": {
+        "ground_truth": 31.9,
+        "predicted": 30.79,
+        "error_cm": 1.11
+      },
+      "手腕围": {
+        "ground_truth": 16.9,
+        "predicted": 16.36,
+        "error_cm": 0.54
+      },
+      "前腰节长": {
+        "ground_truth": 43.1,
+        "predicted": 47.67,
+        "error_cm": 4.57
+      },
+      "后中腰节长": {
+        "ground_truth": 38.6,
+        "predicted": 41.51,
+        "error_cm": 2.91
+      },
+      "后腰节长": {
+        "ground_truth": 41.1,
+        "predicted": 41.04,
+        "error_cm": 0.06
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 70.2,
+        "predicted": 71.39,
+        "error_cm": 1.19
+      },
+      "后腰高": {
+        "ground_truth": 5.5,
+        "predicted": 5.49,
+        "error_cm": 0.01
+      },
+      "通裆": {
+        "ground_truth": 67.6,
+        "predicted": 65.17,
+        "error_cm": 2.43
+      },
+      "裤腰围": {
+        "ground_truth": 84.7,
+        "predicted": 86.56,
+        "error_cm": 1.86
+      },
+      "下臀围": {
+        "ground_truth": 95.6,
+        "predicted": 96.49,
+        "error_cm": 0.89
+      },
+      "左大腿围": {
+        "ground_truth": 57.8,
+        "predicted": 56.33,
+        "error_cm": 1.47
+      },
+      "右大腿围": {
+        "ground_truth": 56.2,
+        "predicted": 57.42,
+        "error_cm": 1.22
+      },
+      "膝围": {
+        "ground_truth": 38.4,
+        "predicted": 36.93,
+        "error_cm": 1.47
+      },
+      "左小腿围": {
+        "ground_truth": 38.3,
+        "predicted": 36.63,
+        "error_cm": 1.67
+      },
+      "右小腿围": {
+        "ground_truth": 38.3,
+        "predicted": 36.28,
+        "error_cm": 2.02
+      },
+      "N点～臀下": {
+        "ground_truth": 76.4,
+        "predicted": 75.24,
+        "error_cm": 1.16
+      },
+      "O点～臀下": {
+        "ground_truth": 70.4,
+        "predicted": 72.59,
+        "error_cm": 2.19
+      },
+      "左裤长": {
+        "ground_truth": 98.8,
+        "predicted": 97.06,
+        "error_cm": 1.74
+      }
+    },
+    "0007 甘梓朋": {
+      "模型身高": {
+        "ground_truth": 175.9,
+        "predicted": 175.45,
+        "error_cm": 0.45
+      },
+      "领围": {
+        "ground_truth": 39.5,
+        "predicted": 40.21,
+        "error_cm": 0.71
+      },
+      "颈宽": {
+        "ground_truth": 13.0,
+        "predicted": 13.18,
+        "error_cm": 0.18
+      },
+      "胸围": {
+        "ground_truth": 95.7,
+        "predicted": 99.18,
+        "error_cm": 3.48
+      },
+      "中腰围": {
+        "ground_truth": 85.0,
+        "predicted": 90.81,
+        "error_cm": 5.81
+      },
+      "肚围": {
+        "ground_truth": 88.1,
+        "predicted": 90.5,
+        "error_cm": 2.4
+      },
+      "肩宽": {
+        "ground_truth": 46.6,
+        "predicted": 49.71,
+        "error_cm": 3.11
+      },
+      "前肩宽": {
+        "ground_truth": 44.1,
+        "predicted": 42.55,
+        "error_cm": 1.55
+      },
+      "前胸宽": {
+        "ground_truth": 38.6,
+        "predicted": 35.64,
+        "error_cm": 2.96
+      },
+      "后背宽": {
+        "ground_truth": 38.6,
+        "predicted": 40.76,
+        "error_cm": 2.16
+      },
+      "左袖长": {
+        "ground_truth": 64.2,
+        "predicted": 62.16,
+        "error_cm": 2.04
+      },
+      "袖丈": {
+        "ground_truth": 62.8,
+        "predicted": 62.72,
+        "error_cm": 0.08
+      },
+      "左上臂围": {
+        "ground_truth": 31.8,
+        "predicted": 32.23,
+        "error_cm": 0.43
+      },
+      "右上臂围": {
+        "ground_truth": 31.6,
+        "predicted": 32.23,
+        "error_cm": 0.63
+      },
+      "手腕围": {
+        "ground_truth": 16.4,
+        "predicted": 18.04,
+        "error_cm": 1.64
+      },
+      "前腰节长": {
+        "ground_truth": 44.0,
+        "predicted": 48.17,
+        "error_cm": 4.17
+      },
+      "后中腰节长": {
+        "ground_truth": 40.9,
+        "predicted": 44.49,
+        "error_cm": 3.59
+      },
+      "后腰节长": {
+        "ground_truth": 44.2,
+        "predicted": 44.74,
+        "error_cm": 0.54
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.4,
+        "predicted": 75.69,
+        "error_cm": 2.29
+      },
+      "后腰高": {
+        "ground_truth": 3.4,
+        "predicted": 5.83,
+        "error_cm": 2.43
+      },
+      "通裆": {
+        "ground_truth": 82.6,
+        "predicted": 69.37,
+        "error_cm": 13.23
+      },
+      "裤腰围": {
+        "ground_truth": 86.1,
+        "predicted": 86.63,
+        "error_cm": 0.53
+      },
+      "下臀围": {
+        "ground_truth": 102.0,
+        "predicted": 101.59,
+        "error_cm": 0.41
+      },
+      "左大腿围": {
+        "ground_truth": 64.5,
+        "predicted": 60.25,
+        "error_cm": 4.25
+      },
+      "右大腿围": {
+        "ground_truth": 65.2,
+        "predicted": 60.51,
+        "error_cm": 4.69
+      },
+      "膝围": {
+        "ground_truth": 41.4,
+        "predicted": 39.21,
+        "error_cm": 2.19
+      },
+      "左小腿围": {
+        "ground_truth": 41.8,
+        "predicted": 38.41,
+        "error_cm": 3.39
+      },
+      "右小腿围": {
+        "ground_truth": 40.9,
+        "predicted": 37.55,
+        "error_cm": 3.35
+      },
+      "N点～臀下": {
+        "ground_truth": 79.3,
+        "predicted": 76.57,
+        "error_cm": 2.73
+      },
+      "O点～臀下": {
+        "ground_truth": 75.4,
+        "predicted": 77.23,
+        "error_cm": 1.83
+      },
+      "左裤长": {
+        "ground_truth": 107.4,
+        "predicted": 99.91,
+        "error_cm": 7.49
+      }
+    },
+    "0008 刘希": {
+      "模型身高": {
+        "ground_truth": 160.3,
+        "predicted": 160.59,
+        "error_cm": 0.29
+      },
+      "领围": {
+        "ground_truth": 39.0,
+        "predicted": 38.9,
+        "error_cm": 0.1
+      },
+      "颈宽": {
+        "ground_truth": 12.4,
+        "predicted": 12.67,
+        "error_cm": 0.27
+      },
+      "胸围": {
+        "ground_truth": 99.8,
+        "predicted": 101.6,
+        "error_cm": 1.8
+      },
+      "中腰围": {
+        "ground_truth": 91.8,
+        "predicted": 91.94,
+        "error_cm": 0.14
+      },
+      "肚围": {
+        "ground_truth": 89.9,
+        "predicted": 89.38,
+        "error_cm": 0.52
+      },
+      "肩宽": {
+        "ground_truth": 44.1,
+        "predicted": 44.62,
+        "error_cm": 0.52
+      },
+      "前肩宽": {
+        "ground_truth": 40.5,
+        "predicted": 39.67,
+        "error_cm": 0.83
+      },
+      "前胸宽": {
+        "ground_truth": 37.3,
+        "predicted": 35.15,
+        "error_cm": 2.15
+      },
+      "后背宽": {
+        "ground_truth": 39.0,
+        "predicted": 38.12,
+        "error_cm": 0.88
+      },
+      "左袖长": {
+        "ground_truth": 58.4,
+        "predicted": 56.26,
+        "error_cm": 2.14
+      },
+      "袖丈": {
+        "ground_truth": 55.9,
+        "predicted": 57.42,
+        "error_cm": 1.52
+      },
+      "左上臂围": {
+        "ground_truth": 31.9,
+        "predicted": 31.15,
+        "error_cm": 0.75
+      },
+      "右上臂围": {
+        "ground_truth": 31.7,
+        "predicted": 31.25,
+        "error_cm": 0.45
+      },
+      "手腕围": {
+        "ground_truth": 16.4,
+        "predicted": 16.67,
+        "error_cm": 0.27
+      },
+      "前腰节长": {
+        "ground_truth": 42.6,
+        "predicted": 44.76,
+        "error_cm": 2.16
+      },
+      "后中腰节长": {
+        "ground_truth": 39.1,
+        "predicted": 39.92,
+        "error_cm": 0.82
+      },
+      "后腰节长": {
+        "ground_truth": 41.4,
+        "predicted": 40.38,
+        "error_cm": 1.02
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 68.1,
+        "predicted": 68.49,
+        "error_cm": 0.39
+      },
+      "后腰高": {
+        "ground_truth": 3.5,
+        "predicted": 5.25,
+        "error_cm": 1.75
+      },
+      "通裆": {
+        "ground_truth": 68.1,
+        "predicted": 65.8,
+        "error_cm": 2.3
+      },
+      "裤腰围": {
+        "ground_truth": 88.5,
+        "predicted": 89.88,
+        "error_cm": 1.38
+      },
+      "下臀围": {
+        "ground_truth": 94.6,
+        "predicted": 97.64,
+        "error_cm": 3.04
+      },
+      "左大腿围": {
+        "ground_truth": 65.8,
+        "predicted": 58.7,
+        "error_cm": 7.1
+      },
+      "右大腿围": {
+        "ground_truth": 64.0,
+        "predicted": 59.24,
+        "error_cm": 4.76
+      },
+      "膝围": {
+        "ground_truth": 35.3,
+        "predicted": 37.28,
+        "error_cm": 1.98
+      },
+      "左小腿围": {
+        "ground_truth": 36.9,
+        "predicted": 37.06,
+        "error_cm": 0.16
+      },
+      "右小腿围": {
+        "ground_truth": 36.6,
+        "predicted": 37.55,
+        "error_cm": 0.95
+      },
+      "N点～臀下": {
+        "ground_truth": 74.4,
+        "predicted": 70.62,
+        "error_cm": 3.78
+      },
+      "O点～臀下": {
+        "ground_truth": 69.2,
+        "predicted": 69.43,
+        "error_cm": 0.23
+      },
+      "左裤长": {
+        "ground_truth": 94.7,
+        "predicted": 90.89,
+        "error_cm": 3.81
+      }
+    },
+    "0009 欧阳琼": {
+      "模型身高": {
+        "ground_truth": 171.2,
+        "predicted": 171.48,
+        "error_cm": 0.28
+      },
+      "领围": {
+        "ground_truth": 40.6,
+        "predicted": 40.41,
+        "error_cm": 0.19
+      },
+      "颈宽": {
+        "ground_truth": 12.9,
+        "predicted": 13.06,
+        "error_cm": 0.16
+      },
+      "胸围": {
+        "ground_truth": 99.5,
+        "predicted": 105.8,
+        "error_cm": 6.3
+      },
+      "中腰围": {
+        "ground_truth": 93.9,
+        "predicted": 97.49,
+        "error_cm": 3.59
+      },
+      "肚围": {
+        "ground_truth": 97.0,
+        "predicted": 95.31,
+        "error_cm": 1.69
+      },
+      "肩宽": {
+        "ground_truth": 44.8,
+        "predicted": 47.12,
+        "error_cm": 2.32
+      },
+      "前肩宽": {
+        "ground_truth": 43.3,
+        "predicted": 40.27,
+        "error_cm": 3.03
+      },
+      "前胸宽": {
+        "ground_truth": 39.0,
+        "predicted": 34.61,
+        "error_cm": 4.39
+      },
+      "后背宽": {
+        "ground_truth": 38.0,
+        "predicted": 41.48,
+        "error_cm": 3.48
+      },
+      "左袖长": {
+        "ground_truth": 64.1,
+        "predicted": 60.82,
+        "error_cm": 3.28
+      },
+      "袖丈": {
+        "ground_truth": 60.6,
+        "predicted": 61.5,
+        "error_cm": 0.9
+      },
+      "左上臂围": {
+        "ground_truth": 34.8,
+        "predicted": 32.48,
+        "error_cm": 2.32
+      },
+      "右上臂围": {
+        "ground_truth": 35.0,
+        "predicted": 32.89,
+        "error_cm": 2.11
+      },
+      "手腕围": {
+        "ground_truth": 17.3,
+        "predicted": 16.66,
+        "error_cm": 0.64
+      },
+      "前腰节长": {
+        "ground_truth": 43.7,
+        "predicted": 47.45,
+        "error_cm": 3.75
+      },
+      "后中腰节长": {
+        "ground_truth": 40.1,
+        "predicted": 42.32,
+        "error_cm": 2.22
+      },
+      "后腰节长": {
+        "ground_truth": 42.6,
+        "predicted": 42.26,
+        "error_cm": 0.34
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 71.3,
+        "predicted": 72.1,
+        "error_cm": 0.8
+      },
+      "后腰高": {
+        "ground_truth": 5.3,
+        "predicted": 5.48,
+        "error_cm": 0.18
+      },
+      "通裆": {
+        "ground_truth": 70.1,
+        "predicted": 68.73,
+        "error_cm": 1.37
+      },
+      "裤腰围": {
+        "ground_truth": 94.2,
+        "predicted": 95.01,
+        "error_cm": 0.81
+      },
+      "下臀围": {
+        "ground_truth": 103.2,
+        "predicted": 102.82,
+        "error_cm": 0.38
+      },
+      "左大腿围": {
+        "ground_truth": 62.6,
+        "predicted": 60.56,
+        "error_cm": 2.04
+      },
+      "右大腿围": {
+        "ground_truth": 61.4,
+        "predicted": 61.67,
+        "error_cm": 0.27
+      },
+      "膝围": {
+        "ground_truth": 39.6,
+        "predicted": 38.72,
+        "error_cm": 0.88
+      },
+      "左小腿围": {
+        "ground_truth": 40.0,
+        "predicted": 38.19,
+        "error_cm": 1.81
+      },
+      "右小腿围": {
+        "ground_truth": 38.9,
+        "predicted": 38.63,
+        "error_cm": 0.27
+      },
+      "N点～臀下": {
+        "ground_truth": 78.1,
+        "predicted": 76.61,
+        "error_cm": 1.49
+      },
+      "O点～臀下": {
+        "ground_truth": 74.3,
+        "predicted": 73.49,
+        "error_cm": 0.81
+      },
+      "左裤长": {
+        "ground_truth": 99.2,
+        "predicted": 97.95,
+        "error_cm": 1.25
+      }
+    },
+    "0010 奉昌运": {
+      "模型身高": {
+        "ground_truth": 161.8,
+        "predicted": 162.03,
+        "error_cm": 0.23
+      },
+      "领围": {
+        "ground_truth": 42.9,
+        "predicted": 39.81,
+        "error_cm": 3.09
+      },
+      "颈宽": {
+        "ground_truth": 13.9,
+        "predicted": 12.79,
+        "error_cm": 1.11
+      },
+      "胸围": {
+        "ground_truth": 101.6,
+        "predicted": 106.32,
+        "error_cm": 4.72
+      },
+      "中腰围": {
+        "ground_truth": 97.3,
+        "predicted": 97.1,
+        "error_cm": 0.2
+      },
+      "肚围": {
+        "ground_truth": 100.6,
+        "predicted": 94.08,
+        "error_cm": 6.52
+      },
+      "肩宽": {
+        "ground_truth": 45.2,
+        "predicted": 45.79,
+        "error_cm": 0.59
+      },
+      "前肩宽": {
+        "ground_truth": 42.1,
+        "predicted": 40.17,
+        "error_cm": 1.93
+      },
+      "前胸宽": {
+        "ground_truth": 38.9,
+        "predicted": 35.69,
+        "error_cm": 3.21
+      },
+      "后背宽": {
+        "ground_truth": 38.8,
+        "predicted": 40.5,
+        "error_cm": 1.7
+      },
+      "左袖长": {
+        "ground_truth": 61.0,
+        "predicted": 58.35,
+        "error_cm": 2.65
+      },
+      "袖丈": {
+        "ground_truth": 55.9,
+        "predicted": 58.96,
+        "error_cm": 3.06
+      },
+      "左上臂围": {
+        "ground_truth": 33.4,
+        "predicted": 31.81,
+        "error_cm": 1.59
+      },
+      "右上臂围": {
+        "ground_truth": 33.7,
+        "predicted": 31.94,
+        "error_cm": 1.76
+      },
+      "手腕围": {
+        "ground_truth": 16.5,
+        "predicted": 16.68,
+        "error_cm": 0.18
+      },
+      "前腰节长": {
+        "ground_truth": 42.4,
+        "predicted": 46.61,
+        "error_cm": 4.21
+      },
+      "后中腰节长": {
+        "ground_truth": 38.2,
+        "predicted": 40.13,
+        "error_cm": 1.93
+      },
+      "后腰节长": {
+        "ground_truth": 41.1,
+        "predicted": 39.98,
+        "error_cm": 1.12
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 66.8,
+        "predicted": 68.22,
+        "error_cm": 1.42
+      },
+      "后腰高": {
+        "ground_truth": 7.3,
+        "predicted": 5.17,
+        "error_cm": 2.13
+      },
+      "通裆": {
+        "ground_truth": 62.8,
+        "predicted": 66.96,
+        "error_cm": 4.16
+      },
+      "裤腰围": {
+        "ground_truth": 95.2,
+        "predicted": 95.44,
+        "error_cm": 0.24
+      },
+      "下臀围": {
+        "ground_truth": 95.8,
+        "predicted": 99.71,
+        "error_cm": 3.91
+      },
+      "左大腿围": {
+        "ground_truth": 55.2,
+        "predicted": 58.39,
+        "error_cm": 3.19
+      },
+      "右大腿围": {
+        "ground_truth": 55.5,
+        "predicted": 58.55,
+        "error_cm": 3.05
+      },
+      "膝围": {
+        "ground_truth": 37.3,
+        "predicted": 37.12,
+        "error_cm": 0.18
+      },
+      "左小腿围": {
+        "ground_truth": 38.1,
+        "predicted": 37.11,
+        "error_cm": 0.99
+      },
+      "右小腿围": {
+        "ground_truth": 37.5,
+        "predicted": 36.74,
+        "error_cm": 0.76
+      },
+      "N点～臀下": {
+        "ground_truth": 76.9,
+        "predicted": 71.54,
+        "error_cm": 5.36
+      },
+      "O点～臀下": {
+        "ground_truth": 70.9,
+        "predicted": 69.57,
+        "error_cm": 1.33
+      },
+      "左裤长": {
+        "ground_truth": 90.8,
+        "predicted": 91.29,
+        "error_cm": 0.49
+      }
+    },
+    "0011 黄志坚": {
+      "模型身高": {
+        "ground_truth": 171.9,
+        "predicted": 172.17,
+        "error_cm": 0.27
+      },
+      "领围": {
+        "ground_truth": 38.1,
+        "predicted": 38.92,
+        "error_cm": 0.82
+      },
+      "颈宽": {
+        "ground_truth": 11.5,
+        "predicted": 12.63,
+        "error_cm": 1.13
+      },
+      "胸围": {
+        "ground_truth": 92.2,
+        "predicted": 97.99,
+        "error_cm": 5.79
+      },
+      "中腰围": {
+        "ground_truth": 85.6,
+        "predicted": 89.34,
+        "error_cm": 3.74
+      },
+      "肚围": {
+        "ground_truth": 90.1,
+        "predicted": 88.49,
+        "error_cm": 1.61
+      },
+      "肩宽": {
+        "ground_truth": 43.6,
+        "predicted": 46.57,
+        "error_cm": 2.97
+      },
+      "前肩宽": {
+        "ground_truth": 41.3,
+        "predicted": 40.45,
+        "error_cm": 0.85
+      },
+      "前胸宽": {
+        "ground_truth": 38.0,
+        "predicted": 34.21,
+        "error_cm": 3.79
+      },
+      "后背宽": {
+        "ground_truth": 34.6,
+        "predicted": 38.57,
+        "error_cm": 3.97
+      },
+      "左袖长": {
+        "ground_truth": 63.4,
+        "predicted": 61.53,
+        "error_cm": 1.87
+      },
+      "袖丈": {
+        "ground_truth": 61.0,
+        "predicted": 61.76,
+        "error_cm": 0.76
+      },
+      "左上臂围": {
+        "ground_truth": 30.7,
+        "predicted": 30.18,
+        "error_cm": 0.52
+      },
+      "右上臂围": {
+        "ground_truth": 31.2,
+        "predicted": 30.6,
+        "error_cm": 0.6
+      },
+      "手腕围": {
+        "ground_truth": 16.4,
+        "predicted": 17.65,
+        "error_cm": 1.25
+      },
+      "前腰节长": {
+        "ground_truth": 43.1,
+        "predicted": 46.99,
+        "error_cm": 3.89
+      },
+      "后中腰节长": {
+        "ground_truth": 41.3,
+        "predicted": 43.29,
+        "error_cm": 1.99
+      },
+      "后腰节长": {
+        "ground_truth": 44.4,
+        "predicted": 42.59,
+        "error_cm": 1.81
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.1,
+        "predicted": 73.22,
+        "error_cm": 0.12
+      },
+      "后腰高": {
+        "ground_truth": 6.9,
+        "predicted": 5.58,
+        "error_cm": 1.32
+      },
+      "通裆": {
+        "ground_truth": 67.1,
+        "predicted": 67.56,
+        "error_cm": 0.46
+      },
+      "裤腰围": {
+        "ground_truth": 89.7,
+        "predicted": 86.67,
+        "error_cm": 3.03
+      },
+      "下臀围": {
+        "ground_truth": 97.8,
+        "predicted": 97.29,
+        "error_cm": 0.51
+      },
+      "左大腿围": {
+        "ground_truth": 55.0,
+        "predicted": 56.46,
+        "error_cm": 1.46
+      },
+      "右大腿围": {
+        "ground_truth": 56.4,
+        "predicted": 57.27,
+        "error_cm": 0.87
+      },
+      "膝围": {
+        "ground_truth": 38.7,
+        "predicted": 37.36,
+        "error_cm": 1.34
+      },
+      "左小腿围": {
+        "ground_truth": 37.1,
+        "predicted": 36.74,
+        "error_cm": 0.36
+      },
+      "右小腿围": {
+        "ground_truth": 37.0,
+        "predicted": 35.98,
+        "error_cm": 1.02
+      },
+      "N点～臀下": {
+        "ground_truth": 77.5,
+        "predicted": 77.03,
+        "error_cm": 0.47
+      },
+      "O点～臀下": {
+        "ground_truth": 74.7,
+        "predicted": 74.81,
+        "error_cm": 0.11
+      },
+      "左裤长": {
+        "ground_truth": 100.4,
+        "predicted": 100.1,
+        "error_cm": 0.3
+      }
+    },
+    "0012 武舜": {
+      "模型身高": {
+        "ground_truth": 181.7,
+        "predicted": 181.1,
+        "error_cm": 0.6
+      },
+      "领围": {
+        "ground_truth": 36.2,
+        "predicted": 38.51,
+        "error_cm": 2.31
+      },
+      "颈宽": {
+        "ground_truth": 11.8,
+        "predicted": 12.66,
+        "error_cm": 0.86
+      },
+      "胸围": {
+        "ground_truth": 90.2,
+        "predicted": 92.35,
+        "error_cm": 2.15
+      },
+      "中腰围": {
+        "ground_truth": 80.4,
+        "predicted": 83.62,
+        "error_cm": 3.22
+      },
+      "肚围": {
+        "ground_truth": 82.2,
+        "predicted": 84.04,
+        "error_cm": 1.84
+      },
+      "肩宽": {
+        "ground_truth": 41.5,
+        "predicted": 46.63,
+        "error_cm": 5.13
+      },
+      "前肩宽": {
+        "ground_truth": 42.6,
+        "predicted": 42.06,
+        "error_cm": 0.54
+      },
+      "前胸宽": {
+        "ground_truth": 37.0,
+        "predicted": 35.84,
+        "error_cm": 1.16
+      },
+      "后背宽": {
+        "ground_truth": 35.4,
+        "predicted": 36.91,
+        "error_cm": 1.51
+      },
+      "左袖长": {
+        "ground_truth": 62.8,
+        "predicted": 62.19,
+        "error_cm": 0.61
+      },
+      "袖丈": {
+        "ground_truth": 60.8,
+        "predicted": 63.48,
+        "error_cm": 2.68
+      },
+      "左上臂围": {
+        "ground_truth": 29.0,
+        "predicted": 29.54,
+        "error_cm": 0.54
+      },
+      "右上臂围": {
+        "ground_truth": 30.3,
+        "predicted": 29.59,
+        "error_cm": 0.71
+      },
+      "手腕围": {
+        "ground_truth": 17.2,
+        "predicted": 17.44,
+        "error_cm": 0.24
+      },
+      "前腰节长": {
+        "ground_truth": 44.5,
+        "predicted": 49.16,
+        "error_cm": 4.66
+      },
+      "后中腰节长": {
+        "ground_truth": 41.8,
+        "predicted": 45.5,
+        "error_cm": 3.7
+      },
+      "后腰节长": {
+        "ground_truth": 43.6,
+        "predicted": 45.22,
+        "error_cm": 1.62
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 75.0,
+        "predicted": 76.76,
+        "error_cm": 1.76
+      },
+      "后腰高": {
+        "ground_truth": 5.6,
+        "predicted": 6.02,
+        "error_cm": 0.42
+      },
+      "通裆": {
+        "ground_truth": 70.2,
+        "predicted": 67.82,
+        "error_cm": 2.38
+      },
+      "裤腰围": {
+        "ground_truth": 81.5,
+        "predicted": 79.77,
+        "error_cm": 1.73
+      },
+      "下臀围": {
+        "ground_truth": 97.9,
+        "predicted": 97.21,
+        "error_cm": 0.69
+      },
+      "左大腿围": {
+        "ground_truth": 57.2,
+        "predicted": 56.63,
+        "error_cm": 0.57
+      },
+      "右大腿围": {
+        "ground_truth": 57.3,
+        "predicted": 57.21,
+        "error_cm": 0.09
+      },
+      "膝围": {
+        "ground_truth": 39.4,
+        "predicted": 37.86,
+        "error_cm": 1.54
+      },
+      "左小腿围": {
+        "ground_truth": 38.1,
+        "predicted": 36.5,
+        "error_cm": 1.6
+      },
+      "右小腿围": {
+        "ground_truth": 37.7,
+        "predicted": 36.12,
+        "error_cm": 1.58
+      },
+      "N点～臀下": {
+        "ground_truth": 80.0,
+        "predicted": 79.05,
+        "error_cm": 0.95
+      },
+      "O点～臀下": {
+        "ground_truth": 76.0,
+        "predicted": 78.42,
+        "error_cm": 2.42
+      },
+      "左裤长": {
+        "ground_truth": 105.9,
+        "predicted": 103.19,
+        "error_cm": 2.71
+      }
+    },
+    "0014 李嘉杰": {
+      "模型身高": {
+        "ground_truth": 168.3,
+        "predicted": 168.51,
+        "error_cm": 0.21
+      },
+      "领围": {
+        "ground_truth": 40.0,
+        "predicted": 40.2,
+        "error_cm": 0.2
+      },
+      "颈宽": {
+        "ground_truth": 12.4,
+        "predicted": 13.18,
+        "error_cm": 0.78
+      },
+      "胸围": {
+        "ground_truth": 98.3,
+        "predicted": 102.23,
+        "error_cm": 3.93
+      },
+      "中腰围": {
+        "ground_truth": 90.9,
+        "predicted": 94.4,
+        "error_cm": 3.5
+      },
+      "肚围": {
+        "ground_truth": 92.7,
+        "predicted": 93.02,
+        "error_cm": 0.32
+      },
+      "肩宽": {
+        "ground_truth": 45.7,
+        "predicted": 47.25,
+        "error_cm": 1.55
+      },
+      "前肩宽": {
+        "ground_truth": 43.4,
+        "predicted": 40.49,
+        "error_cm": 2.91
+      },
+      "前胸宽": {
+        "ground_truth": 38.8,
+        "predicted": 34.85,
+        "error_cm": 3.95
+      },
+      "后背宽": {
+        "ground_truth": 39.2,
+        "predicted": 40.82,
+        "error_cm": 1.62
+      },
+      "左袖长": {
+        "ground_truth": 60.9,
+        "predicted": 58.76,
+        "error_cm": 2.14
+      },
+      "袖丈": {
+        "ground_truth": 58.0,
+        "predicted": 60.25,
+        "error_cm": 2.25
+      },
+      "左上臂围": {
+        "ground_truth": 31.1,
+        "predicted": 32.47,
+        "error_cm": 1.37
+      },
+      "右上臂围": {
+        "ground_truth": 32.2,
+        "predicted": 32.53,
+        "error_cm": 0.33
+      },
+      "手腕围": {
+        "ground_truth": 17.6,
+        "predicted": 17.61,
+        "error_cm": 0.01
+      },
+      "前腰节长": {
+        "ground_truth": 44.5,
+        "predicted": 47.44,
+        "error_cm": 2.94
+      },
+      "后中腰节长": {
+        "ground_truth": 41.8,
+        "predicted": 43.56,
+        "error_cm": 1.76
+      },
+      "后腰节长": {
+        "ground_truth": 43.6,
+        "predicted": 43.29,
+        "error_cm": 0.31
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 72.1,
+        "predicted": 71.87,
+        "error_cm": 0.23
+      },
+      "后腰高": {
+        "ground_truth": 4.8,
+        "predicted": 5.52,
+        "error_cm": 0.72
+      },
+      "通裆": {
+        "ground_truth": 75.3,
+        "predicted": 69.19,
+        "error_cm": 6.11
+      },
+      "裤腰围": {
+        "ground_truth": 92.5,
+        "predicted": 91.01,
+        "error_cm": 1.49
+      },
+      "下臀围": {
+        "ground_truth": 98.8,
+        "predicted": 100.61,
+        "error_cm": 1.81
+      },
+      "左大腿围": {
+        "ground_truth": 61.1,
+        "predicted": 60.28,
+        "error_cm": 0.82
+      },
+      "右大腿围": {
+        "ground_truth": 61.3,
+        "predicted": 60.09,
+        "error_cm": 1.21
+      },
+      "膝围": {
+        "ground_truth": 41.3,
+        "predicted": 38.51,
+        "error_cm": 2.79
+      },
+      "左小腿围": {
+        "ground_truth": 42.1,
+        "predicted": 38.45,
+        "error_cm": 3.65
+      },
+      "右小腿围": {
+        "ground_truth": 42.6,
+        "predicted": 37.88,
+        "error_cm": 4.72
+      },
+      "N点～臀下": {
+        "ground_truth": 79.3,
+        "predicted": 73.65,
+        "error_cm": 5.65
+      },
+      "O点～臀下": {
+        "ground_truth": 76.6,
+        "predicted": 73.74,
+        "error_cm": 2.86
+      },
+      "左裤长": {
+        "ground_truth": 98.2,
+        "predicted": 95.42,
+        "error_cm": 2.78
+      }
+    },
+    "0015 赵东旭": {
+      "模型身高": {
+        "ground_truth": 169.5,
+        "predicted": 169.69,
+        "error_cm": 0.19
+      },
+      "领围": {
+        "ground_truth": 37.2,
+        "predicted": 38.16,
+        "error_cm": 0.96
+      },
+      "颈宽": {
+        "ground_truth": 12.1,
+        "predicted": 12.37,
+        "error_cm": 0.27
+      },
+      "胸围": {
+        "ground_truth": 89.9,
+        "predicted": 94.14,
+        "error_cm": 4.24
+      },
+      "中腰围": {
+        "ground_truth": 79.5,
+        "predicted": 84.07,
+        "error_cm": 4.57
+      },
+      "肚围": {
+        "ground_truth": 84.1,
+        "predicted": 83.17,
+        "error_cm": 0.93
+      },
+      "肩宽": {
+        "ground_truth": 45.3,
+        "predicted": 45.77,
+        "error_cm": 0.47
+      },
+      "前肩宽": {
+        "ground_truth": 40.8,
+        "predicted": 39.28,
+        "error_cm": 1.52
+      },
+      "前胸宽": {
+        "ground_truth": 36.2,
+        "predicted": 33.37,
+        "error_cm": 2.83
+      },
+      "后背宽": {
+        "ground_truth": 38.4,
+        "predicted": 38.86,
+        "error_cm": 0.46
+      },
+      "左袖长": {
+        "ground_truth": 63.1,
+        "predicted": 60.54,
+        "error_cm": 2.56
+      },
+      "袖丈": {
+        "ground_truth": 60.0,
+        "predicted": 61.6,
+        "error_cm": 1.6
+      },
+      "左上臂围": {
+        "ground_truth": 30.5,
+        "predicted": 28.72,
+        "error_cm": 1.78
+      },
+      "右上臂围": {
+        "ground_truth": 28.9,
+        "predicted": 29.08,
+        "error_cm": 0.18
+      },
+      "手腕围": {
+        "ground_truth": 15.9,
+        "predicted": 17.02,
+        "error_cm": 1.12
+      },
+      "前腰节长": {
+        "ground_truth": 42.8,
+        "predicted": 46.43,
+        "error_cm": 3.63
+      },
+      "后中腰节长": {
+        "ground_truth": 40.1,
+        "predicted": 40.92,
+        "error_cm": 0.82
+      },
+      "后腰节长": {
+        "ground_truth": 42.7,
+        "predicted": 40.94,
+        "error_cm": 1.76
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 71.2,
+        "predicted": 71.17,
+        "error_cm": 0.03
+      },
+      "后腰高": {
+        "ground_truth": 6.6,
+        "predicted": 5.57,
+        "error_cm": 1.03
+      },
+      "通裆": {
+        "ground_truth": 66.6,
+        "predicted": 64.37,
+        "error_cm": 2.23
+      },
+      "裤腰围": {
+        "ground_truth": 83.5,
+        "predicted": 81.32,
+        "error_cm": 2.18
+      },
+      "下臀围": {
+        "ground_truth": 92.5,
+        "predicted": 93.35,
+        "error_cm": 0.85
+      },
+      "左大腿围": {
+        "ground_truth": 51.9,
+        "predicted": 54.46,
+        "error_cm": 2.56
+      },
+      "右大腿围": {
+        "ground_truth": 52.5,
+        "predicted": 54.61,
+        "error_cm": 2.11
+      },
+      "膝围": {
+        "ground_truth": 37.9,
+        "predicted": 36.61,
+        "error_cm": 1.29
+      },
+      "左小腿围": {
+        "ground_truth": 36.3,
+        "predicted": 35.24,
+        "error_cm": 1.06
+      },
+      "右小腿围": {
+        "ground_truth": 36.7,
+        "predicted": 34.74,
+        "error_cm": 1.96
+      },
+      "N点～臀下": {
+        "ground_truth": 76.6,
+        "predicted": 75.91,
+        "error_cm": 0.69
+      },
+      "O点～臀下": {
+        "ground_truth": 73.0,
+        "predicted": 72.81,
+        "error_cm": 0.19
+      },
+      "左裤长": {
+        "ground_truth": 99.5,
+        "predicted": 97.85,
+        "error_cm": 1.65
+      }
+    },
+    "0016 倪文全": {
+      "模型身高": {
+        "ground_truth": 156.5,
+        "predicted": 156.86,
+        "error_cm": 0.36
+      },
+      "领围": {
+        "ground_truth": 36.1,
+        "predicted": 37.89,
+        "error_cm": 1.79
+      },
+      "颈宽": {
+        "ground_truth": 11.7,
+        "predicted": 12.42,
+        "error_cm": 0.72
+      },
+      "胸围": {
+        "ground_truth": 93.0,
+        "predicted": 96.33,
+        "error_cm": 3.33
+      },
+      "中腰围": {
+        "ground_truth": 81.4,
+        "predicted": 85.32,
+        "error_cm": 3.92
+      },
+      "肚围": {
+        "ground_truth": 84.9,
+        "predicted": 83.15,
+        "error_cm": 1.75
+      },
+      "肩宽": {
+        "ground_truth": 43.2,
+        "predicted": 43.45,
+        "error_cm": 0.25
+      },
+      "前肩宽": {
+        "ground_truth": 41.4,
+        "predicted": 37.58,
+        "error_cm": 3.82
+      },
+      "前胸宽": {
+        "ground_truth": 39.3,
+        "predicted": 32.83,
+        "error_cm": 6.47
+      },
+      "后背宽": {
+        "ground_truth": 35.4,
+        "predicted": 38.31,
+        "error_cm": 2.91
+      },
+      "左袖长": {
+        "ground_truth": 57.1,
+        "predicted": 54.98,
+        "error_cm": 2.12
+      },
+      "袖丈": {
+        "ground_truth": 53.5,
+        "predicted": 55.46,
+        "error_cm": 1.96
+      },
+      "左上臂围": {
+        "ground_truth": 28.3,
+        "predicted": 28.85,
+        "error_cm": 0.55
+      },
+      "右上臂围": {
+        "ground_truth": 28.9,
+        "predicted": 29.77,
+        "error_cm": 0.87
+      },
+      "手腕围": {
+        "ground_truth": 15.9,
+        "predicted": 15.19,
+        "error_cm": 0.71
+      },
+      "前腰节长": {
+        "ground_truth": 41.4,
+        "predicted": 45.0,
+        "error_cm": 3.6
+      },
+      "后中腰节长": {
+        "ground_truth": 36.0,
+        "predicted": 38.67,
+        "error_cm": 2.67
+      },
+      "后腰节长": {
+        "ground_truth": 38.0,
+        "predicted": 38.45,
+        "error_cm": 0.45
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 64.8,
+        "predicted": 67.11,
+        "error_cm": 2.31
+      },
+      "后腰高": {
+        "ground_truth": 6.8,
+        "predicted": 5.23,
+        "error_cm": 1.57
+      },
+      "通裆": {
+        "ground_truth": 63.9,
+        "predicted": 64.02,
+        "error_cm": 0.12
+      },
+      "裤腰围": {
+        "ground_truth": 84.9,
+        "predicted": 83.84,
+        "error_cm": 1.06
+      },
+      "下臀围": {
+        "ground_truth": 92.7,
+        "predicted": 92.6,
+        "error_cm": 0.1
+      },
+      "左大腿围": {
+        "ground_truth": 53.0,
+        "predicted": 53.84,
+        "error_cm": 0.84
+      },
+      "右大腿围": {
+        "ground_truth": 52.6,
+        "predicted": 55.21,
+        "error_cm": 2.61
+      },
+      "膝围": {
+        "ground_truth": 37.1,
+        "predicted": 35.24,
+        "error_cm": 1.86
+      },
+      "左小腿围": {
+        "ground_truth": 36.7,
+        "predicted": 35.29,
+        "error_cm": 1.41
+      },
+      "右小腿围": {
+        "ground_truth": 35.8,
+        "predicted": 35.17,
+        "error_cm": 0.63
+      },
+      "N点～臀下": {
+        "ground_truth": 74.0,
+        "predicted": 68.17,
+        "error_cm": 5.83
+      },
+      "O点～臀下": {
+        "ground_truth": 67.8,
+        "predicted": 68.21,
+        "error_cm": 0.41
+      },
+      "左裤长": {
+        "ground_truth": 87.7,
+        "predicted": 88.28,
+        "error_cm": 0.58
+      }
+    },
+    "0017 朱新尚": {
+      "模型身高": {
+        "ground_truth": 162.5,
+        "predicted": 162.69,
+        "error_cm": 0.19
+      },
+      "领围": {
+        "ground_truth": 39.8,
+        "predicted": 38.64,
+        "error_cm": 1.16
+      },
+      "颈宽": {
+        "ground_truth": 12.4,
+        "predicted": 12.61,
+        "error_cm": 0.21
+      },
+      "胸围": {
+        "ground_truth": 96.8,
+        "predicted": 97.98,
+        "error_cm": 1.18
+      },
+      "中腰围": {
+        "ground_truth": 84.8,
+        "predicted": 89.82,
+        "error_cm": 5.02
+      },
+      "肚围": {
+        "ground_truth": 89.5,
+        "predicted": 87.84,
+        "error_cm": 1.66
+      },
+      "肩宽": {
+        "ground_truth": 43.8,
+        "predicted": 44.75,
+        "error_cm": 0.95
+      },
+      "前肩宽": {
+        "ground_truth": 39.9,
+        "predicted": 37.96,
+        "error_cm": 1.94
+      },
+      "前胸宽": {
+        "ground_truth": 38.0,
+        "predicted": 32.63,
+        "error_cm": 5.37
+      },
+      "后背宽": {
+        "ground_truth": 39.1,
+        "predicted": 40.69,
+        "error_cm": 1.59
+      },
+      "左袖长": {
+        "ground_truth": 58.4,
+        "predicted": 57.08,
+        "error_cm": 1.32
+      },
+      "袖丈": {
+        "ground_truth": 55.4,
+        "predicted": 57.54,
+        "error_cm": 2.14
+      },
+      "左上臂围": {
+        "ground_truth": 30.8,
+        "predicted": 30.4,
+        "error_cm": 0.4
+      },
+      "右上臂围": {
+        "ground_truth": 30.8,
+        "predicted": 30.81,
+        "error_cm": 0.01
+      },
+      "手腕围": {
+        "ground_truth": 16.7,
+        "predicted": 16.45,
+        "error_cm": 0.25
+      },
+      "前腰节长": {
+        "ground_truth": 42.1,
+        "predicted": 45.34,
+        "error_cm": 3.24
+      },
+      "后中腰节长": {
+        "ground_truth": 40.2,
+        "predicted": 41.22,
+        "error_cm": 1.02
+      },
+      "后腰节长": {
+        "ground_truth": 42.5,
+        "predicted": 41.66,
+        "error_cm": 0.84
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 69.9,
+        "predicted": 70.33,
+        "error_cm": 0.43
+      },
+      "后腰高": {
+        "ground_truth": 7.4,
+        "predicted": 5.46,
+        "error_cm": 1.94
+      },
+      "通裆": {
+        "ground_truth": 66.8,
+        "predicted": 65.49,
+        "error_cm": 1.31
+      },
+      "裤腰围": {
+        "ground_truth": 87.5,
+        "predicted": 87.49,
+        "error_cm": 0.01
+      },
+      "下臀围": {
+        "ground_truth": 96.1,
+        "predicted": 94.92,
+        "error_cm": 1.18
+      },
+      "左大腿围": {
+        "ground_truth": 56.6,
+        "predicted": 56.8,
+        "error_cm": 0.2
+      },
+      "右大腿围": {
+        "ground_truth": 57.4,
+        "predicted": 56.96,
+        "error_cm": 0.44
+      },
+      "膝围": {
+        "ground_truth": 38.3,
+        "predicted": 36.7,
+        "error_cm": 1.6
+      },
+      "左小腿围": {
+        "ground_truth": 37.0,
+        "predicted": 36.67,
+        "error_cm": 0.33
+      },
+      "右小腿围": {
+        "ground_truth": 36.8,
+        "predicted": 36.0,
+        "error_cm": 0.8
+      },
+      "N点～臀下": {
+        "ground_truth": 75.6,
+        "predicted": 70.95,
+        "error_cm": 4.65
+      },
+      "O点～臀下": {
+        "ground_truth": 72.1,
+        "predicted": 71.65,
+        "error_cm": 0.45
+      },
+      "左裤长": {
+        "ground_truth": 93.0,
+        "predicted": 91.53,
+        "error_cm": 1.47
+      }
+    },
+    "0018 梁洪源": {
+      "模型身高": {
+        "ground_truth": 164.6,
+        "predicted": 164.1,
+        "error_cm": 0.5
+      },
+      "领围": {
+        "ground_truth": 33.5,
+        "predicted": 35.69,
+        "error_cm": 2.19
+      },
+      "颈宽": {
+        "ground_truth": 11.3,
+        "predicted": 11.74,
+        "error_cm": 0.44
+      },
+      "胸围": {
+        "ground_truth": 79.0,
+        "predicted": 84.2,
+        "error_cm": 5.2
+      },
+      "中腰围": {
+        "ground_truth": 66.1,
+        "predicted": 69.15,
+        "error_cm": 3.05
+      },
+      "肚围": {
+        "ground_truth": 67.2,
+        "predicted": 68.87,
+        "error_cm": 1.67
+      },
+      "肩宽": {
+        "ground_truth": 42.4,
+        "predicted": 43.75,
+        "error_cm": 1.35
+      },
+      "前肩宽": {
+        "ground_truth": 40.6,
+        "predicted": 37.33,
+        "error_cm": 3.27
+      },
+      "前胸宽": {
+        "ground_truth": 33.2,
+        "predicted": 30.87,
+        "error_cm": 2.33
+      },
+      "后背宽": {
+        "ground_truth": 33.2,
+        "predicted": 36.11,
+        "error_cm": 2.91
+      },
+      "左袖长": {
+        "ground_truth": 59.7,
+        "predicted": 57.69,
+        "error_cm": 2.01
+      },
+      "袖丈": {
+        "ground_truth": 57.6,
+        "predicted": 57.5,
+        "error_cm": 0.1
+      },
+      "左上臂围": {
+        "ground_truth": 24.9,
+        "predicted": 25.21,
+        "error_cm": 0.31
+      },
+      "右上臂围": {
+        "ground_truth": 23.0,
+        "predicted": 25.73,
+        "error_cm": 2.73
+      },
+      "手腕围": {
+        "ground_truth": 14.6,
+        "predicted": 15.7,
+        "error_cm": 1.1
+      },
+      "前腰节长": {
+        "ground_truth": 39.7,
+        "predicted": 43.75,
+        "error_cm": 4.05
+      },
+      "后中腰节长": {
+        "ground_truth": 36.7,
+        "predicted": 39.17,
+        "error_cm": 2.47
+      },
+      "后腰节长": {
+        "ground_truth": 38.7,
+        "predicted": 39.24,
+        "error_cm": 0.54
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 66.3,
+        "predicted": 67.67,
+        "error_cm": 1.37
+      },
+      "后腰高": {
+        "ground_truth": 1.8,
+        "predicted": 5.39,
+        "error_cm": 3.59
+      },
+      "通裆": {
+        "ground_truth": 69.1,
+        "predicted": 58.62,
+        "error_cm": 10.48
+      },
+      "裤腰围": {
+        "ground_truth": 65.5,
+        "predicted": 67.41,
+        "error_cm": 1.91
+      },
+      "下臀围": {
+        "ground_truth": 82.4,
+        "predicted": 83.99,
+        "error_cm": 1.59
+      },
+      "左大腿围": {
+        "ground_truth": 45.5,
+        "predicted": 49.02,
+        "error_cm": 3.52
+      },
+      "右大腿围": {
+        "ground_truth": 46.9,
+        "predicted": 49.47,
+        "error_cm": 2.57
+      },
+      "膝围": {
+        "ground_truth": 33.1,
+        "predicted": 33.5,
+        "error_cm": 0.4
+      },
+      "左小腿围": {
+        "ground_truth": 32.5,
+        "predicted": 32.2,
+        "error_cm": 0.3
+      },
+      "右小腿围": {
+        "ground_truth": 32.6,
+        "predicted": 31.99,
+        "error_cm": 0.61
+      },
+      "N点～臀下": {
+        "ground_truth": 71.2,
+        "predicted": 73.05,
+        "error_cm": 1.85
+      },
+      "O点～臀下": {
+        "ground_truth": 67.2,
+        "predicted": 68.98,
+        "error_cm": 1.78
+      },
+      "左裤长": {
+        "ground_truth": 101.5,
+        "predicted": 95.35,
+        "error_cm": 6.15
+      }
+    },
+    "0019 朱俊华": {
+      "模型身高": {
+        "ground_truth": 171.8,
+        "predicted": 171.91,
+        "error_cm": 0.11
+      },
+      "领围": {
+        "ground_truth": 42.0,
+        "predicted": 41.58,
+        "error_cm": 0.42
+      },
+      "颈宽": {
+        "ground_truth": 13.5,
+        "predicted": 13.41,
+        "error_cm": 0.09
+      },
+      "胸围": {
+        "ground_truth": 105.4,
+        "predicted": 108.28,
+        "error_cm": 2.88
+      },
+      "中腰围": {
+        "ground_truth": 98.5,
+        "predicted": 104.24,
+        "error_cm": 5.74
+      },
+      "肚围": {
+        "ground_truth": 102.4,
+        "predicted": 102.15,
+        "error_cm": 0.25
+      },
+      "肩宽": {
+        "ground_truth": 48.6,
+        "predicted": 47.23,
+        "error_cm": 1.37
+      },
+      "前肩宽": {
+        "ground_truth": 43.6,
+        "predicted": 39.77,
+        "error_cm": 3.83
+      },
+      "前胸宽": {
+        "ground_truth": 38.6,
+        "predicted": 35.81,
+        "error_cm": 2.79
+      },
+      "后背宽": {
+        "ground_truth": 43.5,
+        "predicted": 45.07,
+        "error_cm": 1.57
+      },
+      "左袖长": {
+        "ground_truth": 61.5,
+        "predicted": 59.96,
+        "error_cm": 1.54
+      },
+      "袖丈": {
+        "ground_truth": 58.3,
+        "predicted": 61.48,
+        "error_cm": 3.18
+      },
+      "左上臂围": {
+        "ground_truth": 35.2,
+        "predicted": 34.18,
+        "error_cm": 1.02
+      },
+      "右上臂围": {
+        "ground_truth": 35.0,
+        "predicted": 34.57,
+        "error_cm": 0.43
+      },
+      "手腕围": {
+        "ground_truth": 18.5,
+        "predicted": 17.77,
+        "error_cm": 0.73
+      },
+      "前腰节长": {
+        "ground_truth": 45.6,
+        "predicted": 49.04,
+        "error_cm": 3.44
+      },
+      "后中腰节长": {
+        "ground_truth": 41.7,
+        "predicted": 44.45,
+        "error_cm": 2.75
+      },
+      "后腰节长": {
+        "ground_truth": 45.9,
+        "predicted": 44.34,
+        "error_cm": 1.56
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 74.4,
+        "predicted": 76.42,
+        "error_cm": 2.02
+      },
+      "后腰高": {
+        "ground_truth": 11.1,
+        "predicted": 5.65,
+        "error_cm": 5.45
+      },
+      "通裆": {
+        "ground_truth": 66.6,
+        "predicted": 74.41,
+        "error_cm": 7.81
+      },
+      "裤腰围": {
+        "ground_truth": 99.2,
+        "predicted": 100.38,
+        "error_cm": 1.18
+      },
+      "下臀围": {
+        "ground_truth": 107.7,
+        "predicted": 107.1,
+        "error_cm": 0.6
+      },
+      "左大腿围": {
+        "ground_truth": 65.7,
+        "predicted": 62.11,
+        "error_cm": 3.59
+      },
+      "右大腿围": {
+        "ground_truth": 65.8,
+        "predicted": 62.33,
+        "error_cm": 3.47
+      },
+      "膝围": {
+        "ground_truth": 40.1,
+        "predicted": 39.27,
+        "error_cm": 0.83
+      },
+      "左小腿围": {
+        "ground_truth": 39.9,
+        "predicted": 39.78,
+        "error_cm": 0.12
+      },
+      "右小腿围": {
+        "ground_truth": 40.3,
+        "predicted": 38.52,
+        "error_cm": 1.78
+      },
+      "N点～臀下": {
+        "ground_truth": 83.4,
+        "predicted": 73.26,
+        "error_cm": 10.14
+      },
+      "O点～臀下": {
+        "ground_truth": 78.3,
+        "predicted": 78.09,
+        "error_cm": 0.21
+      },
+      "左裤长": {
+        "ground_truth": 94.2,
+        "predicted": 95.56,
+        "error_cm": 1.36
+      }
+    },
+    "0020 汤彬": {
+      "模型身高": {
+        "ground_truth": 175.3,
+        "predicted": 174.98,
+        "error_cm": 0.32
+      },
+      "领围": {
+        "ground_truth": 37.8,
+        "predicted": 39.27,
+        "error_cm": 1.47
+      },
+      "颈宽": {
+        "ground_truth": 11.5,
+        "predicted": 12.73,
+        "error_cm": 1.23
+      },
+      "胸围": {
+        "ground_truth": 93.7,
+        "predicted": 98.05,
+        "error_cm": 4.35
+      },
+      "中腰围": {
+        "ground_truth": 91.9,
+        "predicted": 92.12,
+        "error_cm": 0.22
+      },
+      "肚围": {
+        "ground_truth": 94.7,
+        "predicted": 91.35,
+        "error_cm": 3.35
+      },
+      "肩宽": {
+        "ground_truth": 44.2,
+        "predicted": 46.27,
+        "error_cm": 2.07
+      },
+      "前肩宽": {
+        "ground_truth": 42.5,
+        "predicted": 40.2,
+        "error_cm": 2.3
+      },
+      "前胸宽": {
+        "ground_truth": 35.7,
+        "predicted": 34.57,
+        "error_cm": 1.13
+      },
+      "后背宽": {
+        "ground_truth": 38.6,
+        "predicted": 39.63,
+        "error_cm": 1.03
+      },
+      "左袖长": {
+        "ground_truth": 63.0,
+        "predicted": 61.07,
+        "error_cm": 1.93
+      },
+      "袖丈": {
+        "ground_truth": 59.6,
+        "predicted": 62.02,
+        "error_cm": 2.42
+      },
+      "左上臂围": {
+        "ground_truth": 32.1,
+        "predicted": 30.57,
+        "error_cm": 1.53
+      },
+      "右上臂围": {
+        "ground_truth": 31.9,
+        "predicted": 30.89,
+        "error_cm": 1.01
+      },
+      "手腕围": {
+        "ground_truth": 17.4,
+        "predicted": 16.83,
+        "error_cm": 0.57
+      },
+      "前腰节长": {
+        "ground_truth": 45.8,
+        "predicted": 48.19,
+        "error_cm": 2.39
+      },
+      "后中腰节长": {
+        "ground_truth": 43.6,
+        "predicted": 44.89,
+        "error_cm": 1.29
+      },
+      "后腰节长": {
+        "ground_truth": 45.8,
+        "predicted": 44.99,
+        "error_cm": 0.81
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 76.0,
+        "predicted": 76.25,
+        "error_cm": 0.25
+      },
+      "后腰高": {
+        "ground_truth": 8.5,
+        "predicted": 5.89,
+        "error_cm": 2.61
+      },
+      "通裆": {
+        "ground_truth": 66.4,
+        "predicted": 69.25,
+        "error_cm": 2.85
+      },
+      "裤腰围": {
+        "ground_truth": 90.5,
+        "predicted": 88.64,
+        "error_cm": 1.86
+      },
+      "下臀围": {
+        "ground_truth": 95.9,
+        "predicted": 98.88,
+        "error_cm": 2.98
+      },
+      "左大腿围": {
+        "ground_truth": 55.6,
+        "predicted": 57.38,
+        "error_cm": 1.78
+      },
+      "右大腿围": {
+        "ground_truth": 55.5,
+        "predicted": 58.24,
+        "error_cm": 2.74
+      },
+      "膝围": {
+        "ground_truth": 39.5,
+        "predicted": 38.17,
+        "error_cm": 1.33
+      },
+      "左小腿围": {
+        "ground_truth": 37.9,
+        "predicted": 37.19,
+        "error_cm": 0.71
+      },
+      "右小腿围": {
+        "ground_truth": 38.5,
+        "predicted": 36.57,
+        "error_cm": 1.93
+      },
+      "N点～臀下": {
+        "ground_truth": 82.7,
+        "predicted": 76.05,
+        "error_cm": 6.65
+      },
+      "O点～臀下": {
+        "ground_truth": 79.4,
+        "predicted": 77.7,
+        "error_cm": 1.7
+      },
+      "左裤长": {
+        "ground_truth": 99.2,
+        "predicted": 100.05,
+        "error_cm": 0.85
+      }
+    },
+    "0021 吴典晋": {
+      "模型身高": {
+        "ground_truth": 177.6,
+        "predicted": 177.4,
+        "error_cm": 0.2
+      },
+      "领围": {
+        "ground_truth": 37.0,
+        "predicted": 38.14,
+        "error_cm": 1.14
+      },
+      "颈宽": {
+        "ground_truth": 11.7,
+        "predicted": 12.56,
+        "error_cm": 0.86
+      },
+      "胸围": {
+        "ground_truth": 88.7,
+        "predicted": 90.95,
+        "error_cm": 2.25
+      },
+      "中腰围": {
+        "ground_truth": 73.2,
+        "predicted": 80.72,
+        "error_cm": 7.52
+      },
+      "肚围": {
+        "ground_truth": 76.8,
+        "predicted": 80.85,
+        "error_cm": 4.05
+      },
+      "肩宽": {
+        "ground_truth": 43.7,
+        "predicted": 46.21,
+        "error_cm": 2.51
+      },
+      "前肩宽": {
+        "ground_truth": 42.4,
+        "predicted": 40.85,
+        "error_cm": 1.55
+      },
+      "前胸宽": {
+        "ground_truth": 36.7,
+        "predicted": 35.18,
+        "error_cm": 1.52
+      },
+      "后背宽": {
+        "ground_truth": 37.9,
+        "predicted": 38.27,
+        "error_cm": 0.37
+      },
+      "左袖长": {
+        "ground_truth": 64.4,
+        "predicted": 61.06,
+        "error_cm": 3.34
+      },
+      "袖丈": {
+        "ground_truth": 61.4,
+        "predicted": 62.26,
+        "error_cm": 0.86
+      },
+      "左上臂围": {
+        "ground_truth": 30.8,
+        "predicted": 28.78,
+        "error_cm": 2.02
+      },
+      "右上臂围": {
+        "ground_truth": 29.6,
+        "predicted": 29.08,
+        "error_cm": 0.52
+      },
+      "手腕围": {
+        "ground_truth": 16.2,
+        "predicted": 17.06,
+        "error_cm": 0.86
+      },
+      "前腰节长": {
+        "ground_truth": 42.5,
+        "predicted": 47.11,
+        "error_cm": 4.61
+      },
+      "后中腰节长": {
+        "ground_truth": 42.0,
+        "predicted": 44.97,
+        "error_cm": 2.97
+      },
+      "后腰节长": {
+        "ground_truth": 44.1,
+        "predicted": 45.04,
+        "error_cm": 0.94
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 75.1,
+        "predicted": 76.58,
+        "error_cm": 1.48
+      },
+      "后腰高": {
+        "ground_truth": 1.5,
+        "predicted": 5.89,
+        "error_cm": 4.39
+      },
+      "通裆": {
+        "ground_truth": 82.6,
+        "predicted": 66.24,
+        "error_cm": 16.36
+      },
+      "裤腰围": {
+        "ground_truth": 73.3,
+        "predicted": 77.75,
+        "error_cm": 4.45
+      },
+      "下臀围": {
+        "ground_truth": 91.7,
+        "predicted": 94.4,
+        "error_cm": 2.7
+      },
+      "左大腿围": {
+        "ground_truth": 54.1,
+        "predicted": 55.57,
+        "error_cm": 1.47
+      },
+      "右大腿围": {
+        "ground_truth": 54.5,
+        "predicted": 55.71,
+        "error_cm": 1.21
+      },
+      "膝围": {
+        "ground_truth": 36.8,
+        "predicted": 36.85,
+        "error_cm": 0.05
+      },
+      "左小腿围": {
+        "ground_truth": 36.9,
+        "predicted": 35.9,
+        "error_cm": 1.0
+      },
+      "右小腿围": {
+        "ground_truth": 37.2,
+        "predicted": 35.33,
+        "error_cm": 1.87
+      },
+      "N点～臀下": {
+        "ground_truth": 77.5,
+        "predicted": 77.09,
+        "error_cm": 0.41
+      },
+      "O点～臀下": {
+        "ground_truth": 76.1,
+        "predicted": 77.69,
+        "error_cm": 1.59
+      },
+      "左裤长": {
+        "ground_truth": 109.6,
+        "predicted": 100.52,
+        "error_cm": 9.08
+      }
+    },
+    "0022 阮成健": {
+      "模型身高": {
+        "ground_truth": 177.7,
+        "predicted": 177.23,
+        "error_cm": 0.47
+      },
+      "领围": {
+        "ground_truth": 37.9,
+        "predicted": 40.22,
+        "error_cm": 2.32
+      },
+      "颈宽": {
+        "ground_truth": 13.0,
+        "predicted": 13.35,
+        "error_cm": 0.35
+      },
+      "胸围": {
+        "ground_truth": 99.6,
+        "predicted": 100.04,
+        "error_cm": 0.44
+      },
+      "中腰围": {
+        "ground_truth": 83.5,
+        "predicted": 89.46,
+        "error_cm": 5.96
+      },
+      "肚围": {
+        "ground_truth": 84.1,
+        "predicted": 89.07,
+        "error_cm": 4.97
+      },
+      "肩宽": {
+        "ground_truth": 47.7,
+        "predicted": 49.32,
+        "error_cm": 1.62
+      },
+      "前肩宽": {
+        "ground_truth": 45.4,
+        "predicted": 43.29,
+        "error_cm": 2.11
+      },
+      "前胸宽": {
+        "ground_truth": 38.9,
+        "predicted": 36.86,
+        "error_cm": 2.04
+      },
+      "后背宽": {
+        "ground_truth": 38.5,
+        "predicted": 39.9,
+        "error_cm": 1.4
+      },
+      "左袖长": {
+        "ground_truth": 64.7,
+        "predicted": 62.13,
+        "error_cm": 2.57
+      },
+      "袖丈": {
+        "ground_truth": 62.3,
+        "predicted": 62.52,
+        "error_cm": 0.22
+      },
+      "左上臂围": {
+        "ground_truth": 33.9,
+        "predicted": 31.82,
+        "error_cm": 2.08
+      },
+      "右上臂围": {
+        "ground_truth": 34.5,
+        "predicted": 31.93,
+        "error_cm": 2.57
+      },
+      "手腕围": {
+        "ground_truth": 17.2,
+        "predicted": 17.93,
+        "error_cm": 0.73
+      },
+      "前腰节长": {
+        "ground_truth": 45.8,
+        "predicted": 50.07,
+        "error_cm": 4.27
+      },
+      "后中腰节长": {
+        "ground_truth": 41.8,
+        "predicted": 44.9,
+        "error_cm": 3.1
+      },
+      "后腰节长": {
+        "ground_truth": 43.9,
+        "predicted": 44.68,
+        "error_cm": 0.78
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 75.0,
+        "predicted": 76.44,
+        "error_cm": 1.44
+      },
+      "后腰高": {
+        "ground_truth": 9.6,
+        "predicted": 5.96,
+        "error_cm": 3.64
+      },
+      "通裆": {
+        "ground_truth": 63.8,
+        "predicted": 70.69,
+        "error_cm": 6.89
+      },
+      "裤腰围": {
+        "ground_truth": 86.1,
+        "predicted": 85.86,
+        "error_cm": 0.24
+      },
+      "下臀围": {
+        "ground_truth": 101.3,
+        "predicted": 99.94,
+        "error_cm": 1.36
+      },
+      "左大腿围": {
+        "ground_truth": 63.4,
+        "predicted": 59.43,
+        "error_cm": 3.97
+      },
+      "右大腿围": {
+        "ground_truth": 63.5,
+        "predicted": 59.71,
+        "error_cm": 3.79
+      },
+      "膝围": {
+        "ground_truth": 40.8,
+        "predicted": 38.49,
+        "error_cm": 2.31
+      },
+      "左小腿围": {
+        "ground_truth": 41.4,
+        "predicted": 38.21,
+        "error_cm": 3.19
+      },
+      "右小腿围": {
+        "ground_truth": 41.1,
+        "predicted": 37.19,
+        "error_cm": 3.91
+      },
+      "N点～臀下": {
+        "ground_truth": 81.4,
+        "predicted": 76.02,
+        "error_cm": 5.38
+      },
+      "O点～臀下": {
+        "ground_truth": 76.1,
+        "predicted": 77.99,
+        "error_cm": 1.89
+      },
+      "左裤长": {
+        "ground_truth": 97.0,
+        "predicted": 99.27,
+        "error_cm": 2.27
+      }
+    },
+    "0023 周宇昊": {
+      "模型身高": {
+        "ground_truth": 173.5,
+        "predicted": 173.27,
+        "error_cm": 0.23
+      },
+      "领围": {
+        "ground_truth": 39.6,
+        "predicted": 40.72,
+        "error_cm": 1.12
+      },
+      "颈宽": {
+        "ground_truth": 13.3,
+        "predicted": 13.11,
+        "error_cm": 0.19
+      },
+      "胸围": {
+        "ground_truth": 99.8,
+        "predicted": 101.41,
+        "error_cm": 1.61
+      },
+      "中腰围": {
+        "ground_truth": 91.2,
+        "predicted": 93.95,
+        "error_cm": 2.75
+      },
+      "肚围": {
+        "ground_truth": 92.3,
+        "predicted": 92.51,
+        "error_cm": 0.21
+      },
+      "肩宽": {
+        "ground_truth": 45.4,
+        "predicted": 47.6,
+        "error_cm": 2.2
+      },
+      "前肩宽": {
+        "ground_truth": 41.7,
+        "predicted": 40.34,
+        "error_cm": 1.36
+      },
+      "前胸宽": {
+        "ground_truth": 36.5,
+        "predicted": 34.02,
+        "error_cm": 2.48
+      },
+      "后背宽": {
+        "ground_truth": 40.7,
+        "predicted": 41.47,
+        "error_cm": 0.77
+      },
+      "左袖长": {
+        "ground_truth": 62.3,
+        "predicted": 60.5,
+        "error_cm": 1.8
+      },
+      "袖丈": {
+        "ground_truth": 58.7,
+        "predicted": 60.39,
+        "error_cm": 1.69
+      },
+      "左上臂围": {
+        "ground_truth": 31.9,
+        "predicted": 32.09,
+        "error_cm": 0.19
+      },
+      "右上臂围": {
+        "ground_truth": 32.0,
+        "predicted": 32.32,
+        "error_cm": 0.32
+      },
+      "手腕围": {
+        "ground_truth": 16.1,
+        "predicted": 17.84,
+        "error_cm": 1.74
+      },
+      "前腰节长": {
+        "ground_truth": 43.8,
+        "predicted": 46.9,
+        "error_cm": 3.1
+      },
+      "后中腰节长": {
+        "ground_truth": 41.9,
+        "predicted": 44.2,
+        "error_cm": 2.3
+      },
+      "后腰节长": {
+        "ground_truth": 44.0,
+        "predicted": 43.7,
+        "error_cm": 0.3
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.9,
+        "predicted": 74.31,
+        "error_cm": 0.41
+      },
+      "后腰高": {
+        "ground_truth": 6.1,
+        "predicted": 5.66,
+        "error_cm": 0.44
+      },
+      "通裆": {
+        "ground_truth": 69.6,
+        "predicted": 67.82,
+        "error_cm": 1.78
+      },
+      "裤腰围": {
+        "ground_truth": 90.0,
+        "predicted": 91.08,
+        "error_cm": 1.08
+      },
+      "下臀围": {
+        "ground_truth": 98.5,
+        "predicted": 99.75,
+        "error_cm": 1.25
+      },
+      "左大腿围": {
+        "ground_truth": 58.7,
+        "predicted": 58.91,
+        "error_cm": 0.21
+      },
+      "右大腿围": {
+        "ground_truth": 59.8,
+        "predicted": 59.63,
+        "error_cm": 0.17
+      },
+      "膝围": {
+        "ground_truth": 40.8,
+        "predicted": 38.17,
+        "error_cm": 2.63
+      },
+      "左小腿围": {
+        "ground_truth": 38.6,
+        "predicted": 37.74,
+        "error_cm": 0.86
+      },
+      "右小腿围": {
+        "ground_truth": 38.4,
+        "predicted": 37.43,
+        "error_cm": 0.97
+      },
+      "N点～臀下": {
+        "ground_truth": 77.7,
+        "predicted": 76.82,
+        "error_cm": 0.88
+      },
+      "O点～臀下": {
+        "ground_truth": 74.6,
+        "predicted": 75.71,
+        "error_cm": 1.11
+      },
+      "左裤长": {
+        "ground_truth": 101.7,
+        "predicted": 99.18,
+        "error_cm": 2.52
+      }
+    },
+    "0042 卢钊光": {
+      "模型身高": {
+        "ground_truth": 172.7,
+        "predicted": 172.69,
+        "error_cm": 0.01
+      },
+      "领围": {
+        "ground_truth": 39.3,
+        "predicted": 39.07,
+        "error_cm": 0.23
+      },
+      "颈宽": {
+        "ground_truth": 12.2,
+        "predicted": 12.87,
+        "error_cm": 0.67
+      },
+      "胸围": {
+        "ground_truth": 97.7,
+        "predicted": 98.7,
+        "error_cm": 1.0
+      },
+      "中腰围": {
+        "ground_truth": 83.8,
+        "predicted": 89.88,
+        "error_cm": 6.08
+      },
+      "肚围": {
+        "ground_truth": 88.9,
+        "predicted": 88.58,
+        "error_cm": 0.32
+      },
+      "肩宽": {
+        "ground_truth": 46.6,
+        "predicted": 48.04,
+        "error_cm": 1.44
+      },
+      "前肩宽": {
+        "ground_truth": 41.6,
+        "predicted": 40.3,
+        "error_cm": 1.3
+      },
+      "前胸宽": {
+        "ground_truth": 36.6,
+        "predicted": 33.87,
+        "error_cm": 2.73
+      },
+      "后背宽": {
+        "ground_truth": 43.2,
+        "predicted": 41.89,
+        "error_cm": 1.31
+      },
+      "左袖长": {
+        "ground_truth": 63.5,
+        "predicted": 61.83,
+        "error_cm": 1.67
+      },
+      "袖丈": {
+        "ground_truth": 61.3,
+        "predicted": 62.42,
+        "error_cm": 1.12
+      },
+      "左上臂围": {
+        "ground_truth": 30.9,
+        "predicted": 29.96,
+        "error_cm": 0.94
+      },
+      "右上臂围": {
+        "ground_truth": 32.5,
+        "predicted": 30.31,
+        "error_cm": 2.19
+      },
+      "手腕围": {
+        "ground_truth": 16.3,
+        "predicted": 17.34,
+        "error_cm": 1.04
+      },
+      "前腰节长": {
+        "ground_truth": 44.3,
+        "predicted": 46.91,
+        "error_cm": 2.61
+      },
+      "后中腰节长": {
+        "ground_truth": 42.3,
+        "predicted": 43.61,
+        "error_cm": 1.31
+      },
+      "后腰节长": {
+        "ground_truth": 44.3,
+        "predicted": 43.04,
+        "error_cm": 1.26
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 74.7,
+        "predicted": 74.11,
+        "error_cm": 0.59
+      },
+      "后腰高": {
+        "ground_truth": 8.7,
+        "predicted": 5.63,
+        "error_cm": 3.07
+      },
+      "通裆": {
+        "ground_truth": 66.3,
+        "predicted": 68.05,
+        "error_cm": 1.75
+      },
+      "裤腰围": {
+        "ground_truth": 87.9,
+        "predicted": 87.1,
+        "error_cm": 0.8
+      },
+      "下臀围": {
+        "ground_truth": 95.5,
+        "predicted": 97.06,
+        "error_cm": 1.56
+      },
+      "左大腿围": {
+        "ground_truth": 55.7,
+        "predicted": 55.52,
+        "error_cm": 0.18
+      },
+      "右大腿围": {
+        "ground_truth": 57.2,
+        "predicted": 56.3,
+        "error_cm": 0.9
+      },
+      "膝围": {
+        "ground_truth": 36.7,
+        "predicted": 37.18,
+        "error_cm": 0.48
+      },
+      "左小腿围": {
+        "ground_truth": 34.4,
+        "predicted": 36.35,
+        "error_cm": 1.95
+      },
+      "右小腿围": {
+        "ground_truth": 35.1,
+        "predicted": 35.96,
+        "error_cm": 0.86
+      },
+      "N点～臀下": {
+        "ground_truth": 79.0,
+        "predicted": 75.71,
+        "error_cm": 3.29
+      },
+      "O点～臀下": {
+        "ground_truth": 76.0,
+        "predicted": 75.82,
+        "error_cm": 0.18
+      },
+      "左裤长": {
+        "ground_truth": 98.2,
+        "predicted": 98.72,
+        "error_cm": 0.52
+      }
+    },
+    "0043 李亚强": {
+      "模型身高": {
+        "ground_truth": 168.4,
+        "predicted": 168.65,
+        "error_cm": 0.25
+      },
+      "领围": {
+        "ground_truth": 39.0,
+        "predicted": 38.91,
+        "error_cm": 0.09
+      },
+      "颈宽": {
+        "ground_truth": 12.2,
+        "predicted": 12.64,
+        "error_cm": 0.44
+      },
+      "胸围": {
+        "ground_truth": 97.1,
+        "predicted": 97.42,
+        "error_cm": 0.32
+      },
+      "中腰围": {
+        "ground_truth": 84.5,
+        "predicted": 89.56,
+        "error_cm": 5.06
+      },
+      "肚围": {
+        "ground_truth": 87.6,
+        "predicted": 88.14,
+        "error_cm": 0.54
+      },
+      "肩宽": {
+        "ground_truth": 45.5,
+        "predicted": 45.94,
+        "error_cm": 0.44
+      },
+      "前肩宽": {
+        "ground_truth": 41.8,
+        "predicted": 39.03,
+        "error_cm": 2.77
+      },
+      "前胸宽": {
+        "ground_truth": 38.3,
+        "predicted": 33.27,
+        "error_cm": 5.03
+      },
+      "后背宽": {
+        "ground_truth": 39.5,
+        "predicted": 40.07,
+        "error_cm": 0.57
+      },
+      "左袖长": {
+        "ground_truth": 62.8,
+        "predicted": 59.94,
+        "error_cm": 2.86
+      },
+      "袖丈": {
+        "ground_truth": 59.9,
+        "predicted": 60.45,
+        "error_cm": 0.55
+      },
+      "左上臂围": {
+        "ground_truth": 30.0,
+        "predicted": 29.99,
+        "error_cm": 0.01
+      },
+      "右上臂围": {
+        "ground_truth": 31.0,
+        "predicted": 30.27,
+        "error_cm": 0.73
+      },
+      "手腕围": {
+        "ground_truth": 16.6,
+        "predicted": 16.83,
+        "error_cm": 0.23
+      },
+      "前腰节长": {
+        "ground_truth": 43.6,
+        "predicted": 47.01,
+        "error_cm": 3.41
+      },
+      "后中腰节长": {
+        "ground_truth": 40.7,
+        "predicted": 42.67,
+        "error_cm": 1.97
+      },
+      "后腰节长": {
+        "ground_truth": 42.9,
+        "predicted": 42.05,
+        "error_cm": 0.85
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 71.1,
+        "predicted": 71.79,
+        "error_cm": 0.69
+      },
+      "后腰高": {
+        "ground_truth": 8.9,
+        "predicted": 5.49,
+        "error_cm": 3.41
+      },
+      "通裆": {
+        "ground_truth": 63.0,
+        "predicted": 66.56,
+        "error_cm": 3.56
+      },
+      "裤腰围": {
+        "ground_truth": 84.2,
+        "predicted": 87.22,
+        "error_cm": 3.02
+      },
+      "下臀围": {
+        "ground_truth": 91.4,
+        "predicted": 95.18,
+        "error_cm": 3.78
+      },
+      "左大腿围": {
+        "ground_truth": 55.1,
+        "predicted": 55.86,
+        "error_cm": 0.76
+      },
+      "右大腿围": {
+        "ground_truth": 54.9,
+        "predicted": 56.2,
+        "error_cm": 1.3
+      },
+      "膝围": {
+        "ground_truth": 37.0,
+        "predicted": 36.79,
+        "error_cm": 0.21
+      },
+      "左小腿围": {
+        "ground_truth": 39.7,
+        "predicted": 36.62,
+        "error_cm": 3.08
+      },
+      "右小腿围": {
+        "ground_truth": 39.6,
+        "predicted": 35.77,
+        "error_cm": 3.83
+      },
+      "N点～臀下": {
+        "ground_truth": 77.5,
+        "predicted": 74.5,
+        "error_cm": 3.0
+      },
+      "O点～臀下": {
+        "ground_truth": 73.7,
+        "predicted": 74.24,
+        "error_cm": 0.54
+      },
+      "左裤长": {
+        "ground_truth": 94.7,
+        "predicted": 94.51,
+        "error_cm": 0.19
+      }
+    },
+    "0044 陈俞宏": {
+      "模型身高": {
+        "ground_truth": 173.7,
+        "predicted": 173.65,
+        "error_cm": 0.05
+      },
+      "领围": {
+        "ground_truth": 37.0,
+        "predicted": 38.69,
+        "error_cm": 1.69
+      },
+      "颈宽": {
+        "ground_truth": 12.2,
+        "predicted": 12.74,
+        "error_cm": 0.54
+      },
+      "胸围": {
+        "ground_truth": 94.1,
+        "predicted": 97.81,
+        "error_cm": 3.71
+      },
+      "中腰围": {
+        "ground_truth": 83.8,
+        "predicted": 87.66,
+        "error_cm": 3.86
+      },
+      "肚围": {
+        "ground_truth": 86.5,
+        "predicted": 86.86,
+        "error_cm": 0.36
+      },
+      "肩宽": {
+        "ground_truth": 44.7,
+        "predicted": 47.27,
+        "error_cm": 2.57
+      },
+      "前肩宽": {
+        "ground_truth": 42.3,
+        "predicted": 40.86,
+        "error_cm": 1.44
+      },
+      "前胸宽": {
+        "ground_truth": 37.5,
+        "predicted": 34.5,
+        "error_cm": 3.0
+      },
+      "后背宽": {
+        "ground_truth": 37.5,
+        "predicted": 39.26,
+        "error_cm": 1.76
+      },
+      "左袖长": {
+        "ground_truth": 64.7,
+        "predicted": 61.79,
+        "error_cm": 2.91
+      },
+      "袖丈": {
+        "ground_truth": 61.6,
+        "predicted": 62.63,
+        "error_cm": 1.03
+      },
+      "左上臂围": {
+        "ground_truth": 33.4,
+        "predicted": 29.82,
+        "error_cm": 3.58
+      },
+      "右上臂围": {
+        "ground_truth": 34.1,
+        "predicted": 30.13,
+        "error_cm": 3.97
+      },
+      "手腕围": {
+        "ground_truth": 16.3,
+        "predicted": 17.51,
+        "error_cm": 1.21
+      },
+      "前腰节长": {
+        "ground_truth": 44.2,
+        "predicted": 47.48,
+        "error_cm": 3.28
+      },
+      "后中腰节长": {
+        "ground_truth": 41.0,
+        "predicted": 42.93,
+        "error_cm": 1.93
+      },
+      "后腰节长": {
+        "ground_truth": 42.9,
+        "predicted": 42.68,
+        "error_cm": 0.22
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.0,
+        "predicted": 73.48,
+        "error_cm": 0.48
+      },
+      "后腰高": {
+        "ground_truth": 6.4,
+        "predicted": 5.62,
+        "error_cm": 0.78
+      },
+      "通裆": {
+        "ground_truth": 70.0,
+        "predicted": 67.72,
+        "error_cm": 2.28
+      },
+      "裤腰围": {
+        "ground_truth": 85.3,
+        "predicted": 84.54,
+        "error_cm": 0.76
+      },
+      "下臀围": {
+        "ground_truth": 97.0,
+        "predicted": 97.39,
+        "error_cm": 0.39
+      },
+      "左大腿围": {
+        "ground_truth": 56.1,
+        "predicted": 56.93,
+        "error_cm": 0.83
+      },
+      "右大腿围": {
+        "ground_truth": 58.6,
+        "predicted": 57.03,
+        "error_cm": 1.57
+      },
+      "膝围": {
+        "ground_truth": 37.7,
+        "predicted": 37.42,
+        "error_cm": 0.28
+      },
+      "左小腿围": {
+        "ground_truth": 38.3,
+        "predicted": 36.64,
+        "error_cm": 1.66
+      },
+      "右小腿围": {
+        "ground_truth": 39.0,
+        "predicted": 36.0,
+        "error_cm": 3.0
+      },
+      "N点～臀下": {
+        "ground_truth": 79.0,
+        "predicted": 76.81,
+        "error_cm": 2.19
+      },
+      "O点～臀下": {
+        "ground_truth": 74.5,
+        "predicted": 74.97,
+        "error_cm": 0.47
+      },
+      "左裤长": {
+        "ground_truth": 102.3,
+        "predicted": 99.73,
+        "error_cm": 2.57
+      }
+    },
+    "0045 张伦权": {
+      "模型身高": {
+        "ground_truth": 159.9,
+        "predicted": 160.22,
+        "error_cm": 0.32
+      },
+      "领围": {
+        "ground_truth": 41.5,
+        "predicted": 40.51,
+        "error_cm": 0.99
+      },
+      "颈宽": {
+        "ground_truth": 12.7,
+        "predicted": 12.97,
+        "error_cm": 0.27
+      },
+      "胸围": {
+        "ground_truth": 106.3,
+        "predicted": 108.61,
+        "error_cm": 2.31
+      },
+      "中腰围": {
+        "ground_truth": 101.2,
+        "predicted": 100.2,
+        "error_cm": 1.0
+      },
+      "肚围": {
+        "ground_truth": 103.2,
+        "predicted": 96.39,
+        "error_cm": 6.81
+      },
+      "肩宽": {
+        "ground_truth": 46.2,
+        "predicted": 45.62,
+        "error_cm": 0.58
+      },
+      "前肩宽": {
+        "ground_truth": 42.4,
+        "predicted": 39.68,
+        "error_cm": 2.72
+      },
+      "前胸宽": {
+        "ground_truth": 39.4,
+        "predicted": 36.52,
+        "error_cm": 2.88
+      },
+      "后背宽": {
+        "ground_truth": 40.8,
+        "predicted": 41.0,
+        "error_cm": 0.2
+      },
+      "左袖长": {
+        "ground_truth": 60.8,
+        "predicted": 57.88,
+        "error_cm": 2.92
+      },
+      "袖丈": {
+        "ground_truth": 55.9,
+        "predicted": 58.24,
+        "error_cm": 2.34
+      },
+      "左上臂围": {
+        "ground_truth": 34.9,
+        "predicted": 32.48,
+        "error_cm": 2.42
+      },
+      "右上臂围": {
+        "ground_truth": 34.9,
+        "predicted": 32.37,
+        "error_cm": 2.53
+      },
+      "手腕围": {
+        "ground_truth": 18.4,
+        "predicted": 17.25,
+        "error_cm": 1.15
+      },
+      "前腰节长": {
+        "ground_truth": 43.2,
+        "predicted": 46.38,
+        "error_cm": 3.18
+      },
+      "后中腰节长": {
+        "ground_truth": 39.3,
+        "predicted": 40.68,
+        "error_cm": 1.38
+      },
+      "后腰节长": {
+        "ground_truth": 41.6,
+        "predicted": 39.86,
+        "error_cm": 1.74
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 69.4,
+        "predicted": 69.45,
+        "error_cm": 0.05
+      },
+      "后腰高": {
+        "ground_truth": 4.5,
+        "predicted": 5.13,
+        "error_cm": 0.63
+      },
+      "通裆": {
+        "ground_truth": 65.6,
+        "predicted": 65.93,
+        "error_cm": 0.33
+      },
+      "裤腰围": {
+        "ground_truth": 97.6,
+        "predicted": 98.26,
+        "error_cm": 0.66
+      },
+      "下臀围": {
+        "ground_truth": 102.5,
+        "predicted": 102.3,
+        "error_cm": 0.2
+      },
+      "左大腿围": {
+        "ground_truth": 60.3,
+        "predicted": 58.8,
+        "error_cm": 1.5
+      },
+      "右大腿围": {
+        "ground_truth": 58.0,
+        "predicted": 60.15,
+        "error_cm": 2.15
+      },
+      "膝围": {
+        "ground_truth": 38.3,
+        "predicted": 38.18,
+        "error_cm": 0.12
+      },
+      "左小腿围": {
+        "ground_truth": 38.2,
+        "predicted": 37.4,
+        "error_cm": 0.8
+      },
+      "右小腿围": {
+        "ground_truth": 38.0,
+        "predicted": 38.04,
+        "error_cm": 0.04
+      },
+      "N点～臀下": {
+        "ground_truth": 76.3,
+        "predicted": 70.23,
+        "error_cm": 6.07
+      },
+      "O点～臀下": {
+        "ground_truth": 69.6,
+        "predicted": 70.92,
+        "error_cm": 1.32
+      },
+      "左裤长": {
+        "ground_truth": 92.0,
+        "predicted": 90.61,
+        "error_cm": 1.39
+      }
+    },
+    "0046 陈沛源": {
+      "模型身高": {
+        "ground_truth": 180.7,
+        "predicted": 180.07,
+        "error_cm": 0.63
+      },
+      "领围": {
+        "ground_truth": 42.0,
+        "predicted": 41.66,
+        "error_cm": 0.34
+      },
+      "颈宽": {
+        "ground_truth": 14.1,
+        "predicted": 13.66,
+        "error_cm": 0.44
+      },
+      "胸围": {
+        "ground_truth": 101.9,
+        "predicted": 104.88,
+        "error_cm": 2.98
+      },
+      "中腰围": {
+        "ground_truth": 91.9,
+        "predicted": 96.85,
+        "error_cm": 4.95
+      },
+      "肚围": {
+        "ground_truth": 95.8,
+        "predicted": 96.26,
+        "error_cm": 0.46
+      },
+      "肩宽": {
+        "ground_truth": 48.9,
+        "predicted": 50.31,
+        "error_cm": 1.41
+      },
+      "前肩宽": {
+        "ground_truth": 45.1,
+        "predicted": 42.67,
+        "error_cm": 2.43
+      },
+      "前胸宽": {
+        "ground_truth": 41.1,
+        "predicted": 36.85,
+        "error_cm": 4.25
+      },
+      "后背宽": {
+        "ground_truth": 41.5,
+        "predicted": 43.24,
+        "error_cm": 1.74
+      },
+      "左袖长": {
+        "ground_truth": 65.7,
+        "predicted": 63.78,
+        "error_cm": 1.92
+      },
+      "袖丈": {
+        "ground_truth": 64.5,
+        "predicted": 64.15,
+        "error_cm": 0.35
+      },
+      "左上臂围": {
+        "ground_truth": 34.0,
+        "predicted": 33.34,
+        "error_cm": 0.66
+      },
+      "右上臂围": {
+        "ground_truth": 34.1,
+        "predicted": 33.71,
+        "error_cm": 0.39
+      },
+      "手腕围": {
+        "ground_truth": 16.7,
+        "predicted": 18.39,
+        "error_cm": 1.69
+      },
+      "前腰节长": {
+        "ground_truth": 46.0,
+        "predicted": 50.57,
+        "error_cm": 4.57
+      },
+      "后中腰节长": {
+        "ground_truth": 41.9,
+        "predicted": 44.98,
+        "error_cm": 3.08
+      },
+      "后腰节长": {
+        "ground_truth": 44.4,
+        "predicted": 44.6,
+        "error_cm": 0.2
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 76.0,
+        "predicted": 77.17,
+        "error_cm": 1.17
+      },
+      "后腰高": {
+        "ground_truth": 6.9,
+        "predicted": 5.88,
+        "error_cm": 1.02
+      },
+      "通裆": {
+        "ground_truth": 77.2,
+        "predicted": 73.51,
+        "error_cm": 3.69
+      },
+      "裤腰围": {
+        "ground_truth": 94.7,
+        "predicted": 92.56,
+        "error_cm": 2.14
+      },
+      "下臀围": {
+        "ground_truth": 104.9,
+        "predicted": 105.63,
+        "error_cm": 0.73
+      },
+      "左大腿围": {
+        "ground_truth": 65.1,
+        "predicted": 62.0,
+        "error_cm": 3.1
+      },
+      "右大腿围": {
+        "ground_truth": 67.0,
+        "predicted": 62.19,
+        "error_cm": 4.81
+      },
+      "膝围": {
+        "ground_truth": 39.3,
+        "predicted": 39.79,
+        "error_cm": 0.49
+      },
+      "左小腿围": {
+        "ground_truth": 40.7,
+        "predicted": 39.5,
+        "error_cm": 1.2
+      },
+      "右小腿围": {
+        "ground_truth": 41.9,
+        "predicted": 38.44,
+        "error_cm": 3.46
+      },
+      "N点～臀下": {
+        "ground_truth": 83.4,
+        "predicted": 77.81,
+        "error_cm": 5.59
+      },
+      "O点～臀下": {
+        "ground_truth": 78.3,
+        "predicted": 79.04,
+        "error_cm": 0.74
+      },
+      "左裤长": {
+        "ground_truth": 104.7,
+        "predicted": 101.71,
+        "error_cm": 2.99
+      }
+    },
+    "0047 王耀兴": {
+      "模型身高": {
+        "ground_truth": 171.7,
+        "predicted": 171.04,
+        "error_cm": 0.66
+      },
+      "领围": {
+        "ground_truth": 37.3,
+        "predicted": 38.39,
+        "error_cm": 1.09
+      },
+      "颈宽": {
+        "ground_truth": 11.9,
+        "predicted": 12.61,
+        "error_cm": 0.71
+      },
+      "胸围": {
+        "ground_truth": 92.7,
+        "predicted": 95.89,
+        "error_cm": 3.19
+      },
+      "中腰围": {
+        "ground_truth": 81.6,
+        "predicted": 85.46,
+        "error_cm": 3.86
+      },
+      "肚围": {
+        "ground_truth": 84.4,
+        "predicted": 84.77,
+        "error_cm": 0.37
+      },
+      "肩宽": {
+        "ground_truth": 46.0,
+        "predicted": 45.56,
+        "error_cm": 0.44
+      },
+      "前肩宽": {
+        "ground_truth": 42.7,
+        "predicted": 39.0,
+        "error_cm": 3.7
+      },
+      "前胸宽": {
+        "ground_truth": 36.2,
+        "predicted": 33.23,
+        "error_cm": 2.97
+      },
+      "后背宽": {
+        "ground_truth": 40.8,
+        "predicted": 40.53,
+        "error_cm": 0.27
+      },
+      "左袖长": {
+        "ground_truth": 61.9,
+        "predicted": 60.46,
+        "error_cm": 1.44
+      },
+      "袖丈": {
+        "ground_truth": 59.6,
+        "predicted": 61.26,
+        "error_cm": 1.66
+      },
+      "左上臂围": {
+        "ground_truth": 27.4,
+        "predicted": 29.73,
+        "error_cm": 2.33
+      },
+      "右上臂围": {
+        "ground_truth": 29.2,
+        "predicted": 30.03,
+        "error_cm": 0.83
+      },
+      "手腕围": {
+        "ground_truth": 16.0,
+        "predicted": 17.31,
+        "error_cm": 1.31
+      },
+      "前腰节长": {
+        "ground_truth": 43.4,
+        "predicted": 46.74,
+        "error_cm": 3.34
+      },
+      "后中腰节长": {
+        "ground_truth": 40.2,
+        "predicted": 42.9,
+        "error_cm": 2.7
+      },
+      "后腰节长": {
+        "ground_truth": 43.4,
+        "predicted": 42.52,
+        "error_cm": 0.88
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 71.6,
+        "predicted": 72.35,
+        "error_cm": 0.75
+      },
+      "后腰高": {
+        "ground_truth": 7.1,
+        "predicted": 5.61,
+        "error_cm": 1.49
+      },
+      "通裆": {
+        "ground_truth": 68.1,
+        "predicted": 65.73,
+        "error_cm": 2.37
+      },
+      "裤腰围": {
+        "ground_truth": 84.5,
+        "predicted": 82.98,
+        "error_cm": 1.52
+      },
+      "下臀围": {
+        "ground_truth": 94.6,
+        "predicted": 95.14,
+        "error_cm": 0.54
+      },
+      "左大腿围": {
+        "ground_truth": 56.2,
+        "predicted": 56.35,
+        "error_cm": 0.15
+      },
+      "右大腿围": {
+        "ground_truth": 53.0,
+        "predicted": 55.85,
+        "error_cm": 2.85
+      },
+      "膝围": {
+        "ground_truth": 36.8,
+        "predicted": 36.35,
+        "error_cm": 0.45
+      },
+      "左小腿围": {
+        "ground_truth": 36.3,
+        "predicted": 36.73,
+        "error_cm": 0.43
+      },
+      "右小腿围": {
+        "ground_truth": 36.7,
+        "predicted": 35.18,
+        "error_cm": 1.52
+      },
+      "N点～臀下": {
+        "ground_truth": 78.2,
+        "predicted": 75.07,
+        "error_cm": 3.13
+      },
+      "O点～臀下": {
+        "ground_truth": 73.3,
+        "predicted": 73.93,
+        "error_cm": 0.63
+      },
+      "左裤长": {
+        "ground_truth": 98.6,
+        "predicted": 97.27,
+        "error_cm": 1.33
+      }
+    },
+    "0048 温赵恒": {
+      "模型身高": {
+        "ground_truth": 170.6,
+        "predicted": 171.03,
+        "error_cm": 0.43
+      },
+      "领围": {
+        "ground_truth": 43.5,
+        "predicted": 41.24,
+        "error_cm": 2.26
+      },
+      "颈宽": {
+        "ground_truth": 13.7,
+        "predicted": 13.33,
+        "error_cm": 0.37
+      },
+      "胸围": {
+        "ground_truth": 104.9,
+        "predicted": 106.63,
+        "error_cm": 1.73
+      },
+      "中腰围": {
+        "ground_truth": 96.7,
+        "predicted": 102.68,
+        "error_cm": 5.98
+      },
+      "肚围": {
+        "ground_truth": 100.4,
+        "predicted": 100.21,
+        "error_cm": 0.19
+      },
+      "肩宽": {
+        "ground_truth": 47.6,
+        "predicted": 48.09,
+        "error_cm": 0.49
+      },
+      "前肩宽": {
+        "ground_truth": 42.8,
+        "predicted": 40.07,
+        "error_cm": 2.73
+      },
+      "前胸宽": {
+        "ground_truth": 38.0,
+        "predicted": 34.29,
+        "error_cm": 3.71
+      },
+      "后背宽": {
+        "ground_truth": 44.4,
+        "predicted": 44.71,
+        "error_cm": 0.31
+      },
+      "左袖长": {
+        "ground_truth": 62.2,
+        "predicted": 59.23,
+        "error_cm": 2.97
+      },
+      "袖丈": {
+        "ground_truth": 57.9,
+        "predicted": 60.67,
+        "error_cm": 2.77
+      },
+      "左上臂围": {
+        "ground_truth": 35.8,
+        "predicted": 33.87,
+        "error_cm": 1.93
+      },
+      "右上臂围": {
+        "ground_truth": 36.1,
+        "predicted": 34.13,
+        "error_cm": 1.97
+      },
+      "手腕围": {
+        "ground_truth": 18.8,
+        "predicted": 17.66,
+        "error_cm": 1.14
+      },
+      "前腰节长": {
+        "ground_truth": 43.9,
+        "predicted": 49.27,
+        "error_cm": 5.37
+      },
+      "后中腰节长": {
+        "ground_truth": 42.8,
+        "predicted": 44.73,
+        "error_cm": 1.93
+      },
+      "后腰节长": {
+        "ground_truth": 45.7,
+        "predicted": 44.1,
+        "error_cm": 1.6
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 74.9,
+        "predicted": 75.48,
+        "error_cm": 0.58
+      },
+      "后腰高": {
+        "ground_truth": 11.4,
+        "predicted": 5.74,
+        "error_cm": 5.66
+      },
+      "通裆": {
+        "ground_truth": 65.4,
+        "predicted": 72.32,
+        "error_cm": 6.92
+      },
+      "裤腰围": {
+        "ground_truth": 95.5,
+        "predicted": 99.28,
+        "error_cm": 3.78
+      },
+      "下臀围": {
+        "ground_truth": 101.3,
+        "predicted": 104.58,
+        "error_cm": 3.28
+      },
+      "左大腿围": {
+        "ground_truth": 61.5,
+        "predicted": 61.78,
+        "error_cm": 0.28
+      },
+      "右大腿围": {
+        "ground_truth": 62.9,
+        "predicted": 61.98,
+        "error_cm": 0.92
+      },
+      "膝围": {
+        "ground_truth": 40.0,
+        "predicted": 38.87,
+        "error_cm": 1.13
+      },
+      "左小腿围": {
+        "ground_truth": 40.4,
+        "predicted": 39.57,
+        "error_cm": 0.83
+      },
+      "右小腿围": {
+        "ground_truth": 40.8,
+        "predicted": 38.3,
+        "error_cm": 2.5
+      },
+      "N点～臀下": {
+        "ground_truth": 80.4,
+        "predicted": 73.09,
+        "error_cm": 7.31
+      },
+      "O点～臀下": {
+        "ground_truth": 78.0,
+        "predicted": 77.83,
+        "error_cm": 0.17
+      },
+      "左裤长": {
+        "ground_truth": 93.0,
+        "predicted": 94.09,
+        "error_cm": 1.09
+      }
+    },
+    "0049 张俊颖": {
+      "模型身高": {
+        "ground_truth": 167.4,
+        "predicted": 167.27,
+        "error_cm": 0.13
+      },
+      "领围": {
+        "ground_truth": 35.5,
+        "predicted": 37.15,
+        "error_cm": 1.65
+      },
+      "颈宽": {
+        "ground_truth": 11.3,
+        "predicted": 12.26,
+        "error_cm": 0.96
+      },
+      "胸围": {
+        "ground_truth": 87.5,
+        "predicted": 90.07,
+        "error_cm": 2.57
+      },
+      "中腰围": {
+        "ground_truth": 69.9,
+        "predicted": 75.75,
+        "error_cm": 5.85
+      },
+      "肚围": {
+        "ground_truth": 70.4,
+        "predicted": 75.18,
+        "error_cm": 4.78
+      },
+      "肩宽": {
+        "ground_truth": 43.0,
+        "predicted": 46.24,
+        "error_cm": 3.24
+      },
+      "前肩宽": {
+        "ground_truth": 39.8,
+        "predicted": 39.42,
+        "error_cm": 0.38
+      },
+      "前胸宽": {
+        "ground_truth": 36.6,
+        "predicted": 32.18,
+        "error_cm": 4.42
+      },
+      "后背宽": {
+        "ground_truth": 37.7,
+        "predicted": 38.92,
+        "error_cm": 1.22
+      },
+      "左袖长": {
+        "ground_truth": 62.3,
+        "predicted": 60.05,
+        "error_cm": 2.25
+      },
+      "袖丈": {
+        "ground_truth": 60.6,
+        "predicted": 60.43,
+        "error_cm": 0.17
+      },
+      "左上臂围": {
+        "ground_truth": 27.4,
+        "predicted": 27.15,
+        "error_cm": 0.25
+      },
+      "右上臂围": {
+        "ground_truth": 28.1,
+        "predicted": 27.39,
+        "error_cm": 0.71
+      },
+      "手腕围": {
+        "ground_truth": 15.1,
+        "predicted": 16.66,
+        "error_cm": 1.56
+      },
+      "前腰节长": {
+        "ground_truth": 41.0,
+        "predicted": 44.97,
+        "error_cm": 3.97
+      },
+      "后中腰节长": {
+        "ground_truth": 38.7,
+        "predicted": 40.91,
+        "error_cm": 2.21
+      },
+      "后腰节长": {
+        "ground_truth": 40.9,
+        "predicted": 40.9,
+        "error_cm": 0.0
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 69.1,
+        "predicted": 69.74,
+        "error_cm": 0.64
+      },
+      "后腰高": {
+        "ground_truth": 6.9,
+        "predicted": 5.43,
+        "error_cm": 1.47
+      },
+      "通裆": {
+        "ground_truth": 60.6,
+        "predicted": 61.17,
+        "error_cm": 0.57
+      },
+      "裤腰围": {
+        "ground_truth": 71.1,
+        "predicted": 74.07,
+        "error_cm": 2.97
+      },
+      "下臀围": {
+        "ground_truth": 86.0,
+        "predicted": 88.32,
+        "error_cm": 2.32
+      },
+      "左大腿围": {
+        "ground_truth": 50.4,
+        "predicted": 52.22,
+        "error_cm": 1.82
+      },
+      "右大腿围": {
+        "ground_truth": 50.3,
+        "predicted": 52.17,
+        "error_cm": 1.87
+      },
+      "膝围": {
+        "ground_truth": 34.0,
+        "predicted": 35.09,
+        "error_cm": 1.09
+      },
+      "左小腿围": {
+        "ground_truth": 33.1,
+        "predicted": 34.16,
+        "error_cm": 1.06
+      },
+      "右小腿围": {
+        "ground_truth": 33.3,
+        "predicted": 33.45,
+        "error_cm": 0.15
+      },
+      "N点～臀下": {
+        "ground_truth": 72.0,
+        "predicted": 73.87,
+        "error_cm": 1.87
+      },
+      "O点～臀下": {
+        "ground_truth": 68.8,
+        "predicted": 71.62,
+        "error_cm": 2.82
+      },
+      "左裤长": {
+        "ground_truth": 97.5,
+        "predicted": 94.45,
+        "error_cm": 3.05
+      }
+    },
+    "0050 蓝泽富": {
+      "模型身高": {
+        "ground_truth": 181.6,
+        "predicted": 181.38,
+        "error_cm": 0.22
+      },
+      "领围": {
+        "ground_truth": 37.1,
+        "predicted": 38.18,
+        "error_cm": 1.08
+      },
+      "颈宽": {
+        "ground_truth": 11.7,
+        "predicted": 12.49,
+        "error_cm": 0.79
+      },
+      "胸围": {
+        "ground_truth": 86.7,
+        "predicted": 91.0,
+        "error_cm": 4.3
+      },
+      "中腰围": {
+        "ground_truth": 75.4,
+        "predicted": 83.12,
+        "error_cm": 7.72
+      },
+      "肚围": {
+        "ground_truth": 80.5,
+        "predicted": 83.5,
+        "error_cm": 3.0
+      },
+      "肩宽": {
+        "ground_truth": 40.9,
+        "predicted": 45.13,
+        "error_cm": 4.23
+      },
+      "前肩宽": {
+        "ground_truth": 41.1,
+        "predicted": 41.5,
+        "error_cm": 0.4
+      },
+      "前胸宽": {
+        "ground_truth": 36.9,
+        "predicted": 36.02,
+        "error_cm": 0.88
+      },
+      "后背宽": {
+        "ground_truth": 34.7,
+        "predicted": 36.33,
+        "error_cm": 1.63
+      },
+      "左袖长": {
+        "ground_truth": 65.4,
+        "predicted": 63.83,
+        "error_cm": 1.57
+      },
+      "袖丈": {
+        "ground_truth": 62.2,
+        "predicted": 64.41,
+        "error_cm": 2.21
+      },
+      "左上臂围": {
+        "ground_truth": 27.6,
+        "predicted": 28.28,
+        "error_cm": 0.68
+      },
+      "右上臂围": {
+        "ground_truth": 28.4,
+        "predicted": 28.25,
+        "error_cm": 0.15
+      },
+      "手腕围": {
+        "ground_truth": 15.7,
+        "predicted": 17.54,
+        "error_cm": 1.84
+      },
+      "前腰节长": {
+        "ground_truth": 43.4,
+        "predicted": 49.31,
+        "error_cm": 5.91
+      },
+      "后中腰节长": {
+        "ground_truth": 42.5,
+        "predicted": 45.59,
+        "error_cm": 3.09
+      },
+      "后腰节长": {
+        "ground_truth": 44.5,
+        "predicted": 44.82,
+        "error_cm": 0.32
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 75.7,
+        "predicted": 77.35,
+        "error_cm": 1.65
+      },
+      "后腰高": {
+        "ground_truth": 8.8,
+        "predicted": 6.03,
+        "error_cm": 2.77
+      },
+      "通裆": {
+        "ground_truth": 69.3,
+        "predicted": 67.54,
+        "error_cm": 1.76
+      },
+      "裤腰围": {
+        "ground_truth": 82.0,
+        "predicted": 79.81,
+        "error_cm": 2.19
+      },
+      "下臀围": {
+        "ground_truth": 92.0,
+        "predicted": 94.83,
+        "error_cm": 2.83
+      },
+      "左大腿围": {
+        "ground_truth": 53.2,
+        "predicted": 54.46,
+        "error_cm": 1.26
+      },
+      "右大腿围": {
+        "ground_truth": 52.0,
+        "predicted": 54.58,
+        "error_cm": 2.58
+      },
+      "膝围": {
+        "ground_truth": 36.5,
+        "predicted": 36.88,
+        "error_cm": 0.38
+      },
+      "左小腿围": {
+        "ground_truth": 36.1,
+        "predicted": 35.84,
+        "error_cm": 0.26
+      },
+      "右小腿围": {
+        "ground_truth": 36.2,
+        "predicted": 34.56,
+        "error_cm": 1.64
+      },
+      "N点～臀下": {
+        "ground_truth": 79.4,
+        "predicted": 79.92,
+        "error_cm": 0.52
+      },
+      "O点～臀下": {
+        "ground_truth": 77.7,
+        "predicted": 78.97,
+        "error_cm": 1.27
+      },
+      "左裤长": {
+        "ground_truth": 102.8,
+        "predicted": 103.13,
+        "error_cm": 0.33
+      }
+    },
+    "0051 钟裔斌": {
+      "模型身高": {
+        "ground_truth": 166.5,
+        "predicted": 166.25,
+        "error_cm": 0.25
+      },
+      "领围": {
+        "ground_truth": 34.6,
+        "predicted": 35.95,
+        "error_cm": 1.35
+      },
+      "颈宽": {
+        "ground_truth": 11.5,
+        "predicted": 11.94,
+        "error_cm": 0.44
+      },
+      "胸围": {
+        "ground_truth": 80.2,
+        "predicted": 83.65,
+        "error_cm": 3.45
+      },
+      "中腰围": {
+        "ground_truth": 67.5,
+        "predicted": 71.02,
+        "error_cm": 3.52
+      },
+      "肚围": {
+        "ground_truth": 67.3,
+        "predicted": 70.75,
+        "error_cm": 3.45
+      },
+      "肩宽": {
+        "ground_truth": 43.1,
+        "predicted": 44.73,
+        "error_cm": 1.63
+      },
+      "前肩宽": {
+        "ground_truth": 41.5,
+        "predicted": 38.98,
+        "error_cm": 2.52
+      },
+      "前胸宽": {
+        "ground_truth": 34.2,
+        "predicted": 31.87,
+        "error_cm": 2.33
+      },
+      "后背宽": {
+        "ground_truth": 35.0,
+        "predicted": 36.93,
+        "error_cm": 1.93
+      },
+      "左袖长": {
+        "ground_truth": 60.2,
+        "predicted": 58.76,
+        "error_cm": 1.44
+      },
+      "袖丈": {
+        "ground_truth": 57.7,
+        "predicted": 59.42,
+        "error_cm": 1.72
+      },
+      "左上臂围": {
+        "ground_truth": 23.0,
+        "predicted": 25.03,
+        "error_cm": 2.03
+      },
+      "右上臂围": {
+        "ground_truth": 24.1,
+        "predicted": 25.54,
+        "error_cm": 1.44
+      },
+      "手腕围": {
+        "ground_truth": 13.9,
+        "predicted": 15.74,
+        "error_cm": 1.84
+      },
+      "前腰节长": {
+        "ground_truth": 39.6,
+        "predicted": 43.7,
+        "error_cm": 4.1
+      },
+      "后中腰节长": {
+        "ground_truth": 38.1,
+        "predicted": 41.02,
+        "error_cm": 2.92
+      },
+      "后腰节长": {
+        "ground_truth": 40.0,
+        "predicted": 40.56,
+        "error_cm": 0.56
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 68.8,
+        "predicted": 70.49,
+        "error_cm": 1.69
+      },
+      "后腰高": {
+        "ground_truth": 3.2,
+        "predicted": 5.44,
+        "error_cm": 2.24
+      },
+      "通裆": {
+        "ground_truth": 70.9,
+        "predicted": 59.73,
+        "error_cm": 11.17
+      },
+      "裤腰围": {
+        "ground_truth": 67.1,
+        "predicted": 69.21,
+        "error_cm": 2.11
+      },
+      "下臀围": {
+        "ground_truth": 81.1,
+        "predicted": 85.04,
+        "error_cm": 3.94
+      },
+      "左大腿围": {
+        "ground_truth": 46.3,
+        "predicted": 48.57,
+        "error_cm": 2.27
+      },
+      "右大腿围": {
+        "ground_truth": 46.7,
+        "predicted": 49.38,
+        "error_cm": 2.68
+      },
+      "膝围": {
+        "ground_truth": 33.2,
+        "predicted": 33.56,
+        "error_cm": 0.36
+      },
+      "左小腿围": {
+        "ground_truth": 31.4,
+        "predicted": 32.47,
+        "error_cm": 1.07
+      },
+      "右小腿围": {
+        "ground_truth": 30.8,
+        "predicted": 31.88,
+        "error_cm": 1.08
+      },
+      "N点～臀下": {
+        "ground_truth": 71.2,
+        "predicted": 73.07,
+        "error_cm": 1.87
+      },
+      "O点～臀下": {
+        "ground_truth": 68.9,
+        "predicted": 71.98,
+        "error_cm": 3.08
+      },
+      "左裤长": {
+        "ground_truth": 102.2,
+        "predicted": 95.08,
+        "error_cm": 7.12
+      }
+    },
+    "0052 钟武延": {
+      "模型身高": {
+        "ground_truth": 175.9,
+        "predicted": 175.71,
+        "error_cm": 0.19
+      },
+      "领围": {
+        "ground_truth": 43.1,
+        "predicted": 42.42,
+        "error_cm": 0.68
+      },
+      "颈宽": {
+        "ground_truth": 13.0,
+        "predicted": 13.55,
+        "error_cm": 0.55
+      },
+      "胸围": {
+        "ground_truth": 109.3,
+        "predicted": 109.48,
+        "error_cm": 0.18
+      },
+      "中腰围": {
+        "ground_truth": 97.1,
+        "predicted": 100.7,
+        "error_cm": 3.6
+      },
+      "肚围": {
+        "ground_truth": 98.9,
+        "predicted": 99.2,
+        "error_cm": 0.3
+      },
+      "肩宽": {
+        "ground_truth": 48.7,
+        "predicted": 49.03,
+        "error_cm": 0.33
+      },
+      "前肩宽": {
+        "ground_truth": 45.5,
+        "predicted": 41.94,
+        "error_cm": 3.56
+      },
+      "前胸宽": {
+        "ground_truth": 41.5,
+        "predicted": 36.96,
+        "error_cm": 4.54
+      },
+      "后背宽": {
+        "ground_truth": 43.3,
+        "predicted": 43.11,
+        "error_cm": 0.19
+      },
+      "左袖长": {
+        "ground_truth": 61.9,
+        "predicted": 60.83,
+        "error_cm": 1.07
+      },
+      "袖丈": {
+        "ground_truth": 60.1,
+        "predicted": 62.09,
+        "error_cm": 1.99
+      },
+      "左上臂围": {
+        "ground_truth": 35.2,
+        "predicted": 34.29,
+        "error_cm": 0.91
+      },
+      "右上臂围": {
+        "ground_truth": 34.9,
+        "predicted": 34.86,
+        "error_cm": 0.04
+      },
+      "手腕围": {
+        "ground_truth": 17.9,
+        "predicted": 17.84,
+        "error_cm": 0.06
+      },
+      "前腰节长": {
+        "ground_truth": 46.0,
+        "predicted": 49.84,
+        "error_cm": 3.84
+      },
+      "后中腰节长": {
+        "ground_truth": 42.6,
+        "predicted": 45.08,
+        "error_cm": 2.48
+      },
+      "后腰节长": {
+        "ground_truth": 45.9,
+        "predicted": 45.24,
+        "error_cm": 0.66
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 75.4,
+        "predicted": 76.52,
+        "error_cm": 1.12
+      },
+      "后腰高": {
+        "ground_truth": 7.4,
+        "predicted": 5.71,
+        "error_cm": 1.69
+      },
+      "通裆": {
+        "ground_truth": 70.9,
+        "predicted": 71.89,
+        "error_cm": 0.99
+      },
+      "裤腰围": {
+        "ground_truth": 96.7,
+        "predicted": 97.82,
+        "error_cm": 1.12
+      },
+      "下臀围": {
+        "ground_truth": 104.0,
+        "predicted": 105.1,
+        "error_cm": 1.1
+      },
+      "左大腿围": {
+        "ground_truth": 60.6,
+        "predicted": 61.87,
+        "error_cm": 1.27
+      },
+      "右大腿围": {
+        "ground_truth": 61.3,
+        "predicted": 61.96,
+        "error_cm": 0.66
+      },
+      "膝围": {
+        "ground_truth": 41.0,
+        "predicted": 39.32,
+        "error_cm": 1.68
+      },
+      "左小腿围": {
+        "ground_truth": 40.1,
+        "predicted": 39.57,
+        "error_cm": 0.53
+      },
+      "右小腿围": {
+        "ground_truth": 41.1,
+        "predicted": 38.69,
+        "error_cm": 2.41
+      },
+      "N点～臀下": {
+        "ground_truth": 82.6,
+        "predicted": 75.93,
+        "error_cm": 6.67
+      },
+      "O点～臀下": {
+        "ground_truth": 78.8,
+        "predicted": 77.95,
+        "error_cm": 0.85
+      },
+      "左裤长": {
+        "ground_truth": 101.3,
+        "predicted": 99.81,
+        "error_cm": 1.49
+      }
+    },
+    "0053 肖雄": {
+      "模型身高": {
+        "ground_truth": 162.0,
+        "predicted": 162.12,
+        "error_cm": 0.12
+      },
+      "领围": {
+        "ground_truth": 37.3,
+        "predicted": 38.31,
+        "error_cm": 1.01
+      },
+      "颈宽": {
+        "ground_truth": 11.4,
+        "predicted": 12.5,
+        "error_cm": 1.1
+      },
+      "胸围": {
+        "ground_truth": 97.0,
+        "predicted": 98.57,
+        "error_cm": 1.57
+      },
+      "中腰围": {
+        "ground_truth": 84.8,
+        "predicted": 88.47,
+        "error_cm": 3.67
+      },
+      "肚围": {
+        "ground_truth": 86.7,
+        "predicted": 86.06,
+        "error_cm": 0.64
+      },
+      "肩宽": {
+        "ground_truth": 42.8,
+        "predicted": 43.91,
+        "error_cm": 1.11
+      },
+      "前肩宽": {
+        "ground_truth": 40.0,
+        "predicted": 38.35,
+        "error_cm": 1.65
+      },
+      "前胸宽": {
+        "ground_truth": 38.2,
+        "predicted": 34.86,
+        "error_cm": 3.34
+      },
+      "后背宽": {
+        "ground_truth": 38.2,
+        "predicted": 38.88,
+        "error_cm": 0.68
+      },
+      "左袖长": {
+        "ground_truth": 56.6,
+        "predicted": 56.41,
+        "error_cm": 0.19
+      },
+      "袖丈": {
+        "ground_truth": 53.2,
+        "predicted": 56.91,
+        "error_cm": 3.71
+      },
+      "左上臂围": {
+        "ground_truth": 32.2,
+        "predicted": 30.04,
+        "error_cm": 2.16
+      },
+      "右上臂围": {
+        "ground_truth": 33.2,
+        "predicted": 30.49,
+        "error_cm": 2.71
+      },
+      "手腕围": {
+        "ground_truth": 16.7,
+        "predicted": 16.31,
+        "error_cm": 0.39
+      },
+      "前腰节长": {
+        "ground_truth": 41.4,
+        "predicted": 46.06,
+        "error_cm": 4.66
+      },
+      "后中腰节长": {
+        "ground_truth": 37.7,
+        "predicted": 40.6,
+        "error_cm": 2.9
+      },
+      "后腰节长": {
+        "ground_truth": 40.2,
+        "predicted": 40.2,
+        "error_cm": 0.0
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 67.7,
+        "predicted": 69.58,
+        "error_cm": 1.88
+      },
+      "后腰高": {
+        "ground_truth": 6.5,
+        "predicted": 5.41,
+        "error_cm": 1.09
+      },
+      "通裆": {
+        "ground_truth": 63.1,
+        "predicted": 64.55,
+        "error_cm": 1.45
+      },
+      "裤腰围": {
+        "ground_truth": 84.8,
+        "predicted": 86.6,
+        "error_cm": 1.8
+      },
+      "下臀围": {
+        "ground_truth": 95.4,
+        "predicted": 95.33,
+        "error_cm": 0.07
+      },
+      "左大腿围": {
+        "ground_truth": 55.9,
+        "predicted": 55.54,
+        "error_cm": 0.36
+      },
+      "右大腿围": {
+        "ground_truth": 56.5,
+        "predicted": 55.83,
+        "error_cm": 0.67
+      },
+      "膝围": {
+        "ground_truth": 37.0,
+        "predicted": 35.72,
+        "error_cm": 1.28
+      },
+      "左小腿围": {
+        "ground_truth": 36.0,
+        "predicted": 36.35,
+        "error_cm": 0.35
+      },
+      "右小腿围": {
+        "ground_truth": 36.6,
+        "predicted": 35.47,
+        "error_cm": 1.13
+      },
+      "N点～臀下": {
+        "ground_truth": 74.1,
+        "predicted": 69.94,
+        "error_cm": 4.16
+      },
+      "O点～臀下": {
+        "ground_truth": 68.9,
+        "predicted": 71.13,
+        "error_cm": 2.23
+      },
+      "左裤长": {
+        "ground_truth": 90.7,
+        "predicted": 90.93,
+        "error_cm": 0.23
+      }
+    },
+    "0054 莫炼杰": {
+      "模型身高": {
+        "ground_truth": 170.8,
+        "predicted": 170.75,
+        "error_cm": 0.05
+      },
+      "领围": {
+        "ground_truth": 39.7,
+        "predicted": 38.84,
+        "error_cm": 0.86
+      },
+      "颈宽": {
+        "ground_truth": 12.7,
+        "predicted": 12.63,
+        "error_cm": 0.07
+      },
+      "胸围": {
+        "ground_truth": 94.4,
+        "predicted": 99.05,
+        "error_cm": 4.65
+      },
+      "中腰围": {
+        "ground_truth": 87.2,
+        "predicted": 90.51,
+        "error_cm": 3.31
+      },
+      "肚围": {
+        "ground_truth": 91.1,
+        "predicted": 89.48,
+        "error_cm": 1.62
+      },
+      "肩宽": {
+        "ground_truth": 43.6,
+        "predicted": 45.7,
+        "error_cm": 2.1
+      },
+      "前肩宽": {
+        "ground_truth": 42.2,
+        "predicted": 40.22,
+        "error_cm": 1.98
+      },
+      "前胸宽": {
+        "ground_truth": 38.5,
+        "predicted": 34.75,
+        "error_cm": 3.75
+      },
+      "后背宽": {
+        "ground_truth": 38.1,
+        "predicted": 39.4,
+        "error_cm": 1.3
+      },
+      "左袖长": {
+        "ground_truth": 63.5,
+        "predicted": 61.17,
+        "error_cm": 2.33
+      },
+      "袖丈": {
+        "ground_truth": 61.1,
+        "predicted": 61.47,
+        "error_cm": 0.37
+      },
+      "左上臂围": {
+        "ground_truth": 30.9,
+        "predicted": 30.49,
+        "error_cm": 0.41
+      },
+      "右上臂围": {
+        "ground_truth": 32.5,
+        "predicted": 30.92,
+        "error_cm": 1.58
+      },
+      "手腕围": {
+        "ground_truth": 17.0,
+        "predicted": 17.35,
+        "error_cm": 0.35
+      },
+      "前腰节长": {
+        "ground_truth": 44.3,
+        "predicted": 47.7,
+        "error_cm": 3.4
+      },
+      "后中腰节长": {
+        "ground_truth": 41.4,
+        "predicted": 42.9,
+        "error_cm": 1.5
+      },
+      "后腰节长": {
+        "ground_truth": 43.3,
+        "predicted": 43.09,
+        "error_cm": 0.21
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 73.2,
+        "predicted": 73.64,
+        "error_cm": 0.44
+      },
+      "后腰高": {
+        "ground_truth": 7.7,
+        "predicted": 5.61,
+        "error_cm": 2.09
+      },
+      "通裆": {
+        "ground_truth": 69.4,
+        "predicted": 68.55,
+        "error_cm": 0.85
+      },
+      "裤腰围": {
+        "ground_truth": 89.3,
+        "predicted": 87.68,
+        "error_cm": 1.62
+      },
+      "下臀围": {
+        "ground_truth": 99.1,
+        "predicted": 97.6,
+        "error_cm": 1.5
+      },
+      "左大腿围": {
+        "ground_truth": 59.3,
+        "predicted": 57.62,
+        "error_cm": 1.68
+      },
+      "右大腿围": {
+        "ground_truth": 58.6,
+        "predicted": 57.38,
+        "error_cm": 1.22
+      },
+      "膝围": {
+        "ground_truth": 38.2,
+        "predicted": 37.29,
+        "error_cm": 0.91
+      },
+      "左小腿围": {
+        "ground_truth": 36.4,
+        "predicted": 37.22,
+        "error_cm": 0.82
+      },
+      "右小腿围": {
+        "ground_truth": 36.3,
+        "predicted": 35.92,
+        "error_cm": 0.38
+      },
+      "N点～臀下": {
+        "ground_truth": 80.2,
+        "predicted": 74.94,
+        "error_cm": 5.26
+      },
+      "O点～臀下": {
+        "ground_truth": 75.1,
+        "predicted": 74.99,
+        "error_cm": 0.11
+      },
+      "左裤长": {
+        "ground_truth": 97.6,
+        "predicted": 97.01,
+        "error_cm": 0.59
+      }
+    },
+    "0055 张正阳": {
+      "模型身高": {
+        "ground_truth": 167.5,
+        "predicted": 167.62,
+        "error_cm": 0.12
+      },
+      "领围": {
+        "ground_truth": 37.7,
+        "predicted": 36.82,
+        "error_cm": 0.88
+      },
+      "颈宽": {
+        "ground_truth": 11.9,
+        "predicted": 12.04,
+        "error_cm": 0.14
+      },
+      "胸围": {
+        "ground_truth": 83.6,
+        "predicted": 88.79,
+        "error_cm": 5.19
+      },
+      "中腰围": {
+        "ground_truth": 74.1,
+        "predicted": 78.14,
+        "error_cm": 4.04
+      },
+      "肚围": {
+        "ground_truth": 75.7,
+        "predicted": 77.52,
+        "error_cm": 1.82
+      },
+      "肩宽": {
+        "ground_truth": 42.5,
+        "predicted": 43.72,
+        "error_cm": 1.22
+      },
+      "前肩宽": {
+        "ground_truth": 39.8,
+        "predicted": 38.88,
+        "error_cm": 0.92
+      },
+      "前胸宽": {
+        "ground_truth": 35.7,
+        "predicted": 34.04,
+        "error_cm": 1.66
+      },
+      "后背宽": {
+        "ground_truth": 36.0,
+        "predicted": 36.25,
+        "error_cm": 0.25
+      },
+      "左袖长": {
+        "ground_truth": 61.6,
+        "predicted": 60.4,
+        "error_cm": 1.2
+      },
+      "袖丈": {
+        "ground_truth": 60.3,
+        "predicted": 61.15,
+        "error_cm": 0.85
+      },
+      "左上臂围": {
+        "ground_truth": 24.7,
+        "predicted": 26.87,
+        "error_cm": 2.17
+      },
+      "右上臂围": {
+        "ground_truth": 25.5,
+        "predicted": 27.25,
+        "error_cm": 1.75
+      },
+      "手腕围": {
+        "ground_truth": 14.9,
+        "predicted": 16.53,
+        "error_cm": 1.63
+      },
+      "前腰节长": {
+        "ground_truth": 40.4,
+        "predicted": 44.51,
+        "error_cm": 4.11
+      },
+      "后中腰节长": {
+        "ground_truth": 39.8,
+        "predicted": 41.36,
+        "error_cm": 1.56
+      },
+      "后腰节长": {
+        "ground_truth": 41.6,
+        "predicted": 41.11,
+        "error_cm": 0.49
+      },
+      "后衣长(到臀下)": {
+        "ground_truth": 70.0,
+        "predicted": 70.73,
+        "error_cm": 0.73
+      },
+      "后腰高": {
+        "ground_truth": 6.8,
+        "predicted": 5.41,
+        "error_cm": 1.39
+      },
+      "通裆": {
+        "ground_truth": 61.2,
+        "predicted": 62.03,
+        "error_cm": 0.83
+      },
+      "裤腰围": {
+        "ground_truth": 76.5,
+        "predicted": 76.12,
+        "error_cm": 0.38
+      },
+      "下臀围": {
+        "ground_truth": 86.9,
+        "predicted": 89.22,
+        "error_cm": 2.32
+      },
+      "左大腿围": {
+        "ground_truth": 51.0,
+        "predicted": 51.79,
+        "error_cm": 0.79
+      },
+      "右大腿围": {
+        "ground_truth": 52.2,
+        "predicted": 52.12,
+        "error_cm": 0.08
+      },
+      "膝围": {
+        "ground_truth": 35.5,
+        "predicted": 35.15,
+        "error_cm": 0.35
+      },
+      "左小腿围": {
+        "ground_truth": 34.8,
+        "predicted": 34.27,
+        "error_cm": 0.53
+      },
+      "右小腿围": {
+        "ground_truth": 35.4,
+        "predicted": 33.38,
+        "error_cm": 2.02
+      },
+      "N点～臀下": {
+        "ground_truth": 72.6,
+        "predicted": 74.65,
+        "error_cm": 2.05
+      },
+      "O点～臀下": {
+        "ground_truth": 71.4,
+        "predicted": 71.79,
+        "error_cm": 0.39
+      },
+      "左裤长": {
+        "ground_truth": 97.5,
+        "predicted": 96.3,
+        "error_cm": 1.2
+      }
+    }
+  }
+}
