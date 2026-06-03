@@ -51,8 +51,10 @@ This system **automatically extracts 31 body measurements** from a 3D body scan 
     "sidebar": """
 **Sidebar Settings Explained:**
 - **Sample Subject** = pre-loaded test subjects with known measurements
-- **Upload** = bring your own 3D scan file
-- **Apply Calibration** = improves accuracy from 95.2% to 96.3% using AI correction
+- **Upload _smpld.json** = bring your own 3D scan file (96.3% accuracy)
+- **Upload Photo** = upload a JPG/PNG photo + enter your height (81.5% accuracy)
+- **Upload Video** = upload a video + pick a frame + enter your height (81.5% accuracy)
+- **Apply Calibration** = improves accuracy using AI correction factors
 - **Show Ground Truth** = compare AI predictions vs real tape-measure values
 - **Show 3D Model** = display the 3D body you can rotate and zoom
 """,
@@ -486,6 +488,7 @@ def main():
         mode = st.radio("Input Mode", [
             "📁 Sample Subject",
             "📤 Upload _smpld.json",
+            "📷 Upload Photo",
             "🎬 Upload Video",
         ], index=0)
 
@@ -571,6 +574,47 @@ def main():
                 st.session_state['subject_name'] = subject_name
 
             if 'result' in st.session_state:
+                result = st.session_state['result']
+
+    elif mode == "📷 Upload Photo":
+        uploaded_photo = st.file_uploader(
+            "Upload a photo of the person",
+            type=['jpg', 'jpeg', 'png'],
+            help="Best results: full body visible, person standing upright, plain background",
+        )
+        height_input = st.number_input(
+            "Your height (cm)", min_value=100, max_value=250, value=170, step=1
+        )
+
+        if uploaded_photo:
+            # Show preview
+            col_img, col_info = st.columns([2, 1])
+            with col_img:
+                st.image(uploaded_photo, caption=uploaded_photo.name, use_container_width=True)
+            with col_info:
+                st.markdown(f"**File:** {uploaded_photo.name}")
+                st.markdown(f"**Height input:** {height_input} cm")
+                st.markdown("**Tips for best results:**")
+                st.markdown("- Full body in frame\n- Person standing straight\n- Plain / light background")
+
+            subject_name = os.path.splitext(uploaded_photo.name)[0]
+
+            if guide_mode:
+                guide_step(GUIDE_STEPS['extract'])
+
+            if st.button("🔬 Extract Measurements", type="primary", use_container_width=True):
+                suffix = os.path.splitext(uploaded_photo.name)[1].lower() or '.jpg'
+                with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+                    tmp.write(uploaded_photo.read())
+                    tmp_path = tmp.name
+                with st.spinner("Running AI inference — this may take 30–60 s on first run…"):
+                    result = api.measure_from_image(tmp_path, height_cm=float(height_input))
+                os.unlink(tmp_path)
+                st.session_state['result'] = result
+                st.session_state['smpld_path'] = None
+                st.session_state['subject_name'] = subject_name
+
+            if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
                 result = st.session_state['result']
 
     elif mode == "🎬 Upload Video":
