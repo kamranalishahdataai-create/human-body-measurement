@@ -5,6 +5,22 @@ import sys
 import os
 import utils
 
+
+def get_measurements_dict(height, vertices):
+    """
+    Extract measurements from SMPL vertices and return as a plain dict.
+
+    Args:
+        height:   Subject's real height in cm (used for scaling).
+        vertices: (6890, 3) numpy array of SMPL mesh vertices.
+
+    Returns:
+        dict mapping each measurement name (str) to its value in cm (float).
+    """
+    cp = convert_cp()
+    measure_arr = calc_measure(cp, vertices, height)
+    return {utils.M_STR[i]: float(measure_arr[i]) for i in range(utils.M_NUM)}
+
 DATA_DIR = "data"
 # loading data: file_list, vertex, mean, std
 #def obj2npy(label="male"):

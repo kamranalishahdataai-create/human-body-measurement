@@ -52,12 +52,43 @@ def main(img_path, height, json_path=None):
     input_img, proc_param, img = preprocess_image(img_path, json_path)
     input_img = np.expand_dims(input_img, 0)
 
-    # Theta is the 85D vector holding [camera, pose, shape]
-    # where camera is 3D [s, tx, ty]
-    # pose is 72D vector holding the rotation of 24 joints of SMPL in axis angle format
-    # shape is 10D shape coefficients of SMPL
     joints, verts, cams, joints3d, theta = model.predict(
         input_img, get_theta=True)
 
     extract_measurements.extract_measurements(height, verts[0])
+
+
+# ── Importable API ────────────────────────────────────────────────────────────
+# Lazy singleton so the heavy model is loaded only once per process.
+_hmr_sess = None
+_hmr_model = None
+
+
+def _get_hmr_model():
+    global _hmr_sess, _hmr_model
+    if _hmr_model is None:
+        print('Loading HMR model …')
+        _hmr_sess = tf.Session()
+        _hmr_model = RunModel(sess=_hmr_sess)
+        print('HMR model loaded.')
+    return _hmr_sess, _hmr_model
+
+
+def run_hmr(bg_removed_image):
+    """
+    Run HMR inference on a background-removed numpy image (BGR uint8).
+
+    Returns:
+        vertices  — (6890, 3) float32 SMPL mesh vertices
+        joints3d  — (19, 3)  float32 3D joint positions
+    """
+    _, model = _get_hmr_model()
+
+    input_img, _, _ = preprocess_image(bg_removed_image)
+    input_img = np.expand_dims(input_img, 0)
+
+    joints, verts, cams, joints3d, theta = model.predict(
+        input_img, get_theta=True)
+
+    return verts[0], joints3d[0]
 

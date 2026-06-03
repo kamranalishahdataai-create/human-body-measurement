@@ -218,6 +218,8 @@ def get_api():
 def discover_sample_subjects():
     """Find all sample subjects with _smpld.json files."""
     subjects = {}
+    if not os.path.exists("sample_data"):
+        return subjects
     data_dirs = [
         os.path.join("sample_data", d) for d in os.listdir("sample_data")
         if os.path.isdir(os.path.join("sample_data", d))

@@ -113,71 +113,70 @@ def label_to_color_image(label):
 
 
 
-parser = argparse.ArgumentParser(description='Deeplab Segmentation')
-parser.add_argument('-i', '--input_dir', type=str, required=True,help='Directory to save the output results. (required)')
-parser.add_argument('-ht', '--height', type=int, required=True,help='Directory to save the output results. (required)')
+_PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-args=parser.parse_args()
-
-dir_name=args.input_dir;
-
-
-## setup ####################
-
-LABEL_NAMES = np.asarray([
-	'background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus',
-	'car', 'cat', 'chair', 'cow', 'diningtable', 'dog', 'horse', 'motorbike',
-	'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tv'
-])
-
-FULL_LABEL_MAP = np.arange(len(LABEL_NAMES)).reshape(len(LABEL_NAMES), 1)
-FULL_COLOR_MAP = label_to_color_image(FULL_LABEL_MAP)
-
-
-MODEL_NAME = 'xception_coco_voctrainval'  # @param ['mobilenetv2_coco_voctrainaug', 'mobilenetv2_coco_voctrainval', 'xception_coco_voctrainaug', 'xception_coco_voctrainval']
-
+_DEEPLAB_MODEL_NAME = 'xception_coco_voctrainval'
 _DOWNLOAD_URL_PREFIX = 'http://download.tensorflow.org/models/'
 _MODEL_URLS = {
-	'mobilenetv2_coco_voctrainaug':
-		'deeplabv3_mnv2_pascal_train_aug_2018_01_29.tar.gz',
-	'mobilenetv2_coco_voctrainval':
-		'deeplabv3_mnv2_pascal_trainval_2018_01_29.tar.gz',
-	'xception_coco_voctrainaug':
-		'deeplabv3_pascal_train_aug_2018_01_04.tar.gz',
-	'xception_coco_voctrainval':
-		'deeplabv3_pascal_trainval_2018_01_04.tar.gz',
+    'xception_coco_voctrainval': 'deeplabv3_pascal_trainval_2018_01_04.tar.gz',
 }
-_TARBALL_NAME = _MODEL_URLS[MODEL_NAME]
 
-model_dir = 'deeplab_model'
-if not os.path.exists(model_dir):
-  tf.gfile.MakeDirs(model_dir)
-
-download_path = os.path.join(model_dir, _TARBALL_NAME)
-if not os.path.exists(download_path):
-  print('downloading model to %s, this might take a while...' % download_path)
-  urllib.request.urlretrieve(_DOWNLOAD_URL_PREFIX + _MODEL_URLS[MODEL_NAME], 
-			     download_path)
-  print('download completed! loading DeepLab model...')
-
-MODEL = DeepLabModel(download_path)
-print('model loaded successfully!')
+# Lazy-loaded singleton — avoids loading the model on every import
+_deeplab_singleton = None
 
 
-image = Image.open(dir_name)
+def _get_deeplab_model():
+    global _deeplab_singleton
+    if _deeplab_singleton is None:
+        model_dir = os.path.join(_PROJECT_DIR, 'deeplab_model')
+        os.makedirs(model_dir, exist_ok=True)
+        tarball = _MODEL_URLS[_DEEPLAB_MODEL_NAME]
+        download_path = os.path.join(model_dir, tarball)
+        if not os.path.exists(download_path):
+            print(f'Downloading DeepLab model to {download_path} …')
+            urllib.request.urlretrieve(
+                _DOWNLOAD_URL_PREFIX + tarball, download_path)
+            print('Download complete.')
+        print('Loading DeepLab model …')
+        _deeplab_singleton = DeepLabModel(download_path)
+        print('DeepLab model loaded.')
+    return _deeplab_singleton
 
-res_im, seg = MODEL.run(image)
 
-seg = cv2.resize(seg.astype(np.uint8), image.size)
-mask_sel = (seg == 15).astype(np.float32)
-mask = 255 * mask_sel.astype(np.uint8)
+def run_inference(image_path):
+    """
+    Remove the background from an image using DeepLab segmentation.
 
-img = np.array(image)
-img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    Accepts a file path (str) or a numpy BGR array.
+    Returns a numpy array (BGR, uint8) with the background replaced by white.
+    """
+    model = _get_deeplab_model()
 
-res = cv2.bitwise_and(img, img, mask=mask)
-bg_removed = res + (255 - cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+    if isinstance(image_path, np.ndarray):
+        img_bgr = image_path
+        pil_image = Image.fromarray(cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB))
+    else:
+        pil_image = Image.open(image_path)
+        img_bgr = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
 
-main(bg_removed, args.height, None)
+    _, seg = model.run(pil_image)
+    seg = cv2.resize(seg.astype(np.uint8), pil_image.size)
+    mask = (255 * (seg == 15).astype(np.uint8))
+
+    res = cv2.bitwise_and(img_bgr, img_bgr, mask=mask)
+    bg_removed = res + (255 - cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+    return bg_removed
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Deeplab Segmentation')
+    parser.add_argument('-i', '--input_dir', type=str, required=True,
+                        help='Path to input image.')
+    parser.add_argument('-ht', '--height', type=int, required=True,
+                        help='Subject height in cm.')
+    args = parser.parse_args()
+
+    bg_removed = run_inference(args.input_dir)
+    main(bg_removed, args.height, None)
 
 

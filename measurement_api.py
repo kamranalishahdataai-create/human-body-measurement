@@ -181,33 +181,28 @@ class MeasurementAPI:
         """
         if height_cm is None:
             raise ValueError("height_cm is required for image-based measurement. "
-                           "The subject's real height is needed to scale the 3D model.")
+                             "The subject's real height is needed to scale the 3D model.")
 
-        # Import HMR inference modules
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+        # Step 1 — background removal via DeepLab
         from inference import run_inference
-        from extract_measurements import extract_measurements as extract_from_mesh
+        bg_removed = run_inference(image_path)
 
-        # Run HMR inference
-        vertices, joints = run_inference(image_path)
+        # Step 2 — 3D mesh reconstruction via HMR
+        from demo import run_hmr
+        vertices, joints3d = run_hmr(bg_removed)
 
-        # Extract raw measurements from SMPL mesh
-        raw_measurements = extract_from_mesh(vertices, joints)
-
-        # Scale by height
-        model_height = raw_measurements.get('height', 1.0)
-        if model_height > 0:
-            scale = height_cm / model_height
-        else:
-            scale = 1.0
+        # Step 3 — extract measurements from SMPL mesh vertices
+        from extract_measurements import get_measurements_dict
+        raw_measurements = get_measurements_dict(height_cm, vertices)
 
         measurements = {}
         for key, val in raw_measurements.items():
-            scaled_val = val * scale
             cn_name = self.MEASUREMENT_NAMES.get(key, key)
             measurements[key] = {
-                'value_cm': round(scaled_val, 1),
-                'raw_cm': round(val, 1),
+                'value_cm': round(float(val), 1),
+                'raw_cm': round(float(val), 1),
                 'chinese': cn_name,
             }
 
@@ -216,7 +211,7 @@ class MeasurementAPI:
             'accuracy': '81.5% (calibrated)',
             'measurements': measurements,
             'vertices': vertices,
-            'joints': joints,
+            'joints': joints3d,
             'measurement_count': len(measurements),
         }
 
