@@ -1,4 +1,4 @@
-"""
+﻿"""
 Renders mesh using OpenDr for visualization.
 """
 
@@ -310,7 +310,7 @@ def draw_skeleton(input_image, joints, draw_edges=True, vis=None, radius=None):
     image = input_image.copy()
     input_is_float = False
 
-    if np.issubdtype(image.dtype, np.float):
+    if np.issubdtype(image.dtype, np.floating):
         input_is_float = True
         max_val = image.max()
         if max_val <= 2.:  # should be 1 but sometimes it's slightly above 1
@@ -434,7 +434,7 @@ def draw_text(input_image, content):
     import cv2
     image = input_image.copy()
     input_is_float = False
-    if np.issubdtype(image.dtype, np.float):
+    if np.issubdtype(image.dtype, np.floating):
         input_is_float = True
         image = (image * 255).astype(np.uint8)
 

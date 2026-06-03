@@ -1,4 +1,4 @@
-"""
+﻿"""
 Preprocessing stuff.
 """
 import numpy as np
@@ -19,7 +19,7 @@ def scale_and_crop(image, scale, center, img_size):
     image_scaled, scale_factors = resize_img(image, scale)
     # Swap so it's [x, y]
     scale_factors = [scale_factors[1], scale_factors[0]]
-    center_scaled = np.round(center * scale_factors).astype(np.int)
+    center_scaled = np.round(center * scale_factors).astype(int)
 
     margin = int(img_size / 2)
     image_pad = np.pad(

@@ -1,4 +1,4 @@
-"""
+﻿"""
 Utils for data loading for training.
 """
 
@@ -14,9 +14,9 @@ def parse_example_proto(example_serialized, has_3d=False):
 
         'image/height'       : _int64_feature(height),
         'image/width'        : _int64_feature(width),
-        'image/x'            : _float_feature(label[0,:].astype(np.float)),
-        'image/y'            : _float_feature(label[1,:].astype(np.float)),
-        'image/visibility'   : _int64_feature(label[2,:].astype(np.int)),
+        'image/x'            : _float_feature(label[0,:].astype(float)),
+        'image/y'            : _float_feature(label[1,:].astype(float)),
+        'image/visibility'   : _int64_feature(label[2,:].astype(int)),
         'image/format'       : _bytes_feature
         'image/filename'     : _bytes_feature
         'image/encoded'      : _bytes_feature
@@ -24,10 +24,10 @@ def parse_example_proto(example_serialized, has_3d=False):
          this is the 2D keypoints of the face points in coco 5*3 (x,y,vis) = 15
 
     if has_3d is on, it also has:
-        'mosh/pose'          : float_feature(pose.astype(np.float)),
-        'mosh/shape'         : float_feature(shape.astype(np.float)),
+        'mosh/pose'          : float_feature(pose.astype(float)),
+        'mosh/shape'         : float_feature(shape.astype(float)),
         # gt3d is 14x3
-        'mosh/gt3d'          : float_feature(shape.astype(np.float)),
+        'mosh/gt3d'          : float_feature(shape.astype(float)),
     """
     feature_map = {
         'image/encoded':

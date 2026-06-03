@@ -1,4 +1,4 @@
-"""
+﻿"""
 Open up mpi_inf_3dhp.
 
 TRAINING:
@@ -89,7 +89,7 @@ def read_camera(base_dir):
         cam_id = int(block[0][1])
         # Intrinsic
         intrinsic = block[4][1:]
-        K = np.array([np.float(cont) for cont in intrinsic]).reshape(4, 4)
+        K = np.array([float(cont) for cont in intrinsic]).reshape(4, 4)
         # Extrinsic:
         extrinsic = block[5][1:]
         Ext = np.array([float(cont) for cont in extrinsic]).reshape(4, 4)

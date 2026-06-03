@@ -1,4 +1,4 @@
-""" Convert MPI_INF_3DHP to TFRecords """
+﻿""" Convert MPI_INF_3DHP to TFRecords """
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -143,7 +143,7 @@ def add_to_tfrecord(im_path,
     joints_scaled = np.copy(gt2d)
     joints_scaled[:, 0] *= scale_factors[0]
     joints_scaled[:, 1] *= scale_factors[1]
-    center_scaled = np.round(center * scale_factors).astype(np.int)
+    center_scaled = np.round(center * scale_factors).astype(int)
     # scale camera: Flength, px, py
     cam_scaled = np.copy(cam)
     cam_scaled[0] *= scale

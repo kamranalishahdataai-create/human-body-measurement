@@ -1,4 +1,4 @@
-"""
+﻿"""
 Helpers for tfrecord conversion.
 """
 
@@ -124,10 +124,10 @@ def convert_to_example(image_data, image_path, height, width, label, center):
     feat_dict = {
         'image/height': int64_feature(height),
         'image/width': int64_feature(width),
-        'image/center': int64_feature(center.astype(np.int)),
-        'image/x': float_feature(label[0, :].astype(np.float)),
-        'image/y': float_feature(label[1, :].astype(np.float)),
-        'image/visibility': int64_feature(label[2, :].astype(np.int)),
+        'image/center': int64_feature(center.astype(int)),
+        'image/x': float_feature(label[0, :].astype(float)),
+        'image/y': float_feature(label[1, :].astype(float)),
+        'image/visibility': int64_feature(label[2, :].astype(int)),
         'image/format': bytes_feature(tf.compat.as_bytes(image_format)),
         'image/filename': bytes_feature(
             tf.compat.as_bytes(basename(image_path))),
@@ -137,7 +137,7 @@ def convert_to_example(image_data, image_path, height, width, label, center):
         # 3 x 5
         feat_dict.update({
             'image/face_pts':
-            float_feature(face_pts.ravel().astype(np.float))
+            float_feature(face_pts.ravel().astype(float))
         })
 
     example = tf.train.Example(features=tf.train.Features(feature=feat_dict))
@@ -185,13 +185,13 @@ def convert_to_example_wmosh(image_data, image_path, height, width, label,
             'image/width':
             int64_feature(width),
             'image/center':
-            int64_feature(center.astype(np.int)),
+            int64_feature(center.astype(int)),
             'image/x':
-            float_feature(label[0, :].astype(np.float)),
+            float_feature(label[0, :].astype(float)),
             'image/y':
-            float_feature(label[1, :].astype(np.float)),
+            float_feature(label[1, :].astype(float)),
             'image/visibility':
-            int64_feature(label[2, :].astype(np.int)),
+            int64_feature(label[2, :].astype(int)),
             'image/format':
             bytes_feature(tf.compat.as_bytes(image_format)),
             'image/filename':
@@ -199,19 +199,19 @@ def convert_to_example_wmosh(image_data, image_path, height, width, label,
             'image/encoded':
             bytes_feature(tf.compat.as_bytes(image_data)),
             'mosh/pose':
-            float_feature(pose.astype(np.float)),
+            float_feature(pose.astype(float)),
             'mosh/shape':
-            float_feature(shape.astype(np.float)),
+            float_feature(shape.astype(float)),
             'mosh/gt3d':
-            float_feature(gt3d.ravel().astype(np.float)),
+            float_feature(gt3d.ravel().astype(float)),
             'meta/scale_factors':
-            float_feature(np.array(scale_factors).astype(np.float)),
+            float_feature(np.array(scale_factors).astype(float)),
             'meta/crop_pt':
-            int64_feature(start_pt.astype(np.int)),
+            int64_feature(start_pt.astype(int)),
             'meta/has_3d':
             int64_feature(has_3d),
             'image/cam':
-            float_feature(cam.astype(np.float)),
+            float_feature(cam.astype(float)),
         }))
 
     return example

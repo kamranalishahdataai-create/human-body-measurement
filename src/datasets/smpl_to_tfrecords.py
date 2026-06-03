@@ -1,4 +1,4 @@
-"""
+﻿"""
 Convert MoCap SMPL data to tfrecords.
 """
 from __future__ import absolute_import
@@ -42,13 +42,13 @@ def convert_to_example(pose, shape=None):
     if shape is None:
         example = tf.train.Example(features=tf.train.Features(
             feature={
-                'pose': float_feature(pose.astype(np.float))
+                'pose': float_feature(pose.astype(float))
             }))
     else:
         example = tf.train.Example(features=tf.train.Features(
             feature={
-                'pose': float_feature(pose.astype(np.float)),
-                'shape': float_feature(shape.astype(np.float)),
+                'pose': float_feature(pose.astype(float)),
+                'shape': float_feature(shape.astype(float)),
             }))
 
     return example
