@@ -19,7 +19,7 @@ def get_measurements_dict(height, vertices):
     """
     cp = convert_cp()
     measure_arr = calc_measure(cp, vertices, height)
-    return {utils.M_STR[i]: float(measure_arr[i]) for i in range(utils.M_NUM)}
+    return {utils.M_STR[i]: float(measure_arr[i].item()) for i in range(utils.M_NUM)}
 
 DATA_DIR = "data"
 # loading data: file_list, vertex, mean, std
