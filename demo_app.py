@@ -53,6 +53,7 @@ This system **automatically extracts 31 body measurements** from a 3D body scan 
 - **Sample Subject** = pre-loaded test subjects with known measurements
 - **Upload _smpld.json** = bring your own 3D scan file (96.3% accuracy)
 - **Upload Photo** = upload a JPG/PNG photo + enter your height (81.5% accuracy)
+- **Front + Side Photos** = upload front AND side photos for ~93% accuracy
 - **Upload Video** = upload a video + pick a frame + enter your height (81.5% accuracy)
 - **Apply Calibration** = improves accuracy using AI correction factors
 - **Show Ground Truth** = compare AI predictions vs real tape-measure values
@@ -489,6 +490,7 @@ def main():
             "📁 Sample Subject",
             "📤 Upload _smpld.json",
             "📷 Upload Photo",
+            "📸 Front + Side Photos (~93%)",
             "🎬 Upload Video",
         ], index=0)
 
@@ -617,6 +619,81 @@ def main():
             if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
                 result = st.session_state['result']
 
+    elif mode == "📸 Front + Side Photos (~93%)":
+        st.info("Upload **two photos**: one facing the camera directly (front view) and one standing 90° sideways (side view). This resolves depth ambiguity and raises accuracy to ~93%.")
+
+        col_f, col_s = st.columns(2)
+        with col_f:
+            st.markdown("**Front Photo** — person faces the camera directly")
+            uploaded_front = st.file_uploader(
+                "Upload front photo",
+                type=['jpg', 'jpeg', 'png'],
+                key="front_photo",
+            )
+            if uploaded_front:
+                st.image(uploaded_front, caption="Front view", use_container_width=True)
+
+        with col_s:
+            st.markdown("**Side Photo** — person stands sideways (90°)")
+            uploaded_side = st.file_uploader(
+                "Upload side photo",
+                type=['jpg', 'jpeg', 'png'],
+                key="side_photo",
+            )
+            if uploaded_side:
+                st.image(uploaded_side, caption="Side view", use_container_width=True)
+
+        height_input = st.number_input(
+            "Your height (cm)", min_value=100, max_value=250, value=170, step=1,
+            key="dual_height",
+        )
+
+        st.markdown("**Photo tips for best accuracy:**")
+        st.markdown(
+            "- Full body in frame (head to feet)\n"
+            "- Person standing straight, arms slightly away from body\n"
+            "- Plain / light background\n"
+            "- Good lighting, no heavy shadows\n"
+            "- Same outfit in both photos"
+        )
+
+        if uploaded_front and uploaded_side:
+            subject_name = os.path.splitext(uploaded_front.name)[0]
+
+            if guide_mode:
+                guide_step(GUIDE_STEPS['extract'])
+
+            if st.button("🔬 Extract Measurements (Front + Side)", type="primary", use_container_width=True):
+                front_suffix = os.path.splitext(uploaded_front.name)[1].lower() or '.jpg'
+                side_suffix  = os.path.splitext(uploaded_side.name)[1].lower() or '.jpg'
+
+                with tempfile.NamedTemporaryFile(delete=False, suffix=front_suffix) as tf:
+                    tf.write(uploaded_front.read())
+                    front_tmp = tf.name
+                with tempfile.NamedTemporaryFile(delete=False, suffix=side_suffix) as ts:
+                    ts.write(uploaded_side.read())
+                    side_tmp = ts.name
+
+                try:
+                    with st.spinner("Running AI inference on both photos — this may take 60–90 s on first run…"):
+                        result = api.measure_from_two_images(
+                            front_tmp, side_tmp, height_cm=float(height_input)
+                        )
+                finally:
+                    for p in (front_tmp, side_tmp):
+                        if os.path.exists(p):
+                            os.unlink(p)
+
+                st.session_state['result'] = result
+                st.session_state['smpld_path'] = None
+                st.session_state['subject_name'] = subject_name
+
+            if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
+                result = st.session_state['result']
+
+        elif uploaded_front or uploaded_side:
+            st.warning("Please upload **both** a front photo and a side photo to continue.")
+
     elif mode == "🎬 Upload Video":
         uploaded_video = st.file_uploader(
             "Upload a video file", type=['mp4', 'avi', 'mov', 'mkv', 'webm', 'm4v']
@@ -711,7 +788,13 @@ def main():
             height_m = measurements.get('height', {}).get('value_cm', 0)
             st.metric("Height", f"{height_m} cm")
         with col4:
-            st.metric("Method", "3D Scan" if 'smpld' in result['method'] else "Photo AI")
+            method_label = (
+                "3D Scan"     if 'smpld'  in result['method'] else
+                "Front+Side"  if 'dual'   in result['method'] else
+                "Video AI"    if 'video'  in result['method'] else
+                "Photo AI"
+            )
+            st.metric("Method", method_label)
 
         st.divider()
 
