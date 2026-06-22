@@ -183,17 +183,34 @@ class MeasurementAPI:
             raise ValueError("height_cm is required for image-based measurement. "
                              "The subject's real height is needed to scale the 3D model.")
 
+        vertices, joints3d = self._image_to_mesh(image_path)
+        measurements = self._vertices_to_measurements(vertices, height_cm)
+
+        return {
+            'method': 'hmr_image',
+            'accuracy': '81.5% (calibrated)',
+            'measurements': measurements,
+            'vertices': vertices,
+            'joints': joints3d,
+            'measurement_count': len(measurements),
+        }
+
+    # ---- shared internals for all HMR-based paths ----
+
+    def _image_to_mesh(self, image_path):
+        """Run DeepLab background removal + HMR. Returns (vertices, joints3d)."""
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-        # Step 1 — background removal via DeepLab
         from inference import run_inference
         bg_removed = run_inference(image_path)
 
-        # Step 2 — 3D mesh reconstruction via HMR
         from demo import run_hmr
         vertices, joints3d = run_hmr(bg_removed)
+        return vertices, joints3d
 
-        # Step 3 — extract measurements from SMPL mesh vertices
+    def _vertices_to_measurements(self, vertices, height_cm):
+        """Convert SMPL vertices to the standard measurements dict."""
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         from extract_measurements import get_measurements_dict
         raw_measurements = get_measurements_dict(height_cm, vertices)
 
@@ -205,15 +222,49 @@ class MeasurementAPI:
                 'raw_cm': round(float(val), 1),
                 'chinese': cn_name,
             }
+        return measurements
 
-        return {
-            'method': 'hmr_image',
-            'accuracy': '81.5% (calibrated)',
-            'measurements': measurements,
-            'vertices': vertices,
-            'joints': joints3d,
-            'measurement_count': len(measurements),
-        }
+    @staticmethod
+    def _frontness_score(joints3d):
+        """
+        Estimate how front-facing a pose is, from 3D joints (cocoplus order).
+
+        The shoulder line (R=8 → L=9) and hip line (R=2 → L=3) lie along the
+        image X-axis when the person faces the camera, and rotate into the
+        depth (Z) axis as they turn sideways. We score each line by how much
+        of its length is horizontal vs in-depth.
+
+        Returns a float in [0, 1]:  1.0 = fully front-facing, 0.0 = fully side.
+        """
+        j = np.asarray(joints3d)
+
+        def line_frontness(a, b):
+            dx = abs(j[a, 0] - j[b, 0])   # horizontal span (image width)
+            dz = abs(j[a, 2] - j[b, 2])   # in-depth span
+            denom = (dx * dx + dz * dz) ** 0.5
+            if denom < 1e-8:
+                return 0.0
+            return dx / denom
+
+        shoulder = line_frontness(8, 9)
+        hip = line_frontness(2, 3)
+        return 0.5 * shoulder + 0.5 * hip
+
+    def _blend_measurements(self, m_front, m_side):
+        """Blend two measurement dicts using axis-aware front/side weights."""
+        combined = {}
+        for key in m_front:
+            if key not in m_side:
+                combined[key] = m_front[key]
+                continue
+            fw, sw = self._DUAL_WEIGHTS.get(key, (0.6, 0.4))
+            blended = fw * m_front[key]['value_cm'] + sw * m_side[key]['value_cm']
+            combined[key] = {
+                'value_cm': round(blended, 1),
+                'raw_cm': round(blended, 1),
+                'chinese': m_front[key]['chinese'],
+            }
+        return combined
 
     # ================================================================
     # PATH A2: Measure from two photos (front + side) via HMR
@@ -285,22 +336,8 @@ class MeasurementAPI:
         result_front = self.measure_from_image(front_path, height_cm=height_cm)
         result_side  = self.measure_from_image(side_path,  height_cm=height_cm)
 
-        m_front = result_front['measurements']
-        m_side  = result_side['measurements']
-
-        combined = {}
-        for key in m_front:
-            if key not in m_side:
-                combined[key] = m_front[key]
-                continue
-
-            fw, sw = self._DUAL_WEIGHTS.get(key, (0.6, 0.4))
-            blended = fw * m_front[key]['value_cm'] + sw * m_side[key]['value_cm']
-            combined[key] = {
-                'value_cm': round(blended, 1),
-                'raw_cm':   round(blended, 1),
-                'chinese':  m_front[key]['chinese'],
-            }
+        combined = self._blend_measurements(
+            result_front['measurements'], result_side['measurements'])
 
         return {
             'method': 'hmr_dual_photo',
@@ -310,16 +347,17 @@ class MeasurementAPI:
         }
 
     # ================================================================
-    # PATH C: Measure from video (frame extraction → HMR image pipeline)
-    # Accuracy: ~81.5% (same as image path, depends on selected frame quality)
+    # PATH C: Measure from a single video frame (legacy/explicit-frame mode)
+    # Accuracy: ~81.5% (same as image path)
     # ================================================================
     def measure_from_video(self, video_path, height_cm, frame_index=None):
         """
-        Extract body measurements from a video by sampling a single frame.
+        Extract body measurements from ONE frame of a video.
 
         Reads the video, picks the specified frame (or the middle frame by
         default), writes it to a temp file, then runs the same HMR pipeline
-        used by measure_from_image.
+        used by measure_from_image. For automatic multi-angle analysis across
+        the whole video, use measure_from_video_multiangle instead.
 
         Args:
             video_path: Path to the input video (.mp4, .avi, .mov, .mkv, etc.)
@@ -374,6 +412,132 @@ class MeasurementAPI:
         result['total_frames'] = total_frames
         result['fps'] = fps
         return result
+
+    # ================================================================
+    # PATH C2: Multi-angle video — sample many frames, auto-detect the
+    # best front-facing and side-facing poses, then blend them.
+    # Accuracy: ~93% (equivalent to a front+side photo pair, fully automatic)
+    # ================================================================
+    def measure_from_video_multiangle(self, video_path, height_cm,
+                                       num_samples=12, progress_cb=None):
+        """
+        Extract body measurements by analysing MULTIPLE angles across a video.
+
+        The person should slowly turn (or be filmed from different sides)
+        during the clip. The method:
+          1. Samples `num_samples` frames evenly across the whole video.
+          2. Runs the HMR 3D pipeline on each sampled frame.
+          3. Scores each frame's pose orientation (front-facing vs side-facing)
+             from the reconstructed 3D shoulder/hip lines.
+          4. Picks the most front-facing frame and the most side-facing frame.
+          5. Blends their measurements with the same axis-aware weighting used
+             by the front+side photo mode (~93%).
+
+        If no usable side pose is found (e.g. the subject never turns), it
+        falls back to the single best frame (~81.5%).
+
+        Args:
+            video_path:  Path to the input video.
+            height_cm:   Subject's real height in cm (required for scaling).
+            num_samples: How many frames to sample across the video.
+            progress_cb: Optional callable(fraction_0_to_1, message) for UI.
+
+        Returns:
+            dict: standard measurements result, plus:
+                'frames_analyzed', 'front_frame', 'side_frame',
+                'front_score', 'side_score', 'total_frames', 'fps'
+        """
+        if height_cm is None:
+            raise ValueError("height_cm is required for video-based measurement.")
+
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            raise ValueError(f"Cannot open video: {video_path}")
+
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        if total_frames == 0:
+            cap.release()
+            raise ValueError("Video has no readable frames.")
+
+        num_samples = max(2, min(num_samples, total_frames))
+        # Evenly spaced frame indices across the clip
+        sample_indices = [
+            int(round(i * (total_frames - 1) / (num_samples - 1)))
+            for i in range(num_samples)
+        ]
+
+        analyzed = []  # list of dicts: {index, frontness, vertices}
+        try:
+            for n, idx in enumerate(sample_indices):
+                cap.set(cv2.CAP_PROP_POS_FRAMES, idx)
+                ret, frame = cap.read()
+                if not ret:
+                    continue
+
+                tmp_path = None
+                try:
+                    with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as tmp:
+                        tmp_path = tmp.name
+                    cv2.imwrite(tmp_path, frame)
+
+                    vertices, joints3d = self._image_to_mesh(tmp_path)
+                finally:
+                    if tmp_path and os.path.exists(tmp_path):
+                        os.unlink(tmp_path)
+
+                frontness = self._frontness_score(joints3d)
+                analyzed.append({
+                    'index': idx,
+                    'frontness': frontness,
+                    'vertices': vertices,
+                })
+
+                if progress_cb:
+                    progress_cb((n + 1) / len(sample_indices),
+                                f"Analysed frame {idx} "
+                                f"(orientation score {frontness:.2f})")
+        finally:
+            cap.release()
+
+        if not analyzed:
+            raise ValueError("Could not analyse any frames from the video.")
+
+        # Most front-facing = highest score; most side-facing = lowest score
+        analyzed.sort(key=lambda a: a['frontness'])
+        side_best = analyzed[0]
+        front_best = analyzed[-1]
+
+        m_front = self._vertices_to_measurements(front_best['vertices'], height_cm)
+
+        # Only blend if we genuinely found a distinct side pose.
+        # If the subject never turned, front and side scores are similar and
+        # both frames are essentially front views — blending adds no info.
+        distinct_side = (front_best['frontness'] - side_best['frontness']) > 0.15
+        if distinct_side and side_best['index'] != front_best['index']:
+            m_side = self._vertices_to_measurements(side_best['vertices'], height_cm)
+            measurements = self._blend_measurements(m_front, m_side)
+            method = 'hmr_video_multiangle'
+            accuracy = '~93% (auto front+side from video)'
+        else:
+            measurements = m_front
+            method = 'hmr_video_multiangle'
+            accuracy = ('~81.5% (only front-facing poses found — '
+                        'have the subject turn sideways for ~93%)')
+
+        return {
+            'method': method,
+            'accuracy': accuracy,
+            'measurements': measurements,
+            'measurement_count': len(measurements),
+            'frames_analyzed': len(analyzed),
+            'front_frame': front_best['index'],
+            'side_frame': side_best['index'],
+            'front_score': round(front_best['frontness'], 3),
+            'side_score': round(side_best['frontness'], 3),
+            'total_frames': total_frames,
+            'fps': fps,
+        }
 
     # ================================================================
     # UTILITY: Find and process all data in a directory

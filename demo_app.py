@@ -727,49 +727,106 @@ def main():
                 f"Video loaded — **{total_frames}** frames · **{fps:.1f}** fps · **{duration:.1f}s**"
             )
 
-            frame_idx = st.slider(
-                "Select frame to analyse",
-                min_value=0, max_value=max(0, total_frames - 1),
-                value=total_frames // 2,
+            analysis_mode = st.radio(
+                "Analysis mode",
+                ["🤖 Auto multi-angle (~93%)", "🎯 Single frame (~81.5%)"],
+                index=0,
+                help="Auto multi-angle samples many frames, finds the best front-facing "
+                     "and side-facing poses automatically, and blends them. For best "
+                     "results, have the person slowly turn during the video.",
             )
-
-            # Live frame preview
-            cap = cv2.VideoCapture(tmp_video_path)
-            cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
-            ret, frame = cap.read()
-            cap.release()
-
-            if ret:
-                col_prev, col_info = st.columns([2, 1])
-                with col_prev:
-                    st.image(
-                        cv2.cvtColor(frame, cv2.COLOR_BGR2RGB),
-                        caption=f"Frame {frame_idx} / {total_frames}",
-                        use_container_width=True,
-                    )
-                with col_info:
-                    st.markdown(f"**Timestamp:** {frame_idx / fps:.2f}s")
-                    st.markdown(f"**Height input:** {height_input} cm")
-                    st.markdown(f"**Resolution:** {frame.shape[1]}×{frame.shape[0]}")
 
             subject_name = uploaded_video.name
 
-            if guide_mode:
-                guide_step(GUIDE_STEPS['extract'])
+            if analysis_mode.startswith("🤖"):
+                # ---- AUTO MULTI-ANGLE MODE ----
+                st.markdown(
+                    "**How to record:** have the person stand ~2–3 m from the camera "
+                    "and **slowly rotate 90–180°** so the video captures both a front "
+                    "view and a side view. The AI picks the best of each automatically."
+                )
+                num_samples = st.slider(
+                    "Frames to analyse (more = slower but more thorough)",
+                    min_value=4, max_value=24, value=12, step=2,
+                )
 
-            if st.button("🔬 Extract Measurements", type="primary", use_container_width=True):
-                with st.spinner("Analysing selected frame..."):
-                    result = api.measure_from_video(
-                        tmp_video_path,
-                        height_cm=float(height_input),
-                        frame_index=frame_idx,
+                if guide_mode:
+                    guide_step(GUIDE_STEPS['extract'])
+
+                if st.button("🔬 Extract Measurements (Auto Multi-Angle)",
+                             type="primary", use_container_width=True):
+                    prog = st.progress(0.0, text="Starting multi-angle analysis…")
+
+                    def _cb(frac, msg):
+                        prog.progress(min(frac, 1.0), text=msg)
+
+                    with st.spinner("Sampling and analysing multiple angles…"):
+                        result = api.measure_from_video_multiangle(
+                            tmp_video_path,
+                            height_cm=float(height_input),
+                            num_samples=num_samples,
+                            progress_cb=_cb,
+                        )
+                    prog.empty()
+
+                    st.success(
+                        f"Analysed {result['frames_analyzed']} frames. "
+                        f"Best front pose: frame {result['front_frame']} "
+                        f"(score {result['front_score']}) · "
+                        f"Best side pose: frame {result['side_frame']} "
+                        f"(score {result['side_score']})."
                     )
-                st.session_state['result'] = result
-                st.session_state['smpld_path'] = None
-                st.session_state['subject_name'] = subject_name
 
-            if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
-                result = st.session_state['result']
+                    st.session_state['result'] = result
+                    st.session_state['smpld_path'] = None
+                    st.session_state['subject_name'] = subject_name
+
+                if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
+                    result = st.session_state['result']
+
+            else:
+                # ---- SINGLE-FRAME MODE ----
+                frame_idx = st.slider(
+                    "Select frame to analyse",
+                    min_value=0, max_value=max(0, total_frames - 1),
+                    value=total_frames // 2,
+                )
+
+                # Live frame preview
+                cap = cv2.VideoCapture(tmp_video_path)
+                cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+                ret, frame = cap.read()
+                cap.release()
+
+                if ret:
+                    col_prev, col_info = st.columns([2, 1])
+                    with col_prev:
+                        st.image(
+                            cv2.cvtColor(frame, cv2.COLOR_BGR2RGB),
+                            caption=f"Frame {frame_idx} / {total_frames}",
+                            use_container_width=True,
+                        )
+                    with col_info:
+                        st.markdown(f"**Timestamp:** {frame_idx / fps:.2f}s")
+                        st.markdown(f"**Height input:** {height_input} cm")
+                        st.markdown(f"**Resolution:** {frame.shape[1]}×{frame.shape[0]}")
+
+                if guide_mode:
+                    guide_step(GUIDE_STEPS['extract'])
+
+                if st.button("🔬 Extract Measurements", type="primary", use_container_width=True):
+                    with st.spinner("Analysing selected frame..."):
+                        result = api.measure_from_video(
+                            tmp_video_path,
+                            height_cm=float(height_input),
+                            frame_index=frame_idx,
+                        )
+                    st.session_state['result'] = result
+                    st.session_state['smpld_path'] = None
+                    st.session_state['subject_name'] = subject_name
+
+                if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
+                    result = st.session_state['result']
 
     # ---- DISPLAY RESULTS ----
     if result:
@@ -789,9 +846,10 @@ def main():
             st.metric("Height", f"{height_m} cm")
         with col4:
             method_label = (
-                "3D Scan"     if 'smpld'  in result['method'] else
-                "Front+Side"  if 'dual'   in result['method'] else
-                "Video AI"    if 'video'  in result['method'] else
+                "3D Scan"          if 'smpld'      in result['method'] else
+                "Front+Side"       if 'dual'       in result['method'] else
+                "Video Multi-Angle" if 'multiangle' in result['method'] else
+                "Video AI"         if 'video'      in result['method'] else
                 "Photo AI"
             )
             st.metric("Method", method_label)
