@@ -154,9 +154,17 @@ st.markdown("""
         margin: 0.5rem 0;
         font-size: 0.9rem;
         line-height: 1.6;
+        color: #1f2d3d;
+    }
+    .guide-box, .guide-box p, .guide-box li,
+    .guide-box ul, .guide-box ol, .guide-box span {
+        color: #1f2d3d !important;
+    }
+    .guide-box strong, .guide-box b {
+        color: #0d2538 !important;
     }
     .guide-box h3 {
-        color: #1565c0;
+        color: #1565c0 !important;
         margin-top: 0;
     }
     .guide-step {
@@ -166,6 +174,13 @@ st.markdown("""
         margin: 0.4rem 0;
         border-radius: 0 8px 8px 0;
         font-size: 0.88rem;
+        color: #3d2c00;
+    }
+    .guide-step, .guide-step p, .guide-step li, .guide-step span {
+        color: #3d2c00 !important;
+    }
+    .guide-step strong, .guide-step b {
+        color: #1f1500 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -783,6 +798,72 @@ def main():
 
                 if 'result' in st.session_state and st.session_state.get('subject_name') == subject_name:
                     result = st.session_state['result']
+
+                    # ---- Show the actual frames the AI selected ----
+                    if result.get('front_frame') is not None and 'side_frame' in result:
+                        st.markdown("#### 🖼️ Angles the AI selected from your video")
+
+                        def _grab_frame(path, idx, max_w=420):
+                            cap = cv2.VideoCapture(path)
+                            cap.set(cv2.CAP_PROP_POS_FRAMES, int(idx))
+                            ok, fr = cap.read()
+                            cap.release()
+                            if not ok:
+                                return None
+                            h, w = fr.shape[:2]
+                            if w > max_w:
+                                scale = max_w / w
+                                fr = cv2.resize(fr, (max_w, int(h * scale)))
+                            return cv2.cvtColor(fr, cv2.COLOR_BGR2RGB)
+
+                        fps_v = result.get('fps', 0) or 0
+                        fcol, scol = st.columns(2)
+                        with fcol:
+                            ff = _grab_frame(tmp_video_path, result['front_frame'])
+                            ts = result['front_frame'] / fps_v if fps_v else 0
+                            if ff is not None:
+                                st.image(
+                                    ff,
+                                    caption=(f"FRONT view · frame {result['front_frame']} "
+                                             f"· {ts:.1f}s · orientation {result['front_score']}"),
+                                    use_container_width=True,
+                                )
+                        with scol:
+                            sf = _grab_frame(tmp_video_path, result['side_frame'])
+                            ts = result['side_frame'] / fps_v if fps_v else 0
+                            if sf is not None:
+                                st.image(
+                                    sf,
+                                    caption=(f"SIDE view · frame {result['side_frame']} "
+                                             f"· {ts:.1f}s · orientation {result['side_score']}"),
+                                    use_container_width=True,
+                                )
+                        st.caption(
+                            f"Analysed {result['frames_analyzed']} frames sampled across "
+                            f"{result['total_frames']} total · orientation score 1.0 = facing "
+                            f"camera, 0.0 = side-on. Front + side blended for higher accuracy."
+                        )
+
+                        # Full gallery of every analysed angle
+                        sampled = result.get('sampled_frames', [])
+                        if sampled:
+                            with st.expander(
+                                f"🔍 See all {len(sampled)} analysed angles", expanded=False
+                            ):
+                                ncol = 4
+                                rows = [sampled[i:i + ncol] for i in range(0, len(sampled), ncol)]
+                                for row in rows:
+                                    cols = st.columns(ncol)
+                                    for c, item in zip(cols, row):
+                                        with c:
+                                            img = _grab_frame(tmp_video_path, item['index'])
+                                            if img is not None:
+                                                tag = ("FRONT" if item['index'] == result['front_frame']
+                                                       else "SIDE" if item['index'] == result['side_frame']
+                                                       else "")
+                                                cap = (f"f{item['index']} · score {item['frontness']}"
+                                                       + (f" · ✅{tag}" if tag else ""))
+                                                st.image(img, caption=cap, use_container_width=True)
 
             else:
                 # ---- SINGLE-FRAME MODE ----

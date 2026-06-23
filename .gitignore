@@ -7,3 +7,14 @@ __pycache__
 test.obj
 *.egg-info
 .DS_Store
+
+# Large/sample media and temp diagnostics
+sample video data/
+*.mov
+*.MOV
+*.mp4
+_test_*.py
+_diag_*.py
+_diag_*.png
+_pick_*.png
+_test_out.txt

@@ -168,6 +168,27 @@ def run_inference(image_path):
     return bg_removed
 
 
+def run_segmentation(image):
+    """
+    Return a binary person mask (uint8, 255 = person) from DeepLab.
+
+    Accepts a file path (str) or a numpy BGR array. Used to estimate body
+    orientation (front/back vs side) from the silhouette shape without
+    running the full HMR pipeline.
+    """
+    model = _get_deeplab_model()
+
+    if isinstance(image, np.ndarray):
+        pil_image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    else:
+        pil_image = Image.open(image)
+
+    _, seg = model.run(pil_image)
+    seg = cv2.resize(seg.astype(np.uint8), pil_image.size)
+    mask = (255 * (seg == 15).astype(np.uint8))
+    return mask
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Deeplab Segmentation')
     parser.add_argument('-i', '--input_dir', type=str, required=True,

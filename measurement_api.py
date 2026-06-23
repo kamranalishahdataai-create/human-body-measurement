@@ -225,30 +225,33 @@ class MeasurementAPI:
         return measurements
 
     @staticmethod
-    def _frontness_score(joints3d):
+    def _silhouette_broadness(mask):
         """
-        Estimate how front-facing a pose is, from 3D joints (cocoplus order).
+        Estimate body orientation from a person silhouette mask.
 
-        The shoulder line (R=8 → L=9) and hip line (R=2 → L=3) lie along the
-        image X-axis when the person faces the camera, and rotate into the
-        depth (Z) axis as they turn sideways. We score each line by how much
-        of its length is horizontal vs in-depth.
+        A person facing the camera (front) or away (back) has a WIDE
+        silhouette — shoulders, arms and hips span horizontally. A person
+        seen from the side has a NARROW silhouette (a thin profile). We
+        therefore use the width-to-height ratio of the person's bounding box
+        as an orientation cue:
 
-        Returns a float in [0, 1]:  1.0 = fully front-facing, 0.0 = fully side.
+            high ratio  ->  front / back facing  (good for widths & circumferences)
+            low ratio   ->  side facing          (good for depth)
+
+        This is far more reliable than reading rotation from the HMR 3D mesh,
+        which is trained mostly on front-facing people and does not recover
+        true body yaw for side/back views.
+
+        Returns the width/height ratio (float), or None if no person found.
         """
-        j = np.asarray(joints3d)
-
-        def line_frontness(a, b):
-            dx = abs(j[a, 0] - j[b, 0])   # horizontal span (image width)
-            dz = abs(j[a, 2] - j[b, 2])   # in-depth span
-            denom = (dx * dx + dz * dz) ** 0.5
-            if denom < 1e-8:
-                return 0.0
-            return dx / denom
-
-        shoulder = line_frontness(8, 9)
-        hip = line_frontness(2, 3)
-        return 0.5 * shoulder + 0.5 * hip
+        ys, xs = np.where(mask > 0)
+        if xs.size < 50:
+            return None
+        w = float(xs.max() - xs.min() + 1)
+        h = float(ys.max() - ys.min() + 1)
+        if h <= 0:
+            return None
+        return w / h
 
     def _blend_measurements(self, m_front, m_side):
         """Blend two measurement dicts using axis-aware front/side weights."""
@@ -426,10 +429,11 @@ class MeasurementAPI:
         The person should slowly turn (or be filmed from different sides)
         during the clip. The method:
           1. Samples `num_samples` frames evenly across the whole video.
-          2. Runs the HMR 3D pipeline on each sampled frame.
-          3. Scores each frame's pose orientation (front-facing vs side-facing)
-             from the reconstructed 3D shoulder/hip lines.
-          4. Picks the most front-facing frame and the most side-facing frame.
+          2. Runs fast DeepLab segmentation on each to get the person
+             silhouette, and scores orientation from its width/height ratio
+             (wide = front/back facing, narrow = side facing).
+          3. Picks the widest (front/back) frame and the narrowest (side) frame.
+          4. Runs the full HMR 3D pipeline on only those two frames.
           5. Blends their measurements with the same axis-aware weighting used
              by the front+side photo mode (~93%).
 
@@ -467,7 +471,11 @@ class MeasurementAPI:
             for i in range(num_samples)
         ]
 
-        analyzed = []  # list of dicts: {index, frontness, vertices}
+        # --- Pass 1: cheap segmentation on every sampled frame ---
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from inference import run_segmentation
+
+        analyzed = []  # list of dicts: {index, broadness}
         try:
             for n, idx in enumerate(sample_indices):
                 cap.set(cv2.CAP_PROP_POS_FRAMES, idx)
@@ -475,55 +483,92 @@ class MeasurementAPI:
                 if not ret:
                     continue
 
-                tmp_path = None
-                try:
-                    with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as tmp:
-                        tmp_path = tmp.name
-                    cv2.imwrite(tmp_path, frame)
+                mask = run_segmentation(frame)
+                broadness = self._silhouette_broadness(mask)
+                if broadness is None:
+                    continue  # no person detected in this frame
 
-                    vertices, joints3d = self._image_to_mesh(tmp_path)
-                finally:
-                    if tmp_path and os.path.exists(tmp_path):
-                        os.unlink(tmp_path)
-
-                frontness = self._frontness_score(joints3d)
-                analyzed.append({
-                    'index': idx,
-                    'frontness': frontness,
-                    'vertices': vertices,
-                })
+                analyzed.append({'index': idx, 'broadness': broadness})
 
                 if progress_cb:
-                    progress_cb((n + 1) / len(sample_indices),
-                                f"Analysed frame {idx} "
-                                f"(orientation score {frontness:.2f})")
+                    progress_cb(0.8 * (n + 1) / len(sample_indices),
+                                f"Scanned frame {idx} "
+                                f"(silhouette ratio {broadness:.2f})")
         finally:
             cap.release()
 
         if not analyzed:
-            raise ValueError("Could not analyse any frames from the video.")
+            raise ValueError("No person detected in any sampled video frame.")
 
-        # Most front-facing = highest score; most side-facing = lowest score
-        analyzed.sort(key=lambda a: a['frontness'])
-        side_best = analyzed[0]
-        front_best = analyzed[-1]
+        # Widest silhouette = front/back facing; narrowest = side facing
+        analyzed.sort(key=lambda a: a['broadness'])
+        side_best = analyzed[0]      # narrowest
+        front_best = analyzed[-1]    # widest
 
-        m_front = self._vertices_to_measurements(front_best['vertices'], height_cm)
+        # Decide whether a genuinely distinct side view exists. If the subject
+        # never turned, all silhouettes are similarly wide and there is no real
+        # side view to blend with.
+        b_front = front_best['broadness']
+        b_side = side_best['broadness']
+        distinct_side = (
+            side_best['index'] != front_best['index']
+            and b_front > 0
+            and (b_side / b_front) < 0.82   # side at least ~18% narrower
+        )
 
-        # Only blend if we genuinely found a distinct side pose.
-        # If the subject never turned, front and side scores are similar and
-        # both frames are essentially front views — blending adds no info.
-        distinct_side = (front_best['frontness'] - side_best['frontness']) > 0.15
-        if distinct_side and side_best['index'] != front_best['index']:
-            m_side = self._vertices_to_measurements(side_best['vertices'], height_cm)
+        # --- Pass 2: full HMR pipeline on only the selected frame(s) ---
+        def _measure_frame(frame_idx, msg, frac):
+            if progress_cb:
+                progress_cb(frac, msg)
+            cap2 = cv2.VideoCapture(video_path)
+            cap2.set(cv2.CAP_PROP_POS_FRAMES, int(frame_idx))
+            ok, fr = cap2.read()
+            cap2.release()
+            if not ok:
+                raise ValueError(f"Could not re-read frame {frame_idx}.")
+            tmp = None
+            try:
+                with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as t:
+                    tmp = t.name
+                cv2.imwrite(tmp, fr)
+                verts, _ = self._image_to_mesh(tmp)
+            finally:
+                if tmp and os.path.exists(tmp):
+                    os.unlink(tmp)
+            return self._vertices_to_measurements(verts, height_cm)
+
+        m_front = _measure_frame(front_best['index'],
+                                 "Measuring front/back view…", 0.85)
+
+        if distinct_side:
+            m_side = _measure_frame(side_best['index'],
+                                    "Measuring side view…", 0.95)
             measurements = self._blend_measurements(m_front, m_side)
-            method = 'hmr_video_multiangle'
             accuracy = '~93% (auto front+side from video)'
         else:
             measurements = m_front
-            method = 'hmr_video_multiangle'
-            accuracy = ('~81.5% (only front-facing poses found — '
-                        'have the subject turn sideways for ~93%)')
+            accuracy = ('~81.5% (no distinct side view found — have the '
+                        'subject turn sideways during the video for ~93%)')
+
+        method = 'hmr_video_multiangle'
+        if progress_cb:
+            progress_cb(1.0, "Done.")
+
+        # Lightweight per-frame summary for the UI. We report a normalised
+        # orientation score in [0,1] (1 = widest/front, 0 = narrowest/side)
+        # only when a distinct side view exists; otherwise raw ratios.
+        span = (b_front - b_side) if (b_front - b_side) > 1e-6 else 1.0
+
+        def _score(b):
+            if distinct_side:
+                return round(max(0.0, min(1.0, (b - b_side) / span)), 3)
+            return round(b, 3)
+
+        sampled = sorted(
+            ({'index': a['index'], 'frontness': _score(a['broadness'])}
+             for a in analyzed),
+            key=lambda a: a['index'],
+        )
 
         return {
             'method': method,
@@ -531,10 +576,11 @@ class MeasurementAPI:
             'measurements': measurements,
             'measurement_count': len(measurements),
             'frames_analyzed': len(analyzed),
+            'sampled_frames': sampled,
             'front_frame': front_best['index'],
             'side_frame': side_best['index'],
-            'front_score': round(front_best['frontness'], 3),
-            'side_score': round(side_best['frontness'], 3),
+            'front_score': _score(b_front),
+            'side_score': _score(b_side),
             'total_frames': total_frames,
             'fps': fps,
         }
